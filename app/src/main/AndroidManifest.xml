@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetConnect">
         <activity
+            android:name=".TelaCadastroOng"
+            android:exported="false" />
+        <activity
+            android:name=".TelaCadastro"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
