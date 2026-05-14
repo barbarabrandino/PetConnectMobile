@@ -2,42 +2,55 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#B3A9D79C">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:padding="50dp"
-        android:layout_marginTop="50dp">
+        android:padding="45dp">
+
+        <TextView
+            android:id="@+id/lblTituloBemVindo"
+            android:layout_width="357dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="monospace"
+            android:text="@string/bem_vindo_ao_petconnect"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="28sp"
+            android:layout_marginBottom="40dp"
             android:fontFamily="monospace"
+            android:text="@string/login"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_marginBottom="40dp"/>
+            android:textColor="@color/black"/>
 
         <!-- Email -->
         <EditText
             android:id="@+id/etEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
             android:fontFamily="monospace"
-            android:inputType="textEmailAddress"/>
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
 
         <!-- Senha -->
         <EditText
             android:id="@+id/etSenhaLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Senha"
+            android:layout_marginTop="12dp"
             android:fontFamily="monospace"
-            android:inputType="textPassword"
-            android:layout_marginTop="12dp"/>
+            android:hint="@string/senha"
+            android:inputType="textPassword" />
 
         <!-- Botão Entrar -->
         <Button
@@ -47,36 +60,36 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:backgroundTint="#498933"
-            android:textStyle="bold"
             android:fontFamily="monospace"
-            android:textSize="19dp"
-            android:text="Entrar" />
+            android:text="@string/entrar"
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
         <!-- Botão Cadastro Usuário -->
         <Button
             android:id="@+id/btnCadastroUsuario"
             android:layout_width="260dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:backgroundTint="#498933"
-            android:textStyle="bold"
             android:fontFamily="monospace"
-            android:textSize="19dp"
-            android:text="Cadastrar Usuário"
-            android:layout_gravity="center"/>
+            android:text="@string/cadastrar_usuario"
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
         <!-- Botão Cadastro ONG -->
         <Button
             android:id="@+id/btnCadastroOng"
             android:layout_width="260dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:backgroundTint="#498933"
-            android:textStyle="bold"
             android:fontFamily="monospace"
-            android:textSize="19dp"
-            android:text="Cadastrar ONG"
-            android:layout_gravity="center"/>
+            android:text="@string/cadastrar_ong"
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
