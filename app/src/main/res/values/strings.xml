@@ -7,4 +7,11 @@
     <string name="cadastrar_usuario">Cadastrar Usuário</string>
     <string name="cadastrar_ong">Cadastrar ONG</string>
     <string name="bem_vindo_ao_petconnect">Bem-Vindo ao PetConnect</string>
+    <string name="criar_conta">Criar conta</string>
+    <string name="cpf">CPF</string>
+    <string name="nome_completo">Nome completo</string>
+    <string name="criar_uma_conta_adotante">Criar uma conta Adotante</string>
+    <string name="cep">CEP</string>
+    <string name="cidade">Cidade</string>
+    <string name="endereco">Endereço</string>
 </resources>

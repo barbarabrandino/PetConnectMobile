@@ -38,6 +38,7 @@
             android:id="@+id/etEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FBFBFB"
             android:fontFamily="monospace"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
@@ -48,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:backgroundTint="#FFFFFF"
             android:fontFamily="monospace"
             android:hint="@string/senha"
             android:inputType="textPassword" />
