@@ -20,7 +20,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:layout_marginBottom="20dp"/>
 
         <!-- Descrição -->
