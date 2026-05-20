@@ -14,80 +14,74 @@
         <!-- Título -->
 
         <TextView
-            android:id="@+id/txtTituloHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animais disponíveis 🐾"
-            android:textSize="26sp"
+            android:text="Favoritos ❤️"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"
             android:textColor="@color/black"
-            android:layout_marginBottom="20dp"/>
-
-        <!-- Pesquisa -->
-
-        <EditText
-            android:id="@+id/etPesquisar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Pesquisar pet"
-            android:backgroundTint="#FFFFFF"
             android:fontFamily="monospace"
-            android:padding="12dp"/>
+            android:layout_marginBottom="24dp"/>
 
-        <!-- CARD 1 -->
+        <!-- CARD FAVORITO -->
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="18dp"
             app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#FFFFFF">
+
+                <!-- FOTO -->
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="220dp"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/thor"/>
+
+                <!-- CONTEÚDO -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <Button
-                        android:id="@+id/btnDetalhesThor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:backgroundTint="#498933"
-                        android:text="Ver detalhes"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Thor"
+                        android:text="Thor 🐾"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:fontFamily="monospace"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        android:fontFamily="monospace"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2 anos • Porte Médio"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textColor="#555555"
                         android:fontFamily="monospace"
-                        android:layout_marginTop="6dp"/>
+                        android:layout_marginTop="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnDetalhesFavorito"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="#498933"
+                        android:text="Ver Detalhes"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"/>
 
                 </LinearLayout>
 
@@ -95,59 +89,60 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- CARD 2 -->
+        <!-- CARD FAVORITO 2 -->
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             app:cardCornerRadius="18dp"
             app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#FFFFFF">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="220dp"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/luna"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Luna"
+                        android:text="Luna 🐾"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:fontFamily="monospace"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        android:fontFamily="monospace"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1 ano • Pequeno Porte"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textColor="#555555"
                         android:fontFamily="monospace"
-                        android:layout_marginTop="6dp"/>
+                        android:layout_marginTop="8dp"/>
 
                     <Button
-                        android:id="@+id/btnDetalhesLuna"
+                        android:id="@+id/btnDetalhesFavorito2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
                         android:backgroundTint="#498933"
-                        android:text="Ver detalhes"
+                        android:text="Ver Detalhes"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:fontFamily="monospace"/>
 
                 </LinearLayout>
 
