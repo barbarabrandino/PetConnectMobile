@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B3A9D79C">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:layout_marginBottom="24dp"/>
 
         <!-- Nome -->
@@ -30,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome completo"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"/>
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Telefone -->
 
@@ -42,8 +42,8 @@
             android:layout_marginTop="14dp"
             android:hint="Telefone"
             android:inputType="phone"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"/>
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Moradia -->
 
@@ -53,8 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:hint="Tipo de moradia"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"/>
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Outros animais -->
 
@@ -64,8 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:hint="Possui outros animais?"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"/>
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Experiência -->
 
@@ -75,8 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:hint="Experiência com pets"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"/>
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Observações -->
 
@@ -87,8 +87,8 @@
             android:layout_marginTop="14dp"
             android:gravity="top"
             android:hint="Observações adicionais"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"/>
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Botão -->
 
@@ -102,7 +102,7 @@
             android:text="Enviar Solicitação"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"/>
+            android:fontFamily="@font/albert_sans_light"/>
 
     </LinearLayout>
 

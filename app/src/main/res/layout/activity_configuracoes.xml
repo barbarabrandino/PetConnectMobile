@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B3A9D79C">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:layout_marginBottom="30dp"/>
 
         <!-- NOTIFICAÇÕES -->
@@ -38,7 +38,7 @@
                 android:text="Receber notificações"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"/>
+                android:fontFamily="@font/albert_sans_light"/>
 
             <Switch
                 android:id="@+id/switchNotificacoes"
@@ -62,7 +62,7 @@
                 android:text="Modo escuro"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"/>
+                android:fontFamily="@font/albert_sans_light"/>
 
             <Switch
                 android:id="@+id/switchDarkMode"
@@ -81,7 +81,7 @@
             android:text="Alterar Senha"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"/>
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- TERMOS -->
 
@@ -94,7 +94,7 @@
             android:text="Termos de Uso"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"/>
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- PRIVACIDADE -->
 
@@ -107,7 +107,7 @@
             android:text="Política de Privacidade"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"/>
+            android:fontFamily="@font/albert_sans_light"/>
 
         <!-- SAIR -->
 
@@ -120,7 +120,7 @@
             android:text="Sair da Conta"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"/>
+            android:fontFamily="@font/albert_sans_light"/>
 
     </LinearLayout>
 

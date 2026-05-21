@@ -23,70 +23,71 @@
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="@font/albert_sans_light"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
             android:hint="@string/nome_completo" />
 
         <EditText
             android:id="@+id/etCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/albert_sans_light"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/cpf"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/cpf" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:fontFamily="@font/albert_sans_light"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="Email"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Email" />
 
         <EditText
             android:id="@+id/etSenha"
             android:layout_width="match_parent"
-            android:fontFamily="@font/albert_sans_light"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="Senha"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Senha" />
 
         <EditText
             android:id="@+id/etCep"
             android:layout_width="match_parent"
-            android:fontFamily="@font/albert_sans_light"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/cep"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/cep" />
 
         <Spinner
             android:id="@+id/spEstado"
             android:fontFamily="@font/albert_sans_light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#E0FFED"
             android:layout_marginTop="12dp"/>
 
         <EditText
             android:id="@+id/etCidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/albert_sans_light"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/cidade"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/cidade" />
 
         <EditText
             android:id="@+id/etEndereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/albert_sans_light"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/endereco"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/endereco" />
 
         <Button
             android:id="@+id/btnCadastrar"
