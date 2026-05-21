@@ -53,7 +53,6 @@ public class UsuarioDAO {
         return existe;
     }
 
-    // 🔎 OPCIONAL (mas MUITO útil): pegar usuário completo
     public Usuario buscarUsuario(String email, String senha) {
 
         db = con.getReadableDatabase();
