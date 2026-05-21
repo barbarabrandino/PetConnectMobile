@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Título -->
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Interesse em Adoção ❤️"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Nome -->
+
+        <EditText
+            android:id="@+id/etNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome completo"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
+
+        <!-- Telefone -->
+
+        <EditText
+            android:id="@+id/etTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:hint="Telefone"
+            android:inputType="phone"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
+
+        <!-- Moradia -->
+
+        <EditText
+            android:id="@+id/etMoradia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:hint="Tipo de moradia"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
+
+        <!-- Outros animais -->
+
+        <EditText
+            android:id="@+id/etAnimais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:hint="Possui outros animais?"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
+
+        <!-- Experiência -->
+
+        <EditText
+            android:id="@+id/etExperiencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:hint="Experiência com pets"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
+
+        <!-- Observações -->
+
+        <EditText
+            android:id="@+id/etObservacoes"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="14dp"
+            android:gravity="top"
+            android:hint="Observações adicionais"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"/>
+
+        <!-- Botão -->
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#498933"
+            android:text="Enviar Solicitação"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/albert_sans_light"/>
+
+    </LinearLayout>
+
+</ScrollView>

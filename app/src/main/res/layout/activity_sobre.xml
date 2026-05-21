@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Título -->
+
+        <TextView
+            android:id="@+id/txtTituloSobre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sobre o PetConnect 🐾"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Descrição -->
+
+        <TextView
+            android:id="@+id/txtDescricaoProjeto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="O PetConnect é uma plataforma desenvolvida para conectar ONGs, adotantes, voluntários e doadores, facilitando o processo de adoção responsável de animais."
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:lineSpacingExtra="6dp"/>
+
+        <!-- Objetivos -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Objetivos"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:fontFamily="@font/albert_sans_light"
+            android:lineSpacingExtra="5dp"
+            android:text="• Facilitar adoções responsáveis&#10;• Conectar ONGs e adotantes&#10;• Reduzir o abandono animal&#10;• Utilizar tecnologia para impacto social"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <!-- Tecnologias -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tecnologias"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Java&#10;• Android Studio&#10;• Firebase&#10;• MongoDB&#10;• Spring Boot&#10;• Git e GitHub"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:lineSpacingExtra="5dp"/>
+
+        <!-- Equipe -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Equipe"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Projeto Integrador desenvolvido pelos alunos do curso DSM - FATEC. Integrantes: Matheus Henrique Campos Rumao, Felipe Ferreira de França, Clara Vecchio Machao da Silva, Barbara Helena Preto Brandino, Jaqueline Leite da Silva"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:lineSpacingExtra="5dp"/>
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#498933"
+            android:fontFamily="@font/albert_sans_light"
+            android:text="Voltar"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <!-- Botão -->
+
+    </LinearLayout>
+
+</ScrollView>
