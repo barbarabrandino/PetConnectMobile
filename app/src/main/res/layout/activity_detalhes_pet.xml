@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="24dp"
+            android:background="#E0FFED">
 
             <!-- Nome -->
 
@@ -36,7 +37,7 @@
                 android:text="Thor"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:textColor="@color/black"/>
 
             <!-- Informações -->
@@ -48,7 +49,7 @@
                 android:text="2 anos • Porte Médio • Macho"
                 android:textSize="18sp"
                 android:textColor="#555555"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="8dp"/>
 
             <!-- Status -->
@@ -61,7 +62,7 @@
                 android:textSize="17sp"
                 android:textColor="#498933"
                 android:textStyle="bold"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="14dp"/>
 
             <!-- Sobre -->
@@ -73,7 +74,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="30dp"/>
 
             <TextView
@@ -83,7 +84,7 @@
                 android:text="Thor é um cachorro extremamente dócil, brincalhão e carinhoso. Foi resgatado por uma ONG parceira e atualmente busca um novo lar cheio de amor e cuidado."
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:lineSpacingExtra="5dp"
                 android:layout_marginTop="12dp"/>
 
@@ -96,7 +97,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="30dp"/>
 
             <TextView
@@ -106,7 +107,7 @@
                 android:text="ONG Amigos de Patas"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="12dp"/>
 
             <!-- Botão -->
@@ -120,7 +121,7 @@
                 android:text="Tenho Interesse"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:fontFamily="monospace"/>
+                android:fontFamily="@font/albert_sans_light"/>
 
         </LinearLayout>
 

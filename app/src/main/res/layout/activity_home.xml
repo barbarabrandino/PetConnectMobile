@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B3A9D79C">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,6 +13,15 @@
 
         <!-- Título -->
 
+        <EditText
+            android:id="@+id/etPesquisar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E0FFED"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="Pesquisar pet"
+            android:padding="12dp" />
+
         <TextView
             android:id="@+id/txtTituloHome"
             android:layout_width="wrap_content"
@@ -20,20 +29,11 @@
             android:text="Animais disponíveis 🐾"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:textColor="@color/black"
             android:layout_marginBottom="20dp"/>
 
         <!-- Pesquisa -->
-
-        <EditText
-            android:id="@+id/etPesquisar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Pesquisar pet"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"
-            android:padding="12dp"/>
 
         <!-- CARD 1 -->
 
@@ -47,7 +47,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#E0FFED">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -77,7 +78,7 @@
                         android:text="Thor"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/albert_sans_light"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -86,7 +87,7 @@
                         android:text="2 anos • Porte Médio"
                         android:textSize="16sp"
                         android:textColor="#555555"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/albert_sans_light"
                         android:layout_marginTop="6dp"/>
 
                 </LinearLayout>
@@ -102,7 +103,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="18dp"
-            app:cardElevation="6dp">
+            app:cardElevation="6dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,7 +121,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="#E0FFED">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -127,7 +130,7 @@
                         android:text="Luna"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/albert_sans_light"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -136,7 +139,7 @@
                         android:text="1 ano • Pequeno Porte"
                         android:textSize="16sp"
                         android:textColor="#555555"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/albert_sans_light"
                         android:layout_marginTop="6dp"/>
 
                     <Button

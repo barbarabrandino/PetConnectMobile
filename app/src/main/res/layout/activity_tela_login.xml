@@ -17,7 +17,7 @@
             android:layout_width="357dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:text="@string/bem_vindo_ao_petconnect"
             android:textColor="@color/black"
             android:textSize="23sp"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:text="@string/login"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -38,8 +38,8 @@
             android:id="@+id/etEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FBFBFB"
-            android:fontFamily="monospace"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
@@ -49,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"
+            android:background="#E0FFED"
+            android:fontFamily="sans-serif-medium"
             android:hint="@string/senha"
             android:inputType="textPassword" />
 
@@ -62,7 +62,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:backgroundTint="#498933"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:text="@string/entrar"
             android:textSize="19sp"
             android:textStyle="bold" />
@@ -76,7 +76,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:backgroundTint="#498933"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:text="@string/cadastrar_usuario"
             android:textSize="19sp"
             android:textStyle="bold" />
@@ -89,7 +89,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:backgroundTint="#498933"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:text="@string/cadastrar_ong"
             android:textSize="19sp"
             android:textStyle="bold" />
