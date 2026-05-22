@@ -110,6 +110,6 @@
         android:background="#FFFFFF"
         app:itemIconTint="#498933"
         app:itemTextColor="#498933"
-        app:menu="@menu/bottom_menu"/>
+        app:menu="@menu/bottom_menu" />
 
 </LinearLayout>

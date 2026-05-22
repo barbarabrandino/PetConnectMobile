@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
         btnCadastroUsuario = findViewById(R.id.btnCadastroUsuario);
         btnCadastroOng = findViewById(R.id.btnCadastroOng);
 
-        // BOTÃO ENTRAR
+        // Navegação
         btnEntrar.setOnClickListener(view -> {
 
             String email = etEmailLogin.getText().toString().trim();
@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Cadastro Usuário
+        // Cadastro do Adotante
         btnCadastroUsuario.setOnClickListener(view -> {
 
             Intent intent = new Intent(
@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Cadastro ONG
+        // Cadastro da Ong
         btnCadastroOng.setOnClickListener(view -> {
 
             Intent intent = new Intent(
