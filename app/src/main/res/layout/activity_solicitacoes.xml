@@ -41,13 +41,14 @@
                 android:background="@color/verdebb">
 
                 <TextView
+                    android:id="@+id/txtAdotante"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adotante: Matheus Henrique"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"
-                    android:textColor="@color/black"/>
+                    android:text="Adotante"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,14 +59,22 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/txtStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="@string/status_em_analise"
                     android:textSize="18sp"
                     android:textColor="@color/yellow"
                     android:textStyle="bold"
+
+                    android:layout_marginTop="10dp"
+                    android:background="#E0FFED"
+
                     android:fontFamily="@font/albert_sans_light"
-                    android:layout_marginTop="10dp"/>
+                    android:text="Status"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnAprovar"
