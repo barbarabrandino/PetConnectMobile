@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="verdebb">#E0FFED</color>
+    <color name="verdebtn">#498933</color>
+    <color name="vermelho">#8B0000</color>
+    <color name="cinza">#555555</color>
+    <color name="yellow">#907300</color>
+    <color name="pelora">#F6F6F6</color>
+
 </resources>

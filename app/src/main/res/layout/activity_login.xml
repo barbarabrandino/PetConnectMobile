@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:id="@+id/etEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E0FFED"
+            android:background="@color/verdebb"
             android:fontFamily="sans-serif-medium"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="#E0FFED"
+            android:background="@color/verdebb"
             android:fontFamily="sans-serif-medium"
             android:hint="@string/senha"
             android:inputType="textPassword" />
@@ -61,7 +61,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:backgroundTint="#498933"
+            android:backgroundTint="@color/verdebtn"
             android:fontFamily="@font/albert_sans_light"
             android:text="@string/entrar"
             android:textSize="19sp"
@@ -75,7 +75,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#498933"
+            android:backgroundTint="@color/verdebtn"
             android:fontFamily="@font/albert_sans_light"
             android:text="@string/cadastrar_usuario"
             android:textSize="19sp"
@@ -88,7 +88,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#498933"
+            android:backgroundTint="@color/verdebtn"
             android:fontFamily="@font/albert_sans_light"
             android:text="@string/cadastrar_ong"
             android:textSize="19sp"

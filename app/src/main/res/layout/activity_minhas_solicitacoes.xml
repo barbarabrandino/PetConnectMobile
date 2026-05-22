@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_marginTop="35dp"
+        android:padding="25dp">
 
         <!-- Título -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Minhas Solicitações 📋"
+            android:text="@string/minhas_solicitacoes"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -37,12 +38,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="18dp"
-                android:background="#E0FFED">
+                android:background="@color/verdebb">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thor 🐾"
+                    android:text="@string/thor_emoji"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -51,29 +52,29 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ONG Amigos de Patas"
+                    android:text="@string/ong_amigos_de_patas"
                     android:textSize="18sp"
-                    android:textColor="#555555"
+                    android:textColor="@color/cinza"
                     android:fontFamily="@font/albert_sans_light"
                     android:layout_marginTop="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status: Em análise"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#498933"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/albert_sans_light"
-                    android:layout_marginTop="12dp"/>
+                    android:text="@string/status_em_analise"
+                    android:textColor="@color/yellow"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btnVerDetalhes"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="#498933"
-                    android:text="Ver Detalhes"
+                    android:backgroundTint="@color/verdebtn"
+                    android:text="@string/ver_detalhes"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"/>
@@ -95,12 +96,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="18dp"
-                android:background="#E0FFED">
+                android:background="@color/verdebb">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Luna 🐾"
+                    android:text="@string/luna_emoji"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -109,19 +110,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ONG Amor Animal"
+                    android:text="@string/ong_amor_animal"
                     android:textSize="18sp"
-                    android:textColor="#555555"
+                    android:textColor="@color/cinza"
                     android:fontFamily="@font/albert_sans_light"
                     android:layout_marginTop="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status: Aprovado ✅"
+                    android:text="@string/status_aprovado"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#498933"
+                    android:textColor="@color/verdebtn"
                     android:fontFamily="@font/albert_sans_light"
                     android:layout_marginTop="12dp"/>
 
@@ -130,8 +131,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="#498933"
-                    android:text="Ver Detalhes"
+                    android:backgroundTint="@color/verdebtn"
+                    android:text="@string/ver_detalhes"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"/>

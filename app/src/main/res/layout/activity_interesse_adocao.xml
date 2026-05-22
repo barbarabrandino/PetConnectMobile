@@ -2,13 +2,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_marginTop="20dp"
+        android:padding="45dp">
 
         <!-- Título -->
 
@@ -16,7 +17,7 @@
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Interesse em Adoção ❤️"
+            android:text="@string/interesse_em_adocao"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -29,8 +30,8 @@
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome completo"
-            android:background="#E0FFED"
+            android:hint="@string/nome_completo"
+            android:background="@color/verdebb"
             android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Telefone -->
@@ -39,10 +40,10 @@
             android:id="@+id/etTelefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="Telefone"
+            android:layout_marginTop="17dp"
+            android:hint="@string/telefone"
             android:inputType="phone"
-            android:background="#E0FFED"
+            android:background="@color/verdebb"
             android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Moradia -->
@@ -51,9 +52,9 @@
             android:id="@+id/etMoradia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="Tipo de moradia"
-            android:background="#E0FFED"
+            android:layout_marginTop="17dp"
+            android:hint="@string/tipo_de_moradia"
+            android:background="@color/verdebb"
             android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Outros animais -->
@@ -62,9 +63,9 @@
             android:id="@+id/etAnimais"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="Possui outros animais?"
-            android:background="#E0FFED"
+            android:layout_marginTop="17dp"
+            android:hint="@string/possui_outros_animais"
+            android:background="@color/verdebb"
             android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Experiência -->
@@ -73,9 +74,9 @@
             android:id="@+id/etExperiencia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="Experiência com pets"
-            android:background="#E0FFED"
+            android:layout_marginTop="17dp"
+            android:hint="@string/experiencia_com_pets"
+            android:background="@color/verdebb"
             android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Observações -->
@@ -84,10 +85,10 @@
             android:id="@+id/etObservacoes"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="24dp"
             android:gravity="top"
-            android:hint="Observações adicionais"
-            android:background="#E0FFED"
+            android:hint="@string/observacoes_adicionais"
+            android:background="@color/verdebb"
             android:fontFamily="@font/albert_sans_light"/>
 
         <!-- Botão -->
@@ -97,9 +98,9 @@
             android:layout_width="260dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#498933"
-            android:text="Enviar Solicitação"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/verdebtn"
+            android:text="@string/enviar_solicitacao"
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@font/albert_sans_light"/>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="24dp"
-            android:background="#E0FFED">
+            android:background="@color/verdebb">
 
             <!-- Nome -->
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="2 anos • Porte Médio • Macho"
                 android:textSize="18sp"
-                android:textColor="#555555"
+                android:textColor="@color/cinza"
                 android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="8dp"/>
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="Vacinado • Castrado"
                 android:textSize="17sp"
-                android:textColor="#498933"
+                android:textColor="@color/verdebtn"
                 android:textStyle="bold"
                 android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="14dp"/>
@@ -70,7 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sobre"
+                android:text="@string/sobre"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -81,7 +81,7 @@
                 android:id="@+id/txtDescricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thor é um cachorro extremamente dócil, brincalhão e carinhoso. Foi resgatado por uma ONG parceira e atualmente busca um novo lar cheio de amor e cuidado."
+                android:text="@string/descricao_thor"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/albert_sans_light"
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="40dp"
-                android:backgroundTint="#498933"
+                android:backgroundTint="@color/verdebtn"
                 android:text="Tenho Interesse"
                 android:textSize="20sp"
                 android:textStyle="bold"

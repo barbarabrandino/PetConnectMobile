@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="34dp">
 
         <!-- Título -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dashboard ONG 🏢"
+            android:text="@string/dashboard_ong"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -37,12 +38,12 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="#E0FFED">
+                android:background="@color/verdebb">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pets cadastrados"
+                    android:text="@string/pets_cadastrados"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"/>
@@ -53,7 +54,7 @@
                     android:text="12"
                     android:textSize="34sp"
                     android:textStyle="bold"
-                    android:textColor="#498933"
+                    android:textColor="@color/verdebtn"
                     android:fontFamily="@font/albert_sans_light"/>
 
             </LinearLayout>
@@ -79,7 +80,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Solicitações"
+                    android:text="@string/solicitacoes"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"/>
@@ -90,7 +91,7 @@
                     android:text="8"
                     android:textSize="34sp"
                     android:textStyle="bold"
-                    android:textColor="#498933"
+                    android:textColor="@color/verdebtn"
                     android:fontFamily="@font/albert_sans_light"/>
 
             </LinearLayout>
@@ -104,8 +105,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#498933"
-            android:text="Cadastrar Novo Pet"
+            android:backgroundTint="@color/verdebtn"
+            android:text="@string/cadastrar_novo_pet"
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@font/albert_sans_light"/>
@@ -114,9 +115,9 @@
             android:id="@+id/btnVerSolicitacoes"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#498933"
-            android:text="Ver Solicitações"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/verdebtn"
+            android:text="@string/ver_solicita_es"
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@font/albert_sans_light"/>
