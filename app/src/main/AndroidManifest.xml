@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetConnect">
         <activity
+            android:name=".TelaHomeOng"
+            android:exported="false" />
+        <activity
+            android:name=".TelaHome"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
             android:name=".Configuracoes"
             android:exported="false" />
         <activity
