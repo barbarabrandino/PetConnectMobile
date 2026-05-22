@@ -33,15 +33,15 @@
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
-        <!-- Email -->
+        <!-- CPF / CNPJ -->
         <EditText
-            android:id="@+id/etEmailLogin"
+            android:id="@+id/etCpfCnpjLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#E0FFED"
             android:fontFamily="sans-serif-medium"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:hint="CPF/CNPJ"
+            android:inputType="number" />
 
         <!-- Senha -->
         <EditText
@@ -68,7 +68,6 @@
             android:textStyle="bold" />
 
         <!-- Botão Cadastro Usuário -->
-
         <Button
             android:id="@+id/btnCadastroUsuario"
             android:layout_width="260dp"

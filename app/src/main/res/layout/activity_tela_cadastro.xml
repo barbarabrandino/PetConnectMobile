@@ -63,12 +63,13 @@
             android:hint="@string/cep"
             android:layout_marginTop="12dp"/>
 
-        <Spinner
-            android:id="@+id/spEstado"
-            android:fontFamily="monospace"
+        <EditText
+            android:id="@+id/etEstado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"/>
+            android:ems="10"
+            android:hint="Digite a sigla do seu estado (exemplo: SP)"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/etCidade"

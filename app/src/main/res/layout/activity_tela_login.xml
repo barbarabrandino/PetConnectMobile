@@ -8,37 +8,16 @@
     tools:context=".TelaHomeOng">
 
     <Button
-        android:id="@+id/btnEntrarOng"
-        android:layout_width="303dp"
-        android:layout_height="45dp"
-        android:text="Entrar como Ong"
+        android:id="@+id/btnComecar"
+        android:layout_width="309dp"
+        android:layout_height="67dp"
+        android:text="Começar no PetConnect"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371" />
-
-    <Button
-        android:id="@+id/btnEntrarAdotante"
-        android:layout_width="303dp"
-        android:layout_height="45dp"
-        android:text="Entrar como Adotante"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.466" />
-
-    <Button
-        android:id="@+id/btnCriarConta2"
-        android:layout_width="303dp"
-        android:layout_height="45dp"
-        android:text="Quero criar uma conta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.473" />
 
     <TextView
         android:id="@+id/textView"
@@ -56,10 +35,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
         android:text="Conectando corações "
-        app:layout_constraintBottom_toTopOf="@+id/btnEntrarOng"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="151dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

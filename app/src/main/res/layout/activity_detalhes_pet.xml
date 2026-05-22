@@ -12,13 +12,6 @@
 
         <!-- FOTO -->
 
-        <ImageView
-            android:id="@+id/imgPet"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/thor"/>
-
         <!-- CONTEÚDO -->
 
         <LinearLayout

@@ -48,13 +48,14 @@
                     android:fontFamily="@font/albert_sans_light"/>
 
                 <TextView
+                    android:id="@+id/txtNumPets"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12"
-                    android:textSize="34sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="0"
                     android:textColor="#498933"
-                    android:fontFamily="@font/albert_sans_light"/>
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -85,13 +86,14 @@
                     android:fontFamily="@font/albert_sans_light"/>
 
                 <TextView
+                    android:id="@+id/txtNumSolicitacoes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="8"
-                    android:textSize="34sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="0"
                     android:textColor="#498933"
-                    android:fontFamily="@font/albert_sans_light"/>
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

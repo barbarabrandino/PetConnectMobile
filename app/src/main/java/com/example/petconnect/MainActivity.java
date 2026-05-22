@@ -8,22 +8,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnEntrarOng;
-    Button btnEntrarAdotante;
-    Button btnCriarConta;
+    Button btnComecar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
 
-        // Botões
-        btnEntrarOng = findViewById(R.id.btnEntrarOng);
-        btnEntrarAdotante = findViewById(R.id.btnEntrarAdotante);
-        btnCriarConta = findViewById(R.id.btnCriarConta2);
+        btnComecar = findViewById(R.id.btnComecar);
 
-        // Navegação
-        btnEntrarAdotante.setOnClickListener(view -> {
+        btnComecar.setOnClickListener(view -> {
 
             Intent intent = new Intent(
                     MainActivity.this,
@@ -31,29 +26,12 @@ public class MainActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
-
         });
-        btnEntrarOng.setOnClickListener(view -> {
 
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    Login.class
-            );
 
-            startActivity(intent);
-
-        });
-        btnCriarConta.setOnClickListener(view -> {
-
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    Login.class
-            );
-
-            startActivity(intent);
-
-        });
     }
+
+
 }
 
 

@@ -73,7 +73,7 @@
 
         <!-- Estado -->
         <Spinner
-            android:id="@+id/spEstado"
+            android:id="@+id/etEstado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#E0FFED"
