@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="40dp">
 
         <!-- Título -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favoritos ❤️"
+            android:text="@string/favoritos"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -36,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#E0FFED">
+                android:background="@color/verdebb">
 
                 <!-- FOTO -->
 
@@ -57,7 +58,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Thor 🐾"
+                        android:text="@string/thor"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -66,9 +67,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2 anos • Porte Médio"
+                        android:text="@string/_2_anos_porte_medio"
                         android:textSize="18sp"
-                        android:textColor="#555555"
+                        android:textColor="@color/cinza"
                         android:fontFamily="@font/albert_sans_light"
                         android:layout_marginTop="8dp"/>
 
@@ -77,10 +78,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:layout_marginTop="20dp"
-                        android:backgroundTint="#498933"
-                        android:text="Ver Detalhes"
+                        android:backgroundTint="@color/verdebtn"
+                        android:text="@string/ver_detalhes"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/albert_sans_light"/>
 
                 </LinearLayout>
@@ -101,24 +103,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#FFFFFF">
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
                     android:scaleType="centerCrop"
+                    android:background="@color/verdebb"
                     android:src="@drawable/luna"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:background="@color/verdebb"
                     android:padding="18dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Luna 🐾"
+                        android:text="@string/luna"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -127,9 +131,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1 ano • Pequeno Porte"
+                        android:text="@string/_1_ano_pequeno_porte"
                         android:textSize="18sp"
-                        android:textColor="#555555"
+                        android:textColor="@color/cinza"
                         android:fontFamily="@font/albert_sans_light"
                         android:layout_marginTop="8dp"/>
 
@@ -138,8 +142,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:layout_marginTop="20dp"
-                        android:backgroundTint="#498933"
-                        android:text="Ver Detalhes"
+                        android:backgroundTint="@color/verdebtn"
+                        android:text="@string/ver_detalhes"
+                        android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/albert_sans_light"/>

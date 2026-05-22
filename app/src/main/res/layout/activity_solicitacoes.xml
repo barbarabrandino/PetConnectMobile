@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:padding="24dp">
 
         <!-- Título -->
@@ -16,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Solicitações 📄"
+            android:text="@string/solicitacoes_emoji"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -37,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="18dp"
-                android:background="#E0FFED">
+                android:background="@color/verdebb">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,9 +60,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status: Em análise"
+                    android:text="@string/status_em_analise"
                     android:textSize="18sp"
-                    android:background="#E0FFED"
+                    android:textColor="@color/yellow"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"
                     android:layout_marginTop="10dp"/>
@@ -71,8 +72,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="#498933"
-                    android:text="Aprovar"
+                    android:backgroundTint="@color/verdebtn"
+                    android:text="@string/aprovar"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"/>
@@ -82,8 +83,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="12dp"
-                    android:backgroundTint="#8B0000"
-                    android:text="Recusar"
+                    android:backgroundTint="@color/vermelho"
+                    android:text="@string/recusar"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/albert_sans_light"/>
