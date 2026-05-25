@@ -1,168 +1,146 @@
-# 🐾 PetConnect
+# PetConnect
 
-<p align="center">
-  Plataforma desenvolvida para conectar ONGs, adotantes, voluntários e doadores,
-  facilitando o processo de adoção responsável de animais.
-</p>
+Aplicativo mobile desenvolvido para conectar ONGs, adotantes, voluntários e doadores, facilitando o processo de adoção responsável de animais.
 
 ---
 
-# 📖 Sobre o Projeto
+## Sobre o Projeto
 
-O **PetConnect** é uma aplicação web desenvolvida como Projeto Integrador do curso de Desenvolvimento de Software Multiplataforma (DSM) da FATEC Indaiatuba.
+O PetConnect é um aplicativo Android desenvolvido como Projeto Integrador do curso de Desenvolvimento de Software Multiplataforma (DSM) da FATEC Indaiatuba.
 
-A plataforma foi criada com o objetivo de auxiliar no combate ao abandono animal, permitindo que ONGs parceiras realizem o gerenciamento de animais disponíveis para adoção, enquanto usuários podem visualizar informações, demonstrar interesse em adoção e acompanhar ações sociais relacionadas à causa animal.
+O projeto tem como objetivo auxiliar no combate ao abandono animal, permitindo que ONGs parceiras realizem o gerenciamento de animais disponíveis para adoção, enquanto usuários podem visualizar informações, demonstrar interesse em adoção e acompanhar ações relacionadas à causa animal.
 
-Além do desenvolvimento técnico, o projeto busca gerar impacto social positivo por meio da tecnologia.
+Além do desenvolvimento técnico, o projeto também busca gerar impacto social positivo por meio da tecnologia e da conscientização sobre adoção responsável.
 
 ---
 
-# 🎯 Objetivos do Projeto
+## Objetivos do Projeto
 
 - Facilitar a adoção responsável de animais
 - Centralizar informações de ONGs parceiras
 - Melhorar a comunicação entre adotantes e instituições
 - Auxiliar no gerenciamento de animais disponíveis
-- Aplicar boas práticas de desenvolvimento web
+- Aplicar boas práticas no desenvolvimento mobile
 - Utilizar versionamento com Git e GitHub
 - Desenvolver uma arquitetura organizada e escalável
 
 ---
 
-# 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-## 🔙 Back-end
+### Java
 
-### ☕ Java 17
-Versão LTS (Long Term Support) da linguagem Java utilizada no desenvolvimento da aplicação.  
-Oferece estabilidade, segurança, melhorias de desempenho e recursos modernos da linguagem.
+Linguagem principal utilizada no desenvolvimento do aplicativo Android.
 
-### 🌱 Spring Boot
-Framework utilizado para construção da aplicação e da API REST.  
-Facilita a configuração do projeto, reduz código boilerplate e acelera o desenvolvimento.
+### Android Studio
 
-### 🍃 Spring Data MongoDB
-Módulo responsável pela integração entre a aplicação e o banco de dados MongoDB.  
-Simplifica operações como consultas, inserções, atualizações e remoções de documentos.
+IDE utilizada para desenvolvimento, testes e gerenciamento do projeto mobile.
 
-### 📦 Maven
-Ferramenta de gerenciamento de dependências e automação de build.  
-Responsável pela organização do projeto, compilação e gerenciamento das bibliotecas utilizadas.
+### Android SDK
 
-### ☁️ MongoDB Atlas
-Serviço de banco de dados em nuvem utilizado pela aplicação.  
-Fornece escalabilidade, segurança, backups automáticos e alta disponibilidade.
+Ferramentas utilizadas para construção da aplicação Android.
 
-### ⚡ Lombok
-Biblioteca utilizada para reduzir código repetitivo em Java.  
-Automatiza a criação de getters, setters, construtores e outros métodos utilitários.
+### Git e GitHub
+
+Ferramentas utilizadas para versionamento, organização e controle do projeto.
+
+### CI/CD
+
+Aplicação de conceitos de Integração Contínua e Entrega Contínua para automatização de processos do projeto.
+
+### IoT
+
+Conceitos de Internet das Coisas aplicados ao contexto do Projeto Integrador.
 
 ---
 
-# 🌐 Front-end
+## Funcionalidades
 
-### 🟨 JavaScript
-Linguagem responsável pela interatividade da aplicação.  
-Utilizada para validações, manipulação dinâmica da interface e comunicação com o back-end.
+### Gerenciamento de Animais
 
-### 🍃 Thymeleaf
-Template Engine utilizada com Spring Boot para renderização de páginas HTML dinâmicas.  
-Permite integrar dados do back-end diretamente na interface de forma simples e organizada.
-
-### 🎨 HTML5 e CSS3
-Tecnologias utilizadas para estruturação e estilização da interface da aplicação.
-
----
-
-# ⚙️ Funcionalidades
-
-## 👥 Gerenciamento de Parceiros
-- Cadastro de ONGs parceiras
-- Login e autenticação de usuários
-- Controle de acesso
-
-## 🐾 Gerenciamento de Animais
 - Cadastro de animais
 - Atualização de informações
-- Exclusão de registros
 - Controle de disponibilidade
+- Visualização de detalhes dos pets
 
-## ❤️ Processo de Adoção
+### Processo de Adoção
+
 - Visualização de animais disponíveis
 - Consulta de informações detalhadas
-- Gerenciamento de adoções
+- Demonstração de interesse em adoção
 
-## 🌍 Área Pública
-- Navegação intuitiva
-- Interface responsiva
-- Visualização pública de animais
+### Área das ONGs
 
----
+- Cadastro de instituições parceiras
+- Gerenciamento de animais
+- Organização das informações
 
-# 🏗️ Arquitetura do Projeto
+### Aplicativo Mobile
 
-O sistema foi desenvolvido utilizando arquitetura baseada em separação de responsabilidades:
-
-- Camada de Controle
-- Camada de Serviço
-- Camada de Persistência
-- Banco de Dados NoSQL
-
-A aplicação segue princípios de organização modular visando manutenção, escalabilidade e legibilidade do código.
+- Interface intuitiva
+- Navegação simplificada
+- Compatibilidade com dispositivos Android
 
 ---
 
-# 📂 Estrutura do Projeto
+## Arquitetura do Projeto
+
+O aplicativo foi desenvolvido utilizando organização modular para facilitar manutenção, escalabilidade e legibilidade do código.
+
+Estrutura baseada em:
+
+- Activities
+- Classes de Modelo
+- Serviços
+- Organização por responsabilidades
+
+---
+
+## Estrutura do Projeto
 
 ```bash
 PetConnect/
 │
-├── src/
-│   ├── main/
-│   │   ├── java/com/example/petconnect/
-│   │   │
-│   │   ├── controller/     # Endpoints da aplicação
-│   │   ├── model/          # Entidades do sistema
-│   │   ├── repository/     # Interfaces MongoRepository
-│   │   ├── service/        # Regras de negócio
-│   │   └── config/         # Configurações gerais
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   ├── res/
+│   │   │   └── AndroidManifest.xml
 │   │
-│   └── resources/
-│       ├── static/
-│       ├── templates/
-│       └── application.properties
-│
-├── pom.xml
+├── gradle/
+├── build.gradle
+├── settings.gradle
 └── README.md
 ```
 
 ---
 
-# 🔒 Requisitos Não Funcionais
+## Requisitos Não Funcionais
 
-- Segurança com autenticação
-- Arquitetura modular
-- Responsividade
+- Interface responsiva
 - Organização de código
 - Escalabilidade
 - Performance otimizada
+- Usabilidade mobile
+- Compatibilidade com Android
 
 ---
 
-# ♿ Acessibilidade
+## Acessibilidade
 
 O projeto aplica práticas de acessibilidade visando melhorar a experiência dos usuários.
 
-## Recursos implementados
+### Recursos implementados
+
 - Layout responsivo
 - Navegação simplificada
-- Contraste adequado
 - Interface intuitiva
-- Compatibilidade com diferentes dispositivos
+- Compatibilidade com diferentes dispositivos Android
 
 ---
 
-# 🔄 Versionamento
+## Versionamento
 
 O projeto utiliza:
 
@@ -171,45 +149,45 @@ O projeto utiliza:
 - Organização de branches
 - Controle de versões
 - Commits padronizados
+- Conceitos de CI/CD
 
 ---
 
-# 📌 Status do Projeto
+## Disciplinas Envolvidas
 
-🚧 Projeto em desenvolvimento
+- Programação para Dispositivos Móveis
+- Internet das Coisas (IoT)
+- Versionamento e CI/CD
 
 ---
 
-# 👨‍💻 Equipe
+## Equipe
 
 Projeto desenvolvido por:
 
 - Bárbara Helena Preto Brandino
 - Clara Vecchio Machado da Silva
-- Elisangela Madaleno da Silva
 - Felipe Ferreira de França
 - Jacqueline Leite da Silva
 - Matheus Henrique de Campos Rumão
 
 ---
 
-# 🎓 Instituição
+## Instituição
 
-**FATEC Indaiatuba**  
+FATEC Indaiatuba
+
 Curso Superior de Tecnologia em Desenvolvimento de Software Multiplataforma (DSM)
 
 ---
 
-# 🔗 Links
+## Links
 
-## GitHub
-https://github.com/Jacquelsilva/PetConnect
-
-## Trello
-https://trello.com/
+GitHub:  
+https://github.com/barbarabrandino/PetConnectMobile
 
 ---
 
-# 🐾 PetConnect
+## PetConnect
 
-### “Conectando pessoas e animais com amor e tecnologia.”
+"Conectando pessoas e animais com amor e tecnologia."
