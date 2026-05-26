@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F6F6F6">
+    android:background="@color/pelora">
 
     <!-- TOPO -->
 
@@ -12,16 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PetConnect 🐾"
+            android:text="@string/petconnect"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="#000000"/>
+            android:textColor="@color/black"/>
 
+        <EditText
+            android:id="@+id/etPesquisar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/verdebb"
+            android:hint="@string/pesquisar_pet"
+            android:padding="14dp"/>
     </LinearLayout>
 
     <!-- CONTEÚDO -->

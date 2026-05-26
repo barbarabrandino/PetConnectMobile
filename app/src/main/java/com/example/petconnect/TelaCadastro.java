@@ -9,12 +9,15 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.petconnect.database.DatabaseConection;
 
-public class TelaCadastro extends AppCompatActivity {
+import java.util.Arrays;
+import java.util.List;
 
     EditText etNome;
     EditText etCpf;
@@ -29,12 +32,31 @@ public class TelaCadastro extends AppCompatActivity {
 
     DatabaseConection banco;
 
+public class TelaCadastro extends AppCompatActivity {
+    Spinner spEstado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
+        spEstado = findViewById(R.id.spEstado);
+
+        List<String> estados = Arrays.asList(
+                "Selecione um estado",
+                "São Paulo",
+                "Rio de Janeiro",
+                "Minas Gerais"
+        );
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                R.layout.spinner_item,
+                estados
+        );
+
+        adapter.setDropDownViewResource(R.layout.spinner_item);
 
         banco = new DatabaseConection(this);
+        spEstado.setAdapter(adapter);
 
         // CAMPOS
 

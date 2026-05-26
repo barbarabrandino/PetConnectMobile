@@ -12,6 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <!-- Título -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favoritos"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- CARD FAVORITO -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,6 +42,11 @@
             android:padding="24dp">
 
             <!-- Título -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/verdebb">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,6 +109,35 @@
                             android:fontFamily="@font/albert_sans_light"/>
 
                     </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/thor"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/albert_sans_light"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_2_anos_porte_medio"
+                        android:textSize="18sp"
+                        android:textColor="@color/cinza"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:layout_marginTop="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnDetalhesFavorito"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="@color/verdebtn"
+                        android:text="@string/ver_detalhes"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/albert_sans_light"/>
 
                 </LinearLayout>
 
@@ -94,6 +150,15 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="18dp"
                 app:cardElevation="6dp">
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/verdebb"
+                    android:src="@drawable/luna"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -137,6 +202,38 @@
                             android:fontFamily="@font/albert_sans_light"/>
 
                     </LinearLayout>
+                    android:background="@color/verdebb"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/luna"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/albert_sans_light"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_1_ano_pequeno_porte"
+                        android:textSize="18sp"
+                        android:textColor="@color/cinza"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:layout_marginTop="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnDetalhesFavorito2"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="@color/verdebtn"
+                        android:text="@string/ver_detalhes"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/albert_sans_light"/>
 
                 </LinearLayout>
 

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B3A9D79C">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,8 +13,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/albert_sans_light"
             android:text="@string/criar_uma_conta_adotante"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -23,45 +24,45 @@
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:fontFamily="monospace"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
             android:hint="@string/nome_completo" />
 
         <EditText
             android:id="@+id/etCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/cpf"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="@string/cpf" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:fontFamily="monospace"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="Email"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="@string/email" />
 
         <EditText
             android:id="@+id/etSenha"
             android:layout_width="match_parent"
-            android:fontFamily="monospace"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="Senha"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="@string/senha" />
 
         <EditText
             android:id="@+id/etCep"
             android:layout_width="match_parent"
-            android:fontFamily="monospace"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/cep"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="@string/cep" />
 
         <EditText
             android:id="@+id/etEstado"
@@ -70,34 +71,41 @@
             android:ems="10"
             android:hint="Digite a sigla do seu estado (exemplo: SP)"
             android:inputType="text" />
+        <Spinner
+            android:id="@+id/spEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/verdebb" />
 
         <EditText
             android:id="@+id/etCidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/cidade"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="@string/cidade" />
 
         <EditText
             android:id="@+id/etEndereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:backgroundTint="#FFFFFF"
-            android:hint="@string/endereco"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="45dp"
+            android:background="@color/verdebb"
+            android:fontFamily="@font/albert_sans_light"
+            android:hint="@string/endereco" />
 
         <Button
             android:id="@+id/btnCadastrar"
             android:layout_width="273dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#498933"
-            android:fontFamily="monospace"
-            android:text="@string/criar_conta"
             android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/verdebtn"
+            android:fontFamily="@font/albert_sans_light"
+            android:text="@string/criar_conta"
             android:textSize="19sp"
             android:textStyle="bold" />
 
