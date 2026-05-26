@@ -10,22 +10,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnEntrarOng;
-    Button btnEntrarAdotante;
-    Button btnCriarConta;
+    Button btnComecar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_login);
 
-        // Botões
-        btnEntrarOng = findViewById(R.id.btnEntrarOng);
-        btnEntrarAdotante = findViewById(R.id.btnEntrarAdotante);
-        btnCriarConta = findViewById(R.id.btnCriarConta2);
 
-        // Navegação
-        btnEntrarAdotante.setOnClickListener(view -> {
+        setContentView(R.layout.activity_main);
+
+        btnComecar = findViewById(R.id.btnComecar);
+
+        btnComecar.setOnClickListener(view -> {
 
             Intent intent = new Intent(
                     MainActivity.this,
@@ -33,27 +29,6 @@ public class MainActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
-
-        });
-        btnEntrarOng.setOnClickListener(view -> {
-
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    Login.class
-            );
-
-            startActivity(intent);
-
-        });
-        btnCriarConta.setOnClickListener(view -> {
-
-            Intent intent = new Intent(
-                    MainActivity.this,
-                    Login.class
-            );
-
-            startActivity(intent);
-
         });
 
     }

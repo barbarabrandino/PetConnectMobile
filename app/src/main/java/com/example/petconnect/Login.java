@@ -1,33 +1,38 @@
 package com.example.petconnect;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.petconnect.database.DatabaseConection;
 
 public class Login extends AppCompatActivity {
 
-    EditText etEmailLogin, etSenhaLogin;
+    EditText etCpfCnpjLogin, etSenhaLogin;
 
     Button btnEntrar;
     Button btnCadastroUsuario;
     Button btnCadastroOng;
+
+    DatabaseConection banco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // EditTexts
-        etEmailLogin = findViewById(R.id.etEmailLogin);
+        // Banco
+        banco = new DatabaseConection(this);
+
+        // Campos
+        etCpfCnpjLogin = findViewById(R.id.etCpfCnpjLogin);
         etSenhaLogin = findViewById(R.id.etSenhaLogin);
 
         // Botões
@@ -35,40 +40,106 @@ public class Login extends AppCompatActivity {
         btnCadastroUsuario = findViewById(R.id.btnCadastroUsuario);
         btnCadastroOng = findViewById(R.id.btnCadastroOng);
 
-        // Navegação
+        // LOGIN
         btnEntrar.setOnClickListener(view -> {
 
-            String email = etEmailLogin.getText().toString().trim();
-            String senha = etSenhaLogin.getText().toString().trim();
+            String cpfCnpj = etCpfCnpjLogin
+                    .getText()
+                    .toString()
+                    .trim()
+                    .replaceAll("[^0-9]", "");
 
-            // Verifica se os campos estão vazios!!!!
-            if (TextUtils.isEmpty(email)) {
-                etEmailLogin.setError("Digite o email");
+            String senha = etSenhaLogin
+                    .getText()
+                    .toString()
+                    .trim();
+
+            // Validação CPF/CNPJ
+            if (TextUtils.isEmpty(cpfCnpj)) {
+
+                etCpfCnpjLogin.setError(
+                        "Digite o CPF ou CNPJ"
+                );
+
                 return;
             }
 
+            // Validação senha
             if (TextUtils.isEmpty(senha)) {
-                etSenhaLogin.setError("Digite a senha");
+
+                etSenhaLogin.setError(
+                        "Digite a senha"
+                );
+
                 return;
             }
 
-            // Login simples
-            Toast.makeText(
-                    Login.this,
-                    "Login realizado com sucesso!",
-                    Toast.LENGTH_SHORT
-            ).show();
+            SQLiteDatabase db = banco.getReadableDatabase();
 
-            // Abre a tela principal
-            Intent intent = new Intent(
-                    Login.this,
-                    TelaHome.class
+            // LOGIN USUÁRIO
+            Cursor cursorUsuario = db.rawQuery(
+                    "SELECT * FROM usuarios WHERE cpf=? AND senha=?",
+                    new String[]{cpfCnpj, senha}
             );
 
-            startActivity(intent);
+            // LOGIN ONG
+            Cursor cursorOng = db.rawQuery(
+                    "SELECT * FROM ongs WHERE cnpj=? AND senha=?",
+                    new String[]{cpfCnpj, senha}
+            );
+
+            // Usuário
+            if (cursorUsuario.moveToFirst()) {
+
+                Toast.makeText(
+                        Login.this,
+                        "Login de usuário realizado!",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                Intent intent = new Intent(
+                        Login.this,
+                        TelaHome.class
+                );
+
+                startActivity(intent);
+                finish();
+            }
+
+            // ONG
+            else if (cursorOng.moveToFirst()) {
+
+                Toast.makeText(
+                        Login.this,
+                        "Login da ONG realizado!",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                Intent intent = new Intent(
+                        Login.this,
+                        DashboardOng.class
+                );
+
+                startActivity(intent);
+                finish();
+            }
+
+            // Erro login
+            else {
+
+                Toast.makeText(
+                        Login.this,
+                        "CPF/CNPJ ou senha inválidos",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+
+            cursorUsuario.close();
+            cursorOng.close();
+            db.close();
         });
 
-        // Cadastro do Adotante
+        // CADASTRO USUÁRIO
         btnCadastroUsuario.setOnClickListener(view -> {
 
             Intent intent = new Intent(
@@ -79,7 +150,7 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Cadastro da Ong
+        // CADASTRO ONG
         btnCadastroOng.setOnClickListener(view -> {
 
             Intent intent = new Intent(

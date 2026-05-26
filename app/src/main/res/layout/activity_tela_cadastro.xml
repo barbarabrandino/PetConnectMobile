@@ -64,6 +64,13 @@
             android:fontFamily="@font/albert_sans_light"
             android:hint="@string/cep" />
 
+        <EditText
+            android:id="@+id/etEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Digite a sigla do seu estado (exemplo: SP)"
+            android:inputType="text" />
         <Spinner
             android:id="@+id/spEstado"
             android:layout_width="match_parent"

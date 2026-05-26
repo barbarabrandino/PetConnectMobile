@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- CONTEÚDO -->
     android:background="@color/white">
 
     <LinearLayout
@@ -21,46 +26,140 @@
             android:fontFamily="@font/albert_sans_light"
             android:layout_marginBottom="30dp"/>
 
-        <!-- NOTIFICAÇÕES -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="12dp">
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- TÍTULO -->
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Configurações ⚙️"
+                android:textSize="28sp"
+                android:textStyle="bold"
                 android:layout_weight="1"
                 android:text="@string/receber_notificaces"
                 android:textSize="18sp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="30dp"/>
+
+            <!-- NOTIFICAÇÕES -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Receber notificações"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/albert_sans_light"/>
+
+                <Switch
+                    android:id="@+id/switchNotificacoes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- MODO ESCURO -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Modo escuro"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/albert_sans_light"/>
+
+                <Switch
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- ALTERAR SENHA -->
+
+            <Button
+                android:id="@+id/btnAlterarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#498933"
+                android:text="Alterar Senha"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:fontFamily="@font/albert_sans_light"/>
 
+            <!-- TERMOS -->
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/switchNotificacoes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <!-- MODO ESCURO -->
+            <Button
+                android:id="@+id/btnTermos"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#498933"
+                android:text="Termos de Uso"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/albert_sans_light"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="12dp">
+            <!-- PRIVACIDADE -->
 
+            <Button
+                android:id="@+id/btnPrivacidade"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#498933"
+                android:text="Política de Privacidade"
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/modo_escuro"
                 android:textSize="18sp"
-                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:fontFamily="@font/albert_sans_light"/>
+
+            <!-- SAIR -->
+
+            <Button
+                android:id="@+id/btnSairConta"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#8B0000"
+                android:text="Sair da Conta"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:fontFamily="@font/albert_sans_light"/>
 
             <com.google.android.material.materialswitch.MaterialSwitch
@@ -69,8 +168,9 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <!-- ALTERAR SENHA -->
+    </ScrollView>
 
+    <!-- MENU INFERIOR -->
         <Button
             android:id="@+id/btnAlterarSenha"
             android:layout_width="match_parent"
@@ -121,6 +221,13 @@
             android:textStyle="bold"
             android:fontFamily="@font/albert_sans_light"/>
 
-    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:itemIconTint="#498933"
+        app:itemTextColor="#498933"
+        app:menu="@menu/bottom_menu" />
 
-</ScrollView>
+</LinearLayout>

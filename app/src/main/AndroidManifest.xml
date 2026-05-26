@@ -12,10 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetConnect">
         <activity
-            android:name=".TelaCadastrosOpcoes"
-            android:exported="false" />
-        <activity
-            android:name=".TelaHomeOng"
+            android:name=".DashboardOng"
             android:exported="false" />
         <activity
             android:name=".TelaHome"
@@ -34,9 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".Solicitacoes"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardOng"
             android:exported="false" />
         <activity
             android:name=".InteresseAdocaoActivity"
