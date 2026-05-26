@@ -10,11 +10,12 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnComecar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_login);
+
+
+        setContentView(R.layout.activity_main);
 
         btnComecar = findViewById(R.id.btnComecar);
 
@@ -27,11 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
-
-
     }
-
-
 }
 
 

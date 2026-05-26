@@ -46,14 +46,15 @@ public class Login extends AppCompatActivity {
             String cpfCnpj = etCpfCnpjLogin
                     .getText()
                     .toString()
-                    .trim();
+                    .trim()
+                    .replaceAll("[^0-9]", "");
 
             String senha = etSenhaLogin
                     .getText()
                     .toString()
                     .trim();
 
-            // Valida CPF/CNPJ
+            // Validação CPF/CNPJ
             if (TextUtils.isEmpty(cpfCnpj)) {
 
                 etCpfCnpjLogin.setError(
@@ -63,7 +64,7 @@ public class Login extends AppCompatActivity {
                 return;
             }
 
-            // Valida senha
+            // Validação senha
             if (TextUtils.isEmpty(senha)) {
 
                 etSenhaLogin.setError(
@@ -87,7 +88,7 @@ public class Login extends AppCompatActivity {
                     new String[]{cpfCnpj, senha}
             );
 
-            // USUÁRIO
+            // Usuário
             if (cursorUsuario.moveToFirst()) {
 
                 Toast.makeText(
@@ -102,6 +103,7 @@ public class Login extends AppCompatActivity {
                 );
 
                 startActivity(intent);
+                finish();
             }
 
             // ONG
@@ -119,9 +121,10 @@ public class Login extends AppCompatActivity {
                 );
 
                 startActivity(intent);
+                finish();
             }
 
-            // ERRO LOGIN
+            // Erro login
             else {
 
                 Toast.makeText(
