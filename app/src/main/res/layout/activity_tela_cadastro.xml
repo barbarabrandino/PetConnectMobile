@@ -70,7 +70,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Digite a sigla do seu estado (exemplo: SP)"
-            android:inputType="text" />
+            android:inputType="text"
+            android:background="@color/verdebb"
+            />
         <Spinner
             android:id="@+id/spEstado"
             android:layout_width="match_parent"

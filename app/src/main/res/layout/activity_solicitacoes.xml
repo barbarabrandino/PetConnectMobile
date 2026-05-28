@@ -69,7 +69,7 @@
                     android:textStyle="bold"
 
                     android:layout_marginTop="10dp"
-                    android:background="#E0FFED"
+                    android:background="@color/verdebb"
 
                     android:fontFamily="@font/albert_sans_light"
                     android:text="Status"
