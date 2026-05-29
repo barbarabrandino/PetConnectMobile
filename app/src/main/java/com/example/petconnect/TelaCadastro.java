@@ -19,22 +19,20 @@ import com.example.petconnect.database.DatabaseConection;
 import java.util.Arrays;
 import java.util.List;
 
-    EditText etNome;
-    EditText etCpf;
-    EditText etEmail;
-    EditText etSenha;
-    EditText etCep;
-    EditText etEstado;
-    EditText etCidade;
-    EditText etEndereco;
-
-    Button btnCadastrar;
-
-    DatabaseConection banco;
-
-public class TelaCadastro extends AppCompatActivity {
+    public class TelaCadastro extends AppCompatActivity {
     Spinner spEstado;
-    @Override
+        EditText etNome;
+        EditText etCpf;
+        EditText etEmail;
+        EditText etSenha;
+        EditText etCep;
+        EditText etEstado;
+        EditText etCidade;
+        EditText etEndereco;
+        Button btnCadastrar;
+        DatabaseConection banco;
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);

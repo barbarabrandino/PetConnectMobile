@@ -4,49 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
-
-    <!-- CONTEÚDO -->
     android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="35dp"
-        android:padding="25dp">
-
+    <!-- CONTEÚDO -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="24dp">
-            android:text="@string/minhas_solicitacoes"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:fontFamily="@font/albert_sans_light"
-            android:layout_marginBottom="24dp"/>
 
             <!-- Título -->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Favoritos ❤️"
+                android:text="@string/minhas_solicitacoes"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:fontFamily="monospace"
+                android:fontFamily="@font/albert_sans_light"
                 android:layout_marginBottom="24dp"/>
 
-            <!-- CARD FAVORITO -->
-
+            <!-- CARD 1 (Thor) -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,54 +42,57 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="#E0FFED">
+                    android:padding="18dp"
+                    android:background="@color/verdebb">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="18dp">
+                        android:text="@string/thor_emoji"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/albert_sans_light"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Thor 🐾"
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/albert_sans_light"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ong_amigos_de_patas"
+                        android:textSize="18sp"
+                        android:textColor="@color/cinza"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:layout_marginTop="10dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2 anos • Porte Médio"
-                            android:textSize="18sp"
-                            android:textColor="#555555"
-                            android:fontFamily="@font/albert_sans_light"
-                            android:layout_marginTop="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:text="@string/status_em_analise"
+                        android:textColor="#FBC02D"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/btnDetalhesFavorito"
-                            android:layout_width="match_parent"
-                            android:layout_height="55dp"
-                            android:layout_marginTop="20dp"
-                            android:backgroundTint="#498933"
-                            android:text="Ver Detalhes"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/albert_sans_light"/>
-
-                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btnVerDetalhes"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="@color/verdebtn"
+                        android:text="@string/ver_detalhes"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/albert_sans_light"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <!-- CARD FAVORITO 2 -->
-
+            <!-- CARD 2 (Luna) -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="18dp"
                 app:cardElevation="6dp">
 
@@ -113,55 +100,56 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="#FFFFFF">
+                    android:padding="18dp"
+                    android:background="@color/verdebb">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="18dp">
+                        android:text="@string/luna_emoji"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/albert_sans_light"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Luna 🐾"
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/albert_sans_light"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ong_amor_animal"
+                        android:textSize="18sp"
+                        android:textColor="@color/cinza"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:layout_marginTop="10dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1 ano • Pequeno Porte"
-                            android:textSize="18sp"
-                            android:textColor="#555555"
-                            android:fontFamily="@font/albert_sans_light"
-                            android:layout_marginTop="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status_aprovado"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verdebtn"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:layout_marginTop="12dp"/>
 
-                        <Button
-                            android:id="@+id/btnDetalhesFavorito2"
-                            android:layout_width="match_parent"
-                            android:layout_height="55dp"
-                            android:layout_marginTop="20dp"
-                            android:backgroundTint="#498933"
-                            android:text="Ver Detalhes"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/albert_sans_light"/>
-
-                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btnVerDetalhes2"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="@color/verdebtn"
+                        android:text="@string/ver_detalhes"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/albert_sans_light"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
     </ScrollView>
 
     <!-- MENU INFERIOR -->
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -170,111 +158,5 @@
         app:itemIconTint="#498933"
         app:itemTextColor="#498933"
         app:menu="@menu/bottom_menu" />
-                android:orientation="vertical"
-                android:padding="18dp"
-                android:background="@color/verdebb">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/thor_emoji"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/albert_sans_light"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ong_amigos_de_patas"
-                    android:textSize="18sp"
-                    android:textColor="@color/cinza"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:layout_marginTop="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:text="@string/status_em_analise"
-                    android:textColor="@color/yellow"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnVerDetalhes"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/verdebtn"
-                    android:text="@string/ver_detalhes"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/albert_sans_light"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- CARD 2 -->
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp"
-                android:background="@color/verdebb">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/luna_emoji"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/albert_sans_light"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ong_amor_animal"
-                    android:textSize="18sp"
-                    android:textColor="@color/cinza"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:layout_marginTop="10dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/status_aprovado"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/verdebtn"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:layout_marginTop="12dp"/>
-
-                <Button
-                    android:id="@+id/btnVerDetalhes2"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/verdebtn"
-                    android:text="@string/ver_detalhes"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/albert_sans_light"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
 
 </LinearLayout>
