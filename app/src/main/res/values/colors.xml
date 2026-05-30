@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primária -->
+    <color name="teal_primary">#2C6E7A</color>
+    <color name="teal_secondary">#3AAFA9</color>
+
+    <!-- Texto -->
+    <color name="text_dark">#2C3E50</color>
+    <color name="text_muted">#7F8C8D</color>
+
+    <!-- Fundo -->
+    <color name="background_gray">#F5F5F5</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

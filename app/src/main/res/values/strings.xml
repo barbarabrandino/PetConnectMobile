@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- APP -->
+    <string name="app_name">PetConnect</string>
+
+    <!-- HOME -->
+    <string name="home_title">Encontre seu novo\nmelhor amigo!</string>
+    <string name="home_subtitle_loading">Carregando animais…</string>
+
+    <!-- BUSCA -->
+    <string name="hint_search">Buscar</string>
+
+    <!-- FILTROS -->
+    <string name="filter_type">Tipo</string>
+    <string name="filter_size">Tamanho</string>
+    <string name="filter_age">Idade</string>
+
+    <!-- ESTADOS -->
+    <string name="empty_pets">Nenhum animal encontrado</string>
+
+    <!-- NAVEGAÇÃO — labels -->
+    <string name="nav_home">Início</string>
+    <string name="nav_pets">Animais</string>
+    <string name="nav_partners">Parceiros</string>
+    <string name="nav_register">Cadastros</string>
+    <string name="nav_info">Informações</string>
+
+    <!-- ACESSIBILIDADE (contentDescription) -->
+    <string name="cd_open_chat">Abrir chat</string>
+    <string name="cd_search_icon">Ícone de busca</string>
+    <string name="cd_expand_filter">Expandir filtro</string>
+    <string name="cd_nav_home">Navegar para Início</string>
+    <string name="cd_nav_pets">Navegar para Animais</string>
+    <string name="cd_nav_partners">Navegar para Parceiros</string>
+    <string name="cd_nav_register">Navegar para Cadastros</string>
+    <string name="cd_nav_info">Navegar para Informações</string>
+
+</resources>

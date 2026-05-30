@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:background="@drawable/bg_card">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageAnimal"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cat"
+                android:background="@drawable/rounded_image"/>
+
+            <ImageButton
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_favorite"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Pulga • 3 anos • Vira-lata"
+            android:textSize="22sp"
+            android:textColor="#0D3045"
+            android:textStyle="bold"/>
+
+        <!-- TAGS -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tagStyle"
+                android:text="Vacinado"/>
+
+            <TextView
+                style="@style/tagStyle"
+                android:text="Médio"/>
+
+            <TextView
+                style="@style/tagStyle"
+                android:text="Castrado"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtOng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Lar dos Felinos"
+            android:textSize="18sp"
+            android:textColor="#0D3045"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_button"
+            android:text="Ver perfil"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Gata muito meiga e carinhosa."
+            android:textSize="18sp"
+            android:textColor="#0D3045"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
