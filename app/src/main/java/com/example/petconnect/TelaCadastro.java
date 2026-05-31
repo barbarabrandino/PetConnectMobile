@@ -19,6 +19,7 @@ public class TelaCadastro extends AppCompatActivity {
     EditText etNome;
     EditText etCpf;
     EditText etEmail;
+    EditText etTelefone;
     EditText etSenha;
     EditText etCep;
     EditText etEstado;
@@ -41,6 +42,7 @@ public class TelaCadastro extends AppCompatActivity {
         etNome = findViewById(R.id.etNome);
         etCpf = findViewById(R.id.etCpf);
         etEmail = findViewById(R.id.etEmail);
+        etTelefone = findViewById(R.id.etTelefone);
         etSenha = findViewById(R.id.etSenha);
         etCep = findViewById(R.id.etCep);
         etEstado = findViewById(R.id.etEstado);
@@ -56,6 +58,7 @@ public class TelaCadastro extends AppCompatActivity {
             String nome = etNome.getText().toString().trim();
             String cpf = etCpf.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
+            String telefone = etTelefone.getText().toString().trim();
             String senha = etSenha.getText().toString().trim();
             String cep = etCep.getText().toString().trim();
             String estado = etEstado.getText().toString().trim();
@@ -131,6 +134,7 @@ public class TelaCadastro extends AppCompatActivity {
             values.put("nome", nome);
             values.put("cpf", cpf);
             values.put("email", email);
+            values.put("telefone",telefone);
             values.put("senha", senha);
             values.put("cep", cep);
             values.put("estado", estado);
