@@ -26,7 +26,6 @@
                 android:layout_height="44dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/circle_white_20_alpha">
-
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -39,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/albert_sans_light"
-                android:text="Cadastrar ONG"
+                android:text="Cadastrar Animal"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -49,10 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/albert_sans_light"
-                android:text="Preencha os dados da sua organização"
+                android:text="Preencha os dados do animal para adoção"
                 android:textColor="#BDFFF0"
                 android:textSize="13sp" />
-
         </LinearLayout>
 
         <!-- Corpo -->
@@ -66,25 +64,23 @@
             android:paddingEnd="20dp"
             android:paddingBottom="32dp">
 
-            <!-- SEÇÃO: DADOS DA ONG -->
+            <!-- ══ DADOS DO ANIMAL ══ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_marginBottom="16dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/albert_sans_light"
-                    android:text="DADOS DA ONG"
+                    android:text="DADOS DO ANIMAL"
                     android:textAllCaps="true"
                     android:textColor="@color/verdebtn"
                     android:textSize="11sp"
                     android:textStyle="bold"
                     android:letterSpacing="0.06" />
-
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0.5dp"
@@ -93,18 +89,17 @@
                     android:background="@color/divider_color" />
             </LinearLayout>
 
-            <!-- Nome da ONG -->
+            <!-- Nome -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/albert_sans_light"
-                android:text="NOME DA ONG"
+                android:text="NOME"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.04" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
@@ -115,209 +110,62 @@
                 android:orientation="horizontal"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_paw"
+                    android:tint="@color/text_tertiary" />
+                <EditText
+                    android:id="@+id/etNome"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:hint="Nome do animal"
+                    android:inputType="textCapWords"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
+            <!-- Espécie -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/albert_sans_light"
+                android:text="ESPÉCIE"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.04" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/field_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp">
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@drawable/ic_user"
                     android:tint="@color/text_tertiary" />
-
-                <EditText
-                    android:id="@+id/etNomeOng"
+                <Spinner
+                    android:id="@+id/spinnerEspecie"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@null"
                     android:fontFamily="@font/albert_sans_light"
-                    android:hint="Nome da organização"
-                    android:inputType="textCapWords"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- CNPJ -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/albert_sans_light"
-                android:text="CNPJ"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/field_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_id_badge"
-                    android:tint="@color/text_tertiary" />
-
-                <EditText
-                    android:id="@+id/etCnpj"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:hint="00.000.000/0000-00"
-                    android:inputType="number"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- SEÇÃO: ACESSO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:text="ACESSO"
-                    android:textAllCaps="true"
-                    android:textColor="@color/verdebtn"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.06" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0.5dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@color/divider_color" />
-            </LinearLayout>
-
-            <!-- Email -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/albert_sans_light"
-                android:text="EMAIL"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/field_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_mail"
-                    android:tint="@color/text_tertiary" />
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:hint="contato@ong.org.br"
-                    android:inputType="textEmailAddress"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Senha -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/albert_sans_light"
-                android:text="SENHA"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/field_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_lock"
-                    android:tint="@color/text_tertiary" />
-
-                <EditText
-                    android:id="@+id/etSenha"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:hint="Mínimo 6 caracteres"
-                    android:inputType="textPassword"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- SEÇÃO: ENDEREÇO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/albert_sans_light"
-                    android:text="ENDEREÇO"
-                    android:textAllCaps="true"
-                    android:textColor="@color/verdebtn"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.06" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0.5dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@color/divider_color" />
-            </LinearLayout>
-
-            <!-- CEP + Estado lado a lado -->
+            <!-- Idade + Porte -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -325,25 +173,22 @@
                 android:layout_marginBottom="12dp"
                 android:weightSum="2">
 
-                <!-- CEP -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="6dp"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/albert_sans_light"
-                        android:text="CEP"
+                        android:text="IDADE (anos)"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.04" />
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
@@ -353,46 +198,41 @@
                         android:orientation="horizontal"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp">
-
                         <ImageView
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:src="@drawable/ic_map_pin"
                             android:tint="@color/text_tertiary" />
-
                         <EditText
-                            android:id="@+id/etCep"
+                            android:id="@+id/etIdade"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
                             android:layout_weight="1"
                             android:background="@null"
                             android:fontFamily="@font/albert_sans_light"
-                            android:hint="00000-000"
+                            android:hint="Ex: 2"
                             android:inputType="number"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Estado -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="6dp"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/albert_sans_light"
-                        android:text="ESTADO"
+                        android:text="PORTE"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.04" />
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
@@ -402,148 +242,259 @@
                         android:orientation="horizontal"
                         android:paddingStart="10dp"
                         android:paddingEnd="4dp">
-
                         <ImageView
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:src="@drawable/ic_map"
                             android:tint="@color/text_tertiary" />
-
-                        <EditText
-                            android:id="@+id/etEstado"
+                        <Spinner
+                            android:id="@+id/spinnerPorte"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
                             android:layout_weight="1"
                             android:background="@null"
                             android:fontFamily="@font/albert_sans_light"
-                            android:hint="UF"
-                            android:inputType="textCapCharacters"
-                            android:maxLength="2"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Cidade -->
+            <!-- ══ CARACTERÍSTICAS ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="CARACTERÍSTICAS"
+                    android:textAllCaps="true"
+                    android:textColor="@color/verdebtn"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/divider_color" />
+            </LinearLayout>
+
+            <!-- Sexo -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/albert_sans_light"
-                android:text="CIDADE"
+                android:text="SEXO"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.04" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="4dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/btnSexoMacho"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/field_background"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        android:tint="@color/text_tertiary" />
+                    <TextView
+                        android:id="@+id/tvSexoMacho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:text="Macho"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnSexoFemea"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/field_background"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        android:tint="@color/text_tertiary" />
+                    <TextView
+                        android:id="@+id/tvSexoFemea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:text="Fêmea"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Descrição -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/albert_sans_light"
+                android:text="DESCRIÇÃO"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.04" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/field_background"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="12dp"
-                android:paddingEnd="12dp">
-
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp">
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/ic_building"
+                    android:src="@drawable/ic_mail"
                     android:tint="@color/text_tertiary" />
-
                 <EditText
-                    android:id="@+id/etCidade"
+                    android:id="@+id/etDescricao"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@null"
                     android:fontFamily="@font/albert_sans_light"
-                    android:hint="Sua cidade"
-                    android:inputType="textCapWords"
+                    android:gravity="top"
+                    android:hint="Conte um pouco sobre o animal..."
+                    android:inputType="textMultiLine"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Endereço -->
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- ══ FOTO ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/albert_sans_light"
-                android:text="ENDEREÇO"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="FOTO"
+                    android:textAllCaps="true"
+                    android:textColor="@color/verdebtn"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/divider_color" />
+            </LinearLayout>
 
+            <!-- Preview da foto -->
+            <ImageView
+                android:id="@+id/ivPreviewFoto"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/field_background"
+                android:contentDescription="Preview da foto"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_cat_placeholder"
+                android:visibility="gone" />
+
+            <!-- Botão escolher foto -->
+            <Button
+                android:id="@+id/btnEscolherFoto"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/background_page"
+                android:fontFamily="@font/albert_sans_light"
+                android:text="📷  Escolher foto"
+                android:textColor="@color/text_dark"
+                android:textSize="14sp" />
+
+            <!-- Campo URL (oculto por padrão, aparece ao escolher "Inserir URL") -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
-                android:layout_marginTop="4dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/field_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_home"
-                    android:tint="@color/text_tertiary" />
-
                 <EditText
-                    android:id="@+id/etEndereco"
-                    android:layout_width="0dp"
+                    android:id="@+id/etFotoUrl"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
                     android:background="@null"
                     android:fontFamily="@font/albert_sans_light"
-                    android:hint="Rua, número, bairro"
-                    android:inputType="textPostalAddress"
-                    android:textSize="14sp" />
+                    android:hint="Cole a URL da foto aqui..."
+                    android:inputType="textUri"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
             </LinearLayout>
 
-            <!-- Botão -->
+            <!-- Botões de ação -->
             <Button
-                android:id="@+id/btnCadastrarOng"
+                android:id="@+id/btnCadastrarAnimal"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:backgroundTint="@color/verdebtn"
                 android:fontFamily="@font/albert_sans_light"
-                android:text="Cadastrar ONG"
+                android:text="Cadastrar Animal"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/background_page"
                 android:fontFamily="@font/albert_sans_light"
-                android:text="Já tem uma conta?"
-                android:textColor="@color/text_secondary"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/tvLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/albert_sans_light"
-                android:text="Entrar"
-                android:textColor="@color/verdebtn"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:text="Cancelar"
+                android:textColor="@color/text_dark"
+                android:textSize="15sp" />
 
         </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

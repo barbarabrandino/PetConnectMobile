@@ -36,6 +36,7 @@
         <activity android:name=".TermosDeUso" android:exported="false" />
         <activity android:name=".PoliticaPrivacidade" android:exported="false" />
         <activity android:name=".AlterarSenha" android:exported="false" />
+        <activity android:name=".CadastroAnimalActivity" android:exported="false" />
 
         <!-- ONG -->
         <activity android:name=".DashboardOng" android:exported="false" />

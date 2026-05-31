@@ -18,6 +18,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.petconnect.R;
 import com.example.petconnect.model.Pet;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,7 +44,6 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
                 public boolean areItemsTheSame(@NonNull Pet a, @NonNull Pet b) {
                     return a.getId().equals(b.getId());
                 }
-
                 @Override
                 public boolean areContentsTheSame(@NonNull Pet a, @NonNull Pet b) {
                     return a.getNome().equals(b.getNome())
@@ -68,6 +68,11 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
         holder.bind(pet, favoritos.contains(pet.getId()), listener);
     }
 
+    /** Chamado pela TelaHome para marcar favoritos carregados do banco */
+    public void marcarFavorito(String petId) {
+        favoritos.add(petId);
+    }
+
     public void toggleFavorito(String petId) {
         if (favoritos.contains(petId)) {
             favoritos.remove(petId);
@@ -84,16 +89,10 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
 
     static class PetViewHolder extends RecyclerView.ViewHolder {
 
-        private final ImageView ivPhoto;
-        private final ImageView ivFavorite;
-        private final TextView tvName;
-        private final TextView tvAge;
-        private final TextView tvBreed;
-        private final TextView tagVacinado;
-        private final TextView tagTamanho;
-        private final TextView tagCastrado;
-        private final TextView tvShelter;
-        private final TextView tvDescription;
+        private final ImageView ivPhoto, ivFavorite;
+        private final TextView tvName, tvAge, tvBreed;
+        private final TextView tagVacinado, tagTamanho, tagCastrado;
+        private final TextView tvShelter, tvDescription;
         private final Button btnVerPerfil;
 
         PetViewHolder(@NonNull View itemView) {
@@ -126,13 +125,21 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
             if (pet.isVacinado()) tagVacinado.setText("Vacinado");
             if (pet.isCastrado()) tagCastrado.setText("Castrado");
 
-            Glide.with(ctx)
-                    .load(pet.getFotoUrl())
-                    .centerCrop()
-                    .placeholder(R.drawable.ic_cat_placeholder)
-                    .error(R.drawable.ic_cat_placeholder)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(ivPhoto);
+            // ✅ Carrega foto local (caminho) ou remota (URL)
+            String foto = pet.getFotoUrl();
+            if (foto != null && foto.startsWith("/")) {
+                Glide.with(ctx).load(new File(foto)).centerCrop()
+                        .placeholder(R.drawable.ic_cat_placeholder)
+                        .error(R.drawable.ic_cat_placeholder)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(ivPhoto);
+            } else {
+                Glide.with(ctx).load(foto).centerCrop()
+                        .placeholder(R.drawable.ic_cat_placeholder)
+                        .error(R.drawable.ic_cat_placeholder)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .into(ivPhoto);
+            }
 
             atualizarIconeFavorito(favoritado);
 

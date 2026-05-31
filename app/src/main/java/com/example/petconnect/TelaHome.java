@@ -1,6 +1,7 @@
 package com.example.petconnect;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petconnect.adapter.PetAdapter;
+import com.example.petconnect.database.FavoritosDAO;
 import com.example.petconnect.model.Pet;
 import com.example.petconnect.repository.PetRepository;
 
@@ -35,14 +37,21 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
     private String filtroIdade   = null;
 
     private PetRepository repository;
-    private PetAdapter adapter;
+    private FavoritosDAO  favoritosDAO;
+    private PetAdapter    adapter;
+    private int           idUsuarioLogado = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_home);
 
-        repository = new PetRepository(this);
+        repository   = new PetRepository(this);
+        favoritosDAO = new FavoritosDAO(this);
+
+        // Pega ID do usuário logado
+        SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
+        idUsuarioLogado = prefs.getInt("id_usuario_logado", -1);
 
         initViews();
         setupRecyclerView();
@@ -142,27 +151,36 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
 
     private void carregarPets() {
         mostrarLoading(true);
-
         boolean temFiltro = filtroTipo != null || filtroTamanho != null || filtroIdade != null;
-
         if (temFiltro) {
-            repository.carregarComFiltros(
-                    filtroTipo, filtroTamanho, filtroIdade,
+            repository.carregarComFiltros(filtroTipo, filtroTamanho, filtroIdade,
                     new PetRepository.OnPetsLoadedListener() {
                         @Override public void onSuccess(List<Pet> pets) { exibirPets(pets); }
                         @Override public void onFailure(Exception e)    { mostrarErro(e); }
                     });
         } else {
-            repository.carregarTodos(
-                    new PetRepository.OnPetsLoadedListener() {
-                        @Override public void onSuccess(List<Pet> pets) { exibirPets(pets); }
-                        @Override public void onFailure(Exception e)    { mostrarErro(e); }
-                    });
+            repository.carregarTodos(new PetRepository.OnPetsLoadedListener() {
+                @Override public void onSuccess(List<Pet> pets) { exibirPets(pets); }
+                @Override public void onFailure(Exception e)    { mostrarErro(e); }
+            });
         }
     }
 
     private void exibirPets(List<Pet> pets) {
         mostrarLoading(false);
+
+        // ✅ Marca os favoritos do usuário antes de exibir
+        if (idUsuarioLogado != -1) {
+            for (Pet pet : pets) {
+                try {
+                    int idAnimal = Integer.parseInt(pet.getId());
+                    if (favoritosDAO.isFavorito(idUsuarioLogado, idAnimal)) {
+                        adapter.marcarFavorito(pet.getId());
+                    }
+                } catch (NumberFormatException ignored) {}
+            }
+        }
+
         adapter.submitList(pets);
         int total = pets.size();
         tvSubtitle.setText(total == 1
@@ -174,8 +192,7 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
 
     private void mostrarErro(Exception e) {
         mostrarLoading(false);
-        Toast.makeText(this, "Erro ao carregar animais: " + e.getMessage(),
-                Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Erro ao carregar animais: " + e.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     private void mostrarLoading(boolean show) {
@@ -190,6 +207,20 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
 
     @Override
     public void onFavoritarToggle(Pet pet, boolean favoritado) {
+        if (idUsuarioLogado == -1) {
+            Toast.makeText(this, "Faça login para favoritar", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            int idAnimal = Integer.parseInt(pet.getId());
+            if (favoritado) {
+                favoritosDAO.adicionar(idUsuarioLogado, idAnimal);
+            } else {
+                favoritosDAO.remover(idUsuarioLogado, idAnimal);
+            }
+        } catch (NumberFormatException ignored) {}
+
         adapter.toggleFavorito(pet.getId());
         String msg = favoritado
                 ? pet.getNome() + " adicionado aos favoritos!"
@@ -200,8 +231,7 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
     private void setupBottomNav() {
         setNavAtivo(R.id.navInicio);
 
-        findViewById(R.id.navInicio).setOnClickListener(v ->
-                setNavAtivo(R.id.navInicio));
+        findViewById(R.id.navInicio).setOnClickListener(v -> setNavAtivo(R.id.navInicio));
 
         findViewById(R.id.navFavoritos).setOnClickListener(v -> {
             setNavAtivo(R.id.navFavoritos);
@@ -223,12 +253,7 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
     }
 
     private void setNavAtivo(int idAtivo) {
-        int[] navIds = {
-            R.id.navInicio,
-            R.id.navFavoritos,
-            R.id.navSolicitacoes,
-            R.id.navConfiguracoes
-        };
+        int[] navIds = { R.id.navInicio, R.id.navFavoritos, R.id.navSolicitacoes, R.id.navConfiguracoes };
         for (int id : navIds) {
             View item = findViewById(id);
             if (item != null) item.setSelected(id == idAtivo);
