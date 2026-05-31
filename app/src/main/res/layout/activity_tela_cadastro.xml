@@ -31,73 +31,88 @@
             android:id="@+id/etCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
-            android:hint="@string/cpf"
-            android:layout_marginTop="12dp"/>
+            android:fontFamily="monospace"
+            android:hint="@string/cpf" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:fontFamily="monospace"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
+            android:fontFamily="monospace"
             android:hint="Email"
-            android:layout_marginTop="12dp"/>
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/etTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="monospace"
+            android:hint="Telefone"
+            android:inputType="phone" />
 
         <EditText
             android:id="@+id/etSenha"
             android:layout_width="match_parent"
-            android:fontFamily="monospace"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
+            android:fontFamily="monospace"
             android:hint="Senha"
-            android:layout_marginTop="12dp"/>
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/etCep"
             android:layout_width="match_parent"
-            android:fontFamily="monospace"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
-            android:hint="@string/cep"
-            android:layout_marginTop="12dp"/>
+            android:fontFamily="monospace"
+            android:hint="@string/cep" />
 
         <EditText
             android:id="@+id/etEstado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Digite a sigla do seu estado (exemplo: SP)"
-            android:inputType="text" />
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="monospace"
+            android:hint="Estado (UF)"
+            android:maxLength="2"
+            android:textAllCaps="true" />
 
         <EditText
             android:id="@+id/etCidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
-            android:hint="@string/cidade"
-            android:layout_marginTop="12dp"/>
+            android:fontFamily="monospace"
+            android:hint="@string/cidade" />
 
         <EditText
             android:id="@+id/etEndereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#FFFFFF"
-            android:hint="@string/endereco"
-            android:layout_marginTop="12dp"/>
+            android:fontFamily="monospace"
+            android:hint="@string/endereco" />
 
         <Button
             android:id="@+id/btnCadastrar"
             android:layout_width="273dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="24dp"
             android:backgroundTint="#498933"
             android:fontFamily="monospace"
             android:text="@string/criar_conta"
-            android:layout_gravity="center"
             android:textSize="19sp"
             android:textStyle="bold" />
 

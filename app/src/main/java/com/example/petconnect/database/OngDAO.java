@@ -24,6 +24,7 @@ public class OngDAO {
         ContentValues values = new ContentValues();
         values.put("nome", ong.getNome());
         values.put("cnpj", ong.getCnpj());
+        values.put("telefone", ong.getEmail());
         values.put("email", ong.getEmail());
         values.put("senha", ong.getSenha());
         values.put("cep", ong.getCep());
@@ -75,6 +76,7 @@ public class OngDAO {
             ong.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
             ong.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
             ong.setCnpj(cursor.getString(cursor.getColumnIndexOrThrow("cnpj")));
+            ong.setTelefone(cursor.getString(cursor.getColumnIndexOrThrow("telefone")));
             ong.setEmail(cursor.getString(cursor.getColumnIndexOrThrow("email")));
             ong.setSenha(cursor.getString(cursor.getColumnIndexOrThrow("senha")));
             ong.setCep(cursor.getString(cursor.getColumnIndexOrThrow("cep")));

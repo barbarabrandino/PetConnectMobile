@@ -28,6 +28,7 @@ public class DatabaseConection extends SQLiteOpenHelper {
                 "nome TEXT, " +
                 "cpf TEXT, " +
                 "email TEXT UNIQUE, " +
+                "telefone TEXT,"+
                 "senha TEXT, " +
                 "cep TEXT, " +
                 "estado TEXT, " +
@@ -41,7 +42,8 @@ public class DatabaseConection extends SQLiteOpenHelper {
                 "nome TEXT, " +
                 "cnpj TEXT, " +
                 "email TEXT UNIQUE, " +
-                "senha TEXT, " +
+                "telefone TEXT,"+
+                "senha TEXT," +
                 "cep TEXT, " +
                 "estado TEXT, " +
                 "cidade TEXT, " +

@@ -24,6 +24,7 @@ public class UsuarioDAO {
         ContentValues values = new ContentValues();
         values.put("nome", usuario.getNome());
         values.put("cpf", usuario.getCpf());
+        values.put("telefone", usuario.getCpf());
         values.put("email", usuario.getEmail());
         values.put("senha", usuario.getSenha());
         values.put("cep", usuario.getCep());
@@ -70,6 +71,7 @@ public class UsuarioDAO {
             usuario.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
             usuario.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
             usuario.setCpf(cursor.getString(cursor.getColumnIndexOrThrow("cpf")));
+            usuario.setTelefone(cursor.getString(cursor.getColumnIndexOrThrow("telefone")));
             usuario.setEmail(cursor.getString(cursor.getColumnIndexOrThrow("email")));
             usuario.setSenha(cursor.getString(cursor.getColumnIndexOrThrow("senha")));
             usuario.setCep(cursor.getString(cursor.getColumnIndexOrThrow("cep")));
