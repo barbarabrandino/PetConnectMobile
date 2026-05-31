@@ -1,8 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Tema claro do PetConnect -->
     <style name="Base.Theme.PetConnect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/verdebtn</item>
+        <item name="colorPrimaryVariant">@color/verdebb</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/background_page</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/text_muted</item>
     </style>
 
     <style name="Theme.PetConnect" parent="Base.Theme.PetConnect" />

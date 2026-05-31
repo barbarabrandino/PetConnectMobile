@@ -1,39 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- APP -->
+    <!-- App -->
     <string name="app_name">PetConnect</string>
 
-    <!-- HOME -->
-    <string name="home_title">Encontre seu novo\nmelhor amigo!</string>
-    <string name="home_subtitle_loading">Carregando animais…</string>
+    <!-- Navegação -->
+    <string name="voltar">Voltar</string>
+    <string name="termos_titulo_toolbar">Termos de Uso</string>
+    <string name="politica_titulo_toolbar">Política de Privacidade</string>
 
-    <!-- BUSCA -->
-    <string name="hint_search">Buscar</string>
+    <!-- Termos de Uso -->
+    <string name="termos_titulo">Termos de Uso – PetConnect</string>
+    <string name="termos_atualizacao">Última atualização: 31 de maio de 2026</string>
+    <string name="termos_intro">Bem-vindo ao PetConnect. Ao utilizar nosso aplicativo, você concorda com os presentes Termos de Uso. Caso não concorde com qualquer disposição destes termos, não utilize o aplicativo.</string>
 
-    <!-- FILTROS -->
-    <string name="filter_type">Tipo</string>
-    <string name="filter_size">Tamanho</string>
-    <string name="filter_age">Idade</string>
+    <string name="termos_sec1_titulo">1. Objetivo do Aplicativo</string>
+    <string name="termos_sec1_corpo">O PetConnect é uma plataforma destinada à divulgação, cadastro e compartilhamento de informações relacionadas a animais de estimação, incluindo, mas não se limitando a:\n\n\u2022 Cadastro de animais;\n\u2022 Divulgação de animais perdidos ou encontrados;\n\u2022 Adoção responsável;\n\u2022 Compartilhamento de informações entre usuários;\n\u2022 Comunicação relacionada ao bem-estar animal.</string>
 
-    <!-- ESTADOS -->
-    <string name="empty_pets">Nenhum animal encontrado</string>
+    <string name="termos_sec2_titulo">2. Cadastro do Usuário</string>
+    <string name="termos_sec2_corpo">Para utilizar determinadas funcionalidades, o usuário poderá ser solicitado a fornecer informações pessoais.\n\nO usuário declara que:\n\n\u2022 Fornecerá informações verdadeiras e atualizadas;\n\u2022 É responsável pela segurança de sua conta;\n\u2022 Não compartilhará suas credenciais de acesso com terceiros;\n\u2022 Possui idade mínima de 18 anos ou autorização de um responsável legal.</string>
 
-    <!-- NAVEGAÇÃO — labels -->
-    <string name="nav_home">Início</string>
-    <string name="nav_pets">Animais</string>
-    <string name="nav_partners">Parceiros</string>
-    <string name="nav_register">Cadastros</string>
-    <string name="nav_info">Informações</string>
+    <string name="termos_sec3_titulo">3. Responsabilidades do Usuário</string>
+    <string name="termos_sec3_corpo">Ao utilizar o PetConnect, o usuário compromete-se a:\n\n\u2022 Respeitar a legislação vigente;\n\u2022 Não publicar conteúdo falso, enganoso ou fraudulento;\n\u2022 Não divulgar material ofensivo, discriminatório, ilegal ou que viole direitos de terceiros;\n\u2022 Não utilizar o aplicativo para fins ilícitos;\n\u2022 Manter atualizadas as informações dos animais cadastrados.</string>
 
-    <!-- ACESSIBILIDADE (contentDescription) -->
+    <string name="termos_sec4_titulo">4. Conteúdo Publicado</string>
+    <string name="termos_sec4_corpo">O usuário é o único responsável pelas informações, imagens, documentos e demais conteúdos publicados na plataforma.\n\nAo publicar conteúdo, o usuário declara possuir os direitos necessários para sua utilização e autoriza o PetConnect a exibi-lo dentro do aplicativo para fins de funcionamento do serviço.</string>
+
+    <string name="termos_sec5_titulo">5. Adoções e Negociações</string>
+    <string name="termos_sec5_corpo">O PetConnect atua apenas como intermediador de informações entre usuários.\n\nO aplicativo:\n\n\u2022 Não garante a veracidade das informações fornecidas pelos usuários;\n\u2022 Não participa diretamente de processos de adoção, compra, venda ou doação;\n\u2022 Não se responsabiliza por acordos realizados entre usuários.\n\nTodas as negociações e decisões devem ser realizadas sob responsabilidade exclusiva das partes envolvidas.</string>
+
+    <string name="termos_sec6_titulo">6. Privacidade e Dados Pessoais</string>
+    <string name="termos_sec6_corpo">Os dados coletados serão utilizados para operação, segurança e melhoria dos serviços oferecidos pelo PetConnect.\n\nO tratamento de dados pessoais será realizado em conformidade com a legislação aplicável, incluindo a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).</string>
+
+    <string name="termos_sec7_titulo">7. Suspensão ou Encerramento de Contas</string>
+    <string name="termos_sec7_corpo">O PetConnect poderá suspender ou encerrar contas que:\n\n\u2022 Descumpram estes Termos de Uso;\n\u2022 Utilizem informações falsas;\n\u2022 Pratiquem atividades ilícitas;\n\u2022 Coloquem em risco a segurança da plataforma ou de outros usuários.</string>
+
+    <string name="termos_sec8_titulo">8. Limitação de Responsabilidade</string>
+    <string name="termos_sec8_corpo">O PetConnect é fornecido \"como está\", sem garantias de disponibilidade contínua ou ausência de falhas.\n\nNão nos responsabilizamos por:\n\n\u2022 Perdas decorrentes de informações incorretas fornecidas por usuários;\n\u2022 Danos causados por terceiros;\n\u2022 Problemas técnicos de internet, servidores ou dispositivos do usuário;\n\u2022 Acordos realizados entre usuários.</string>
+
+    <string name="termos_sec9_titulo">9. Alterações dos Termos</string>
+    <string name="termos_sec9_corpo">Estes Termos de Uso poderão ser alterados a qualquer momento para adequação legal ou melhoria dos serviços.\n\nA continuidade do uso do aplicativo após a publicação das alterações será considerada como aceitação dos novos termos.</string>
+
+    <string name="termos_sec10_titulo">10. Contato</string>
+    <string name="termos_sec10_corpo">Em caso de dúvidas, sugestões ou solicitações relacionadas a estes Termos de Uso, entre em contato pelos canais oficiais disponibilizados no aplicativo.</string>
+
+    <!-- Política de Privacidade -->
+    <string name="politica_titulo">Política de Privacidade – PetConnect</string>
+    <string name="politica_atualizacao">Última atualização: 31 de maio de 2026</string>
+    <string name="politica_intro">A sua privacidade é importante para nós. Esta Política de Privacidade descreve como o PetConnect coleta, usa e protege as suas informações pessoais ao utilizar nosso aplicativo.</string>
+
+    <string name="politica_sec1_titulo">1. Dados Coletados</string>
+    <string name="politica_sec1_corpo">Podemos coletar as seguintes informações:\n\n\u2022 Nome completo;\n\u2022 Endereço de e-mail;\n\u2022 CPF;\n\u2022 Endereço;\n\u2022 Telefone;\n\u2022 Informações sobre animais cadastrados;\n\u2022 Dados de uso do aplicativo.</string>
+
+    <string name="politica_sec2_titulo">2. Como Usamos os Dados</string>
+    <string name="politica_sec2_corpo">As informações coletadas são utilizadas para:\n\n\u2022 Criar e gerenciar sua conta;\n\u2022 Facilitar processos de adoção;\n\u2022 Enviar notificações relacionadas ao aplicativo;\n\u2022 Melhorar nossos serviços;\n\u2022 Cumprir obrigações legais.</string>
+
+    <string name="politica_sec3_titulo">3. Compartilhamento de Dados</string>
+    <string name="politica_sec3_corpo">O PetConnect não vende nem aluga seus dados pessoais a terceiros.\n\nPoderemos compartilhar informações apenas:\n\n\u2022 Com ONGs e protetores para fins de adoção, mediante seu consentimento;\n\u2022 Quando exigido por lei ou autoridade competente;\n\u2022 Para proteger os direitos e segurança do aplicativo e de seus usuários.</string>
+
+    <string name="politica_sec4_titulo">4. Segurança dos Dados</string>
+    <string name="politica_sec4_corpo">Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda ou destruição.\n\nNo entanto, nenhum sistema é completamente seguro. Recomendamos que você mantenha sua senha protegida e não a compartilhe com terceiros.</string>
+
+    <string name="politica_sec5_titulo">5. Seus Direitos (LGPD)</string>
+    <string name="politica_sec5_corpo">Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você tem direito a:\n\n\u2022 Confirmar a existência de tratamento de seus dados;\n\u2022 Acessar seus dados;\n\u2022 Corrigir dados incompletos ou desatualizados;\n\u2022 Solicitar a exclusão de seus dados;\n\u2022 Revogar o consentimento a qualquer momento.</string>
+
+    <string name="politica_sec6_titulo">6. Contato</string>
+    <string name="politica_sec6_corpo">Para dúvidas, solicitações ou exercício dos seus direitos relacionados à privacidade, entre em contato pelos canais oficiais disponibilizados no aplicativo.</string>
+
+    <!-- Dashboard ONG -->
+    <string name="pets_cadastrados">Pets Cadastrados</string>
+    <string name="solicitacoes">Solicitações</string>
+    <string name="cadastrar_novo_pet">Cadastrar Novo Pet</string>
+    <string name="ver_solicita_es">Ver Solicitações</string>
+
+    <!-- Detalhes Pet -->
+    <string name="sobre">Sobre</string>
+    <string name="descricao_thor">Descrição do Thor</string>
+
+    <!-- Favoritos -->
+    <string name="favoritos">Favoritos</string>
+    <string name="thor">Thor</string>
+    <string name="_2_anos_porte_medio">2 anos • Porte Médio</string>
+    <string name="ver_detalhes">Ver Detalhes</string>
+    <string name="luna">Luna</string>
+    <string name="_1_ano_pequeno_porte">1 ano • Pequeno Porte</string>
+
+    <!-- Interesse em Adoção -->
+    <string name="interesse_em_adocao">Interesse em Adoção</string>
+    <string name="nome_completo">Nome Completo</string>
+    <string name="telefone">Telefone</string>
+    <string name="tipo_de_moradia">Tipo de Moradia</string>
+    <string name="possui_outros_animais">Possui outros animais?</string>
+    <string name="experiencia_com_pets">Experiência com pets</string>
+    <string name="observacoes_adicionais">Observações adicionais</string>
+    <string name="enviar_solicitacao">Enviar Solicitação</string>
+
+    <!-- Login -->
+    <string name="bem_vindo_ao_petconnect">Bem-vindo ao PetConnect</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="cadastrar_usuario">Cadastrar Usuário</string>
+    <string name="cadastrar_ong">Cadastrar ONG</string>
+
+    <!-- Minhas Solicitações -->
+    <string name="minhas_solicitacoes">Minhas Solicitações</string>
+    <string name="thor_emoji">Thor 🐶</string>
+    <string name="ong_amigos_de_patas">ONG Amigos de Patas</string>
+    <string name="status_em_analise">Em análise</string>
+    <string name="luna_emoji">Luna 🐱</string>
+    <string name="ong_amor_animal">ONG Amor Animal</string>
+    <string name="status_aprovado">Aprovado</string>
+
+    <!-- Sobre -->
+    <string name="sobre_o_petconnect">Sobre o PetConnect</string>
+    <string name="descricao_petconnect">O PetConnect é um aplicativo dedicado a conectar animais que precisam de um lar com pessoas dispostas a adotar com responsabilidade.</string>
+    <string name="objetivos">Objetivos</string>
+    <string name="descricao_objetivos">Facilitar o processo de adoção responsável, promover o bem-estar animal e conectar ONGs e protetores a potenciais adotantes.</string>
+    <string name="tecnologias">Tecnologias</string>
+    <string name="descricao_tecnologias">Desenvolvido com Android Studio, Kotlin e Firebase.</string>
+    <string name="equipe">Equipe</string>
+    <string name="descricao_integrantes">Desenvolvido por estudantes comprometidos com o bem-estar animal.</string>
+
+    <!-- Cadastro -->
+    <string name="criar_uma_conta_adotante">Criar uma conta como adotante</string>
+    <string name="preencha_os_dados_abaixo">Preencha os dados abaixo</string>
+    <string name="section_dados_pessoais">Dados Pessoais</string>
+    <string name="hint_nome">Nome completo</string>
+    <string name="cpf">CPF</string>
+    <string name="hint_cpf">000.000.000-00</string>
+    <string name="section_acesso">Dados de Acesso</string>
+    <string name="email">E-mail</string>
+    <string name="hint_email">seu@email.com</string>
+    <string name="hint_senha">Mínimo 6 caracteres</string>
+    <string name="section_endereco">Endereço</string>
+    <string name="cep">CEP</string>
+    <string name="hint_cep">00000-000</string>
+    <string name="estado">Estado</string>
+    <string name="cidade">Cidade</string>
+    <string name="hint_cidade">Digite sua cidade</string>
+    <string name="endereco">Endereço</string>
+    <string name="hint_endereco">Rua, número, complemento</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="ja_tem_conta">Já tem uma conta? Entrar</string>
+
+    <!-- Home -->
+    <string name="home_title">Encontre seu novo melhor amigo</string>
     <string name="cd_open_chat">Abrir chat</string>
+    <string name="home_subtitle_loading">Carregando pets disponíveis…</string>
     <string name="cd_search_icon">Ícone de busca</string>
+    <string name="hint_search">Buscar pets…</string>
+    <string name="filter_type">Tipo</string>
     <string name="cd_expand_filter">Expandir filtro</string>
-    <string name="cd_nav_home">Navegar para Início</string>
-    <string name="cd_nav_pets">Navegar para Animais</string>
-    <string name="cd_nav_partners">Navegar para Parceiros</string>
-    <string name="cd_nav_register">Navegar para Cadastros</string>
-    <string name="cd_nav_info">Navegar para Informações</string>
+    <string name="filter_size">Porte</string>
+    <string name="filter_age">Idade</string>
+    <string name="empty_pets">Nenhum pet encontrado</string>
+
+    <string name="alterar_senha">Alterar Senha</string>
+    <string name="senha_atual">Senha atual</string>
+    <string name="nova_senha">Nova senha</string>
+    <string name="confirmar_nova_senha">Confirmar nova senha</string>
+    <string name="hint_senha_atual">Digite sua senha atual</string>
+    <string name="hint_nova_senha">Mínimo 6 caracteres</string>
+    <string name="hint_confirmar_senha">Repita a nova senha</string>
+    <string name="salvar_senha">Salvar Senha</string>
 
 </resources>

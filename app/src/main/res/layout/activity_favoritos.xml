@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- CONTEÚDO -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favoritos"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- CARD FAVORITO 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#E0FFED">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/thor"
+                        android:background="@color/verdebb"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/thor"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_2_anos_porte_medio"
+                            android:textSize="18sp"
+                            android:textColor="@color/cinza"
+                            android:fontFamily="@font/albert_sans_light"
+                            android:layout_marginTop="8dp"/>
+
+                        <Button
+                            android:id="@+id/btnDetalhesFavorito"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/verdebtn"
+                            android:text="@string/ver_detalhes"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CARD FAVORITO 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#FFFFFF">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/luna"
+                        android:background="@color/verdebb"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/luna"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_1_ano_pequeno_porte"
+                            android:textSize="18sp"
+                            android:textColor="@color/cinza"
+                            android:fontFamily="@font/albert_sans_light"
+                            android:layout_marginTop="8dp"/>
+
+                        <Button
+                            android:id="@+id/btnDetalhesFavorito2"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/verdebtn"
+                            android:text="@string/ver_detalhes"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BOTTOM NAV — mesmo padrão da TelaHome -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Início -->
+        <LinearLayout
+            android:id="@+id/navInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_nav_home"
+                android:tint="@color/text_muted"
+                android:contentDescription="Início"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Início"
+                android:textColor="@color/text_muted"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+        <!-- Favoritos (ativo) -->
+        <LinearLayout
+            android:id="@+id/navFavoritos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/btn_star_big_on"
+                android:tint="@color/teal_primary"
+                android:contentDescription="Favoritos"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Favoritos"
+                android:textColor="@color/teal_primary"
+                android:textSize="11sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <!-- Solicitações -->
+        <LinearLayout
+            android:id="@+id/navSolicitacoes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_agenda"
+                android:tint="@color/text_muted"
+                android:contentDescription="Solicitações"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Pedidos"
+                android:textColor="@color/text_muted"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+        <!-- Configurações -->
+        <LinearLayout
+            android:id="@+id/navConfiguracoes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_manage"
+                android:tint="@color/text_muted"
+                android:contentDescription="Configurações"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Config."
+                android:textColor="@color/text_muted"
+                android:textSize="11sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
