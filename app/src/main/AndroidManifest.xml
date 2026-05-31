@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetConnect">
         <activity
+            android:name=".DetalhesAnimais"
+            android:exported="false" />
+        <activity
             android:name=".TelaCadastrosOpcoes"
             android:exported="false" />
         <activity
