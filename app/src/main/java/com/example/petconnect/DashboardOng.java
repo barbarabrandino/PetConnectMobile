@@ -30,7 +30,6 @@ public class DashboardOng extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Atualiza os cards toda vez que voltar ao dashboard
         carregarDados();
     }
 
@@ -72,8 +71,6 @@ public class DashboardOng extends AppCompatActivity {
         }
         cursorAnimais.close();
 
-        // Conta pets na tabela "pets" (PetRepository)
-        // Como não há tabela de solicitações ainda, exibe total de pets cadastrados
         Cursor cursorPets = db.rawQuery(
             "SELECT COUNT(*) FROM " + DatabaseConection.TABELA_PET,
             null

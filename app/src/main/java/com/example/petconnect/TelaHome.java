@@ -26,11 +26,11 @@ import java.util.List;
 
 public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClickListener {
 
-    private TextView tvSubtitle;
-    private EditText etSearch;
+    private TextView    tvSubtitle;
+    private EditText    etSearch;
     private RecyclerView rvPets;
     private ProgressBar progressBar;
-    private TextView tvEmpty;
+    private TextView    tvEmpty;
 
     private String filtroTipo    = null;
     private String filtroTamanho = null;
@@ -49,7 +49,6 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
         repository   = new PetRepository(this);
         favoritosDAO = new FavoritosDAO(this);
 
-        // Pega ID do usuário logado
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
         idUsuarioLogado = prefs.getInt("id_usuario_logado", -1);
 
@@ -118,19 +117,22 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
         String[] idades   = {"Todos", "Filhote", "Adulto", "Idoso"};
 
         findViewById(R.id.filterTipo).setOnClickListener(v ->
-                mostrarDialogFiltro("Tipo", tipos, (TextView) ((LinearLayout) v).getChildAt(0), valor -> {
-                    filtroTipo = valor; carregarPets();
-                }));
+                mostrarDialogFiltro("Tipo", tipos,
+                        (TextView) ((LinearLayout) v).getChildAt(0), valor -> {
+                            filtroTipo = valor; carregarPets();
+                        }));
 
         findViewById(R.id.filterTamanho).setOnClickListener(v ->
-                mostrarDialogFiltro("Tamanho", tamanhos, (TextView) ((LinearLayout) v).getChildAt(0), valor -> {
-                    filtroTamanho = valor; carregarPets();
-                }));
+                mostrarDialogFiltro("Tamanho", tamanhos,
+                        (TextView) ((LinearLayout) v).getChildAt(0), valor -> {
+                            filtroTamanho = valor; carregarPets();
+                        }));
 
         findViewById(R.id.filterIdade).setOnClickListener(v ->
-                mostrarDialogFiltro("Idade", idades, (TextView) ((LinearLayout) v).getChildAt(0), valor -> {
-                    filtroIdade = valor; carregarPets();
-                }));
+                mostrarDialogFiltro("Idade", idades,
+                        (TextView) ((LinearLayout) v).getChildAt(0), valor -> {
+                            filtroIdade = valor; carregarPets();
+                        }));
     }
 
     private void mostrarDialogFiltro(String titulo, String[] opcoes,
@@ -169,19 +171,17 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
     private void exibirPets(List<Pet> pets) {
         mostrarLoading(false);
 
-        // ✅ Marca os favoritos do usuário antes de exibir
-        if (idUsuarioLogado != -1) {
-            for (Pet pet : pets) {
-                try {
-                    int idAnimal = Integer.parseInt(pet.getId());
-                    if (favoritosDAO.isFavorito(idUsuarioLogado, idAnimal)) {
-                        adapter.marcarFavorito(pet.getId());
+        adapter.submitList(pets, () -> {
+            if (idUsuarioLogado != -1) {
+                for (Pet pet : pets) {
+                    String idAnimal = pet.getId();
+                    if (idAnimal != null && favoritosDAO.isFavorito(idUsuarioLogado, idAnimal)) {
+                        adapter.marcarFavorito(idAnimal);
                     }
-                } catch (NumberFormatException ignored) {}
+                }
             }
-        }
+        });
 
-        adapter.submitList(pets);
         int total = pets.size();
         tvSubtitle.setText(total == 1
                 ? "1 animal esperando por uma família"
@@ -202,8 +202,21 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
 
     @Override
     public void onVerPerfil(Pet pet) {
-        // TODO: abrir tela de detalhes do pet
-    }
+            Intent intent = new Intent(this, TelaPerfil.class);
+            intent.putExtra(TelaPerfil.EXTRA_PET_ID,        pet.getId());
+            intent.putExtra(TelaPerfil.EXTRA_PET_NOME,      pet.getNome());
+            intent.putExtra(TelaPerfil.EXTRA_PET_RACA,      pet.getRaca());
+            intent.putExtra(TelaPerfil.EXTRA_PET_IDADE,     pet.getIdade());
+            intent.putExtra(TelaPerfil.EXTRA_PET_TAMANHO,   pet.getTamanho());
+            intent.putExtra(TelaPerfil.EXTRA_PET_SEXO,      pet.getTipo());
+            intent.putExtra(TelaPerfil.EXTRA_PET_DESCRICAO, pet.getDescricao());
+            intent.putExtra(TelaPerfil.EXTRA_PET_FOTO,      pet.getFotoUrl());
+            intent.putExtra(TelaPerfil.EXTRA_PET_ABRIGO,    pet.getAbrigo());
+            intent.putExtra(TelaPerfil.EXTRA_PET_VACINADO,  pet.isVacinado());
+            intent.putExtra(TelaPerfil.EXTRA_PET_CASTRADO,  pet.isCastrado());
+            startActivity(intent);
+        }
+
 
     @Override
     public void onFavoritarToggle(Pet pet, boolean favoritado) {
@@ -212,16 +225,22 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
             return;
         }
 
-        try {
-            int idAnimal = Integer.parseInt(pet.getId());
-            if (favoritado) {
-                favoritosDAO.adicionar(idUsuarioLogado, idAnimal);
-            } else {
-                favoritosDAO.remover(idUsuarioLogado, idAnimal);
-            }
-        } catch (NumberFormatException ignored) {}
+        String idAnimal = pet.getId();
 
-        adapter.toggleFavorito(pet.getId());
+        if (idAnimal == null || idAnimal.isEmpty()) {
+            Toast.makeText(this, "Erro: ID do animal inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (favoritado) {
+            favoritosDAO.adicionar(idUsuarioLogado, idAnimal);
+        } else {
+            favoritosDAO.remover(idUsuarioLogado, idAnimal);
+        }
+
+        // Atualiza o Set e o ícone de forma explícita (não usa toggleFavorito)
+        adapter.setFavorito(idAnimal, favoritado);
+
         String msg = favoritado
                 ? pet.getNome() + " adicionado aos favoritos!"
                 : pet.getNome() + " removido dos favoritos";

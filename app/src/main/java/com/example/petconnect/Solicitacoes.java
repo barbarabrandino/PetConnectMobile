@@ -1,29 +1,70 @@
 package com.example.petconnect;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.petconnect.adapter.SolicitacaoAdapter;
+import com.example.petconnect.database.SolicitacaoDAO;
+import com.example.petconnect.model.Solicitacao;
+
+import java.util.List;
 
 public class Solicitacoes extends AppCompatActivity {
+
+    private RecyclerView      rvSolicitacoes;
+    private View              tvVazio;
+    private SolicitacaoDAO    dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitacoes);
 
-        setupBotoes();
+        rvSolicitacoes = findViewById(R.id.rvSolicitacoes);
+        tvVazio        = findViewById(R.id.tvVazio);
+        dao            = new SolicitacaoDAO(this);
+
+        rvSolicitacoes.setLayoutManager(new LinearLayoutManager(this));
+
+        carregarSolicitacoes();
         setupBottomNav();
     }
 
-    private void setupBotoes() {
-        findViewById(R.id.btnVerDetalhes).setOnClickListener(v ->
-                Toast.makeText(this, "Detalhes: Thor", Toast.LENGTH_SHORT).show());
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Recarrega ao voltar de outra tela
+        carregarSolicitacoes();
+    }
 
-        findViewById(R.id.btnVerDetalhes2).setOnClickListener(v ->
-                Toast.makeText(this, "Detalhes: Luna", Toast.LENGTH_SHORT).show());
+    private void carregarSolicitacoes() {
+        int idUsuario = getIdUsuarioLogado();
+
+        List<Solicitacao> lista = dao.listarPorUsuario(idUsuario);
+
+        if (lista.isEmpty()) {
+            tvVazio.setVisibility(View.VISIBLE);
+            rvSolicitacoes.setVisibility(View.GONE);
+        } else {
+            tvVazio.setVisibility(View.GONE);
+            rvSolicitacoes.setVisibility(View.VISIBLE);
+            rvSolicitacoes.setAdapter(new SolicitacaoAdapter(this, lista));
+        }
+    }
+
+    /**
+     * Pega o ID do usuário salvo no SharedPreferences no momento do login.
+     * Ajuste a chave "id_usuario" / "prefs_usuario" conforme o seu projeto.
+     */
+    private int getIdUsuarioLogado() {
+        SharedPreferences prefs = getSharedPreferences("prefs_usuario", MODE_PRIVATE);
+        return prefs.getInt("id_usuario", -1);
     }
 
     private void setupBottomNav() {

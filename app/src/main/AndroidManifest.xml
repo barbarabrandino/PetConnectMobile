@@ -37,6 +37,8 @@
         <activity android:name=".PoliticaPrivacidade" android:exported="false" />
         <activity android:name=".AlterarSenha" android:exported="false" />
         <activity android:name=".CadastroAnimalActivity" android:exported="false" />
+        <activity android:name=".TelaPerfil" />
+        <activity android:name=".Item_animalActivity"/>
 
         <!-- ONG -->
         <activity android:name=".DashboardOng" android:exported="false" />

@@ -1,153 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white">
 
     <!-- CONTEÚDO -->
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:text="@string/minhas_solicitacoes"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/albert_sans_light"
+            android:layout_marginBottom="24dp"/>
 
-            <!-- Título -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/minhas_solicitacoes"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:fontFamily="@font/albert_sans_light"
-                android:layout_marginBottom="24dp"/>
+        <!-- Estado vazio -->
+        <TextView
+            android:id="@+id/tvVazio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Você ainda não fez nenhuma solicitação."
+            android:textSize="16sp"
+            android:textColor="@color/cinza"
+            android:fontFamily="@font/albert_sans_light"
+            android:visibility="gone"/>
 
-            <!-- CARD 1 (Thor) -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="6dp">
+        <!-- Lista dinâmica -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSolicitacoes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="18dp"
-                    android:background="@color/verdebb">
+    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/thor_emoji"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/albert_sans_light"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ong_amigos_de_patas"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:fontFamily="@font/albert_sans_light"
-                        android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/albert_sans_light"
-                        android:text="@string/status_em_analise"
-                        android:textColor="#FBC02D"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/btnVerDetalhes"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="20dp"
-                        android:backgroundTint="@color/verdebtn"
-                        android:text="@string/ver_detalhes"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/albert_sans_light"/>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- CARD 2 (Luna) -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="18dp"
-                    android:background="@color/verdebb">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/luna_emoji"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/albert_sans_light"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ong_amor_animal"
-                        android:textSize="18sp"
-                        android:textColor="@color/cinza"
-                        android:fontFamily="@font/albert_sans_light"
-                        android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/status_aprovado"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/verdebtn"
-                        android:fontFamily="@font/albert_sans_light"
-                        android:layout_marginTop="12dp"/>
-
-                    <Button
-                        android:id="@+id/btnVerDetalhes2"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="20dp"
-                        android:backgroundTint="@color/verdebtn"
-                        android:text="@string/ver_detalhes"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/albert_sans_light"/>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- BOTTOM NAV — mesmo padrão da TelaHome -->
+    <!-- BOTTOM NAV -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -157,7 +56,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Início -->
         <LinearLayout
             android:id="@+id/navInicio"
             android:layout_width="0dp"
@@ -167,14 +65,12 @@
             android:orientation="vertical"
             android:clickable="true"
             android:focusable="true">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_nav_home"
                 android:tint="@color/text_muted"
                 android:contentDescription="Início"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -182,10 +78,8 @@
                 android:text="Início"
                 android:textColor="@color/text_muted"
                 android:textSize="11sp"/>
-
         </LinearLayout>
 
-        <!-- Favoritos -->
         <LinearLayout
             android:id="@+id/navFavoritos"
             android:layout_width="0dp"
@@ -195,14 +89,12 @@
             android:orientation="vertical"
             android:clickable="true"
             android:focusable="true">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@android:drawable/btn_star_big_on"
                 android:tint="@color/text_muted"
                 android:contentDescription="Favoritos"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -210,10 +102,8 @@
                 android:text="Favoritos"
                 android:textColor="@color/text_muted"
                 android:textSize="11sp"/>
-
         </LinearLayout>
 
-        <!-- Solicitações (ativo) -->
         <LinearLayout
             android:id="@+id/navSolicitacoes"
             android:layout_width="0dp"
@@ -223,14 +113,12 @@
             android:orientation="vertical"
             android:clickable="true"
             android:focusable="true">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@android:drawable/ic_menu_agenda"
                 android:tint="@color/teal_primary"
                 android:contentDescription="Solicitações"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -239,10 +127,8 @@
                 android:textColor="@color/teal_primary"
                 android:textSize="11sp"
                 android:textStyle="bold"/>
-
         </LinearLayout>
 
-        <!-- Configurações -->
         <LinearLayout
             android:id="@+id/navConfiguracoes"
             android:layout_width="0dp"
@@ -252,14 +138,12 @@
             android:orientation="vertical"
             android:clickable="true"
             android:focusable="true">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@android:drawable/ic_menu_manage"
                 android:tint="@color/text_muted"
                 android:contentDescription="Configurações"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -267,7 +151,6 @@
                 android:text="Config."
                 android:textColor="@color/text_muted"
                 android:textSize="11sp"/>
-
         </LinearLayout>
 
     </LinearLayout>

@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FavoritosDAO {
 
     private final SQLiteDatabase banco;
@@ -14,7 +17,7 @@ public class FavoritosDAO {
     }
 
     /** Adiciona um animal aos favoritos do usuário. Ignora se já existir. */
-    public void adicionar(int idUsuario, int idAnimal) {
+    public void adicionar(int idUsuario, String idAnimal) {
         ContentValues values = new ContentValues();
         values.put("id_usuario", idUsuario);
         values.put("id_animal",  idAnimal);
@@ -27,32 +30,38 @@ public class FavoritosDAO {
     }
 
     /** Remove um animal dos favoritos do usuário. */
-    public void remover(int idUsuario, int idAnimal) {
+    public void remover(int idUsuario, String idAnimal) {
         banco.delete(
                 DatabaseConection.TABELA_FAVORITOS,
                 "id_usuario = ? AND id_animal = ?",
-                new String[]{ String.valueOf(idUsuario), String.valueOf(idAnimal) }
+                new String[]{ String.valueOf(idUsuario), idAnimal }
         );
     }
 
     /** Verifica se um animal já é favorito do usuário. */
-    public boolean isFavorito(int idUsuario, int idAnimal) {
+    public boolean isFavorito(int idUsuario, String idAnimal) {
         Cursor cursor = banco.rawQuery(
                 "SELECT 1 FROM " + DatabaseConection.TABELA_FAVORITOS +
                         " WHERE id_usuario = ? AND id_animal = ?",
-                new String[]{ String.valueOf(idUsuario), String.valueOf(idAnimal) }
+                new String[]{ String.valueOf(idUsuario), idAnimal }
         );
         boolean existe = cursor.moveToFirst();
         cursor.close();
         return existe;
     }
 
-    /** Retorna os IDs de animais favoritos de um usuário. */
-    public Cursor listarIdsFavoritos(int idUsuario) {
-        return banco.rawQuery(
+    /** Retorna os IDs (String) de animais favoritos de um usuário. */
+    public List<String> listarIdsFavoritos(int idUsuario) {
+        List<String> ids = new ArrayList<>();
+        Cursor cursor = banco.rawQuery(
                 "SELECT id_animal FROM " + DatabaseConection.TABELA_FAVORITOS +
                         " WHERE id_usuario = ?",
                 new String[]{ String.valueOf(idUsuario) }
         );
+        while (cursor.moveToNext()) {
+            ids.add(cursor.getString(0));
+        }
+        cursor.close();
+        return ids;
     }
 }

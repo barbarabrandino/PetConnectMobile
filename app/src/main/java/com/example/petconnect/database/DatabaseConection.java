@@ -6,63 +6,99 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseConection extends SQLiteOpenHelper {
 
-    private static final String DB_NAME    = "petconnect.db";
-    private static final int    DB_VERSION = 8; // incrementado para adicionar tabela favoritos
+    private static final String NOME_BANCO   = "petconnect.db";
+    private static final int    VERSAO_BANCO = 8; // ← incrementado para criar tabela solicitacoes
 
-    public static final String TABELA_USUARIO   = "usuarios";
-    public static final String TABELA_ONG       = "ongs";
-    public static final String TABELA_ANIMAL    = "animais";
-    public static final String TABELA_PET       = "pets";
-    public static final String TABELA_FAVORITOS = "favoritos"; // ← nova
+    public static final String TABELA_ANIMAL       = "animais";
+    public static final String TABELA_FAVORITOS    = "favoritos";
+    public static final String TABELA_USUARIO      = "usuarios";
+    public static final String TABELA_PET          = "pets";
+    public static final String TABELA_ONG          = "ongs";
+    public static final String TABELA_SOLICITACOES = "solicitacoes";
 
     public DatabaseConection(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+        super(context, NOME_BANCO, null, VERSAO_BANCO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE " + TABELA_USUARIO + " (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nome TEXT, cpf TEXT, email TEXT UNIQUE, senha TEXT, " +
-                "cep TEXT, estado TEXT, cidade TEXT, endereco TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_USUARIO + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nome TEXT," +
+                "cpf TEXT," +
+                "email TEXT UNIQUE," +
+                "senha TEXT," +
+                "cep TEXT," +
+                "estado TEXT," +
+                "cidade TEXT," +
+                "endereco TEXT)");
 
-        db.execSQL("CREATE TABLE " + TABELA_ONG + " (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nome TEXT, cnpj TEXT, email TEXT UNIQUE, senha TEXT, " +
-                "cep TEXT, estado TEXT, cidade TEXT, endereco TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_ONG + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nome TEXT," +
+                "cnpj TEXT," +
+                "email TEXT UNIQUE," +
+                "senha TEXT," +
+                "cep TEXT," +
+                "estado TEXT," +
+                "cidade TEXT," +
+                "endereco TEXT," +
+                "telefone TEXT)");
 
-        db.execSQL("CREATE TABLE " + TABELA_ANIMAL + " (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nome TEXT, especie TEXT, idade INTEGER, " +
-                "porte TEXT, sexo TEXT, descricao TEXT, " +
-                "foto_url TEXT, id_ong INTEGER)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_ANIMAL + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nome TEXT," +
+                "especie TEXT," +
+                "idade INTEGER," +
+                "porte TEXT," +
+                "sexo TEXT," +
+                "descricao TEXT," +
+                "foto_url TEXT," +
+                "id_ong INTEGER)");
 
-        db.execSQL("CREATE TABLE " + TABELA_PET + " (" +
-                "id TEXT PRIMARY KEY, nome TEXT, raca TEXT, idade TEXT, " +
-                "tamanho TEXT, tipo TEXT, vacinado INTEGER, castrado INTEGER, " +
-                "foto_url TEXT, abrigo TEXT, descricao TEXT)");
+        // Tabela "pets" — usada pelo DashboardOng / PetRepository
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_PET + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nome TEXT," +
+                "especie TEXT," +
+                "idade INTEGER," +
+                "porte TEXT," +
+                "sexo TEXT," +
+                "descricao TEXT," +
+                "foto_url TEXT," +
+                "id_ong INTEGER)");
 
-        // ✅ Tabela favoritos: id_usuario + id_animal (chave composta única)
-        db.execSQL("CREATE TABLE " + TABELA_FAVORITOS + " (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "id_usuario INTEGER NOT NULL, " +
-                "id_animal INTEGER NOT NULL, " +
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_FAVORITOS + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "id_usuario INTEGER NOT NULL," +
+                "id_animal TEXT NOT NULL," +
+                "UNIQUE(id_usuario, id_animal))");
+
+        // ✅ Nova tabela de solicitações de adoção
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_SOLICITACOES + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "id_usuario INTEGER NOT NULL," +
+                "id_animal TEXT NOT NULL," +
+                "status TEXT NOT NULL DEFAULT 'Em análise'," +
+                "data TEXT," +
                 "UNIQUE(id_usuario, id_animal))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion < 6) {
-            try { db.execSQL("ALTER TABLE " + TABELA_ANIMAL + " ADD COLUMN foto_url TEXT"); } catch (Exception ignored) {}
-        }
-        if (oldVersion < 8) {
-            // Adiciona tabela favoritos sem apagar dados existentes
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_FAVORITOS + " (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "id_usuario INTEGER NOT NULL, " +
-                    "id_animal INTEGER NOT NULL, " +
-                    "UNIQUE(id_usuario, id_animal))");
-        }
+        // Adiciona tabela de solicitações se não existir (migração segura)
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_SOLICITACOES + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "id_usuario INTEGER NOT NULL," +
+                "id_animal TEXT NOT NULL," +
+                "status TEXT NOT NULL DEFAULT 'Em análise'," +
+                "data TEXT," +
+                "UNIQUE(id_usuario, id_animal))");
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onUpgrade(db, oldVersion, newVersion);
     }
 }

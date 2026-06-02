@@ -68,13 +68,17 @@ public class Login extends AppCompatActivity {
 
             if (cursorUsuario.moveToFirst()) {
 
+                int idUsuario = cursorUsuario.getInt(
+                        cursorUsuario.getColumnIndexOrThrow("id")
+                );
                 String emailLogado = cursorUsuario.getString(
                         cursorUsuario.getColumnIndexOrThrow("email")
                 );
 
                 prefs.edit()
                         .putString("email_logado", emailLogado)
-                        .putInt("id_ong_logada", -1) // limpa sessão de ONG anterior
+                        .putInt("id_usuario_logado", idUsuario)  // ← correção
+                        .putInt("id_ong_logada", -1)
                         .apply();
 
                 Toast.makeText(Login.this, "Login de usuário realizado!", Toast.LENGTH_SHORT).show();
@@ -83,13 +87,13 @@ public class Login extends AppCompatActivity {
 
             } else if (cursorOng.moveToFirst()) {
 
-                // ✅ CORREÇÃO: salva o ID da ONG para uso em CadastroAnimalActivity
-                int idOng     = cursorOng.getInt(cursorOng.getColumnIndexOrThrow("id"));
+                int idOng      = cursorOng.getInt(cursorOng.getColumnIndexOrThrow("id"));
                 String nomeOng = cursorOng.getString(cursorOng.getColumnIndexOrThrow("nome"));
 
                 prefs.edit()
                         .putInt("id_ong_logada", idOng)
                         .putString("nome_ong_logada", nomeOng)
+                        .putInt("id_usuario_logado", -1)  // limpa sessão de usuário anterior
                         .apply();
 
                 Toast.makeText(Login.this, "Login da ONG realizado!", Toast.LENGTH_SHORT).show();

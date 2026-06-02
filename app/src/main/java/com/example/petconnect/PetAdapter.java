@@ -73,11 +73,12 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
         favoritos.add(petId);
     }
 
-    public void toggleFavorito(String petId) {
-        if (favoritos.contains(petId)) {
-            favoritos.remove(petId);
-        } else {
+    /** Define o estado de favorito explicitamente (substitui toggleFavorito) */
+    public void setFavorito(String petId, boolean favoritado) {
+        if (favoritado) {
             favoritos.add(petId);
+        } else {
+            favoritos.remove(petId);
         }
         for (int i = 0; i < getCurrentList().size(); i++) {
             if (getCurrentList().get(i).getId().equals(petId)) {
@@ -125,7 +126,7 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
             if (pet.isVacinado()) tagVacinado.setText("Vacinado");
             if (pet.isCastrado()) tagCastrado.setText("Castrado");
 
-            // ✅ Carrega foto local (caminho) ou remota (URL)
+            // Carrega foto local (caminho) ou remota (URL)
             String foto = pet.getFotoUrl();
             if (foto != null && foto.startsWith("/")) {
                 Glide.with(ctx).load(new File(foto)).centerCrop()
@@ -143,9 +144,9 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
 
             atualizarIconeFavorito(favoritado);
 
+            // O clique apenas notifica o listener — quem atualiza o Set e o ícone é o setFavorito
             ivFavorite.setOnClickListener(v -> {
                 boolean novoEstado = !favoritado;
-                atualizarIconeFavorito(novoEstado);
                 listener.onFavoritarToggle(pet, novoEstado);
             });
 
