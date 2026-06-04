@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <!-- CONTEÚDO COM SCROLL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- FOTO DO ANIMAL (ocupa topo da tela) -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp">
+
+                <ImageView
+                    android:id="@+id/ivPerfilFoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_cat_placeholder"/>
+
+                <!-- Botão voltar sobre a foto -->
+                <ImageView
+                    android:id="@+id/ivVoltar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_margin="16dp"
+                    android:background="#80000000"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:tint="@color/white"
+                    android:contentDescription="Voltar"/>
+
+                <!-- Gradiente suave no rodapé da foto -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/gradient_foto_bottom"/>
+
+            </FrameLayout>
+
+            <!-- CARD DE INFORMAÇÕES -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Nome -->
+                <TextView
+                    android:id="@+id/tvPerfilNome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="Nome do Animal"/>
+
+                <!-- Raça -->
+                <TextView
+                    android:id="@+id/tvPerfilRaca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/cinza"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:layout_marginTop="4dp"
+                    android:text="Raça"/>
+
+                <!-- TAGS: Vacinado / Castrado -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tagPerfilVacinado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/tag_background"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:text="Vacinado"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tagPerfilCastrado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/tag_background"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:text="Castrado"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/albert_sans_light"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <!-- DIVIDER -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- DETALHES EM LINHA (Idade / Tamanho / Sexo) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Idade -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:background="@color/verdebb"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Idade"
+                            android:textSize="12sp"
+                            android:textColor="@color/cinza"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                        <TextView
+                            android:id="@+id/tvPerfilIdade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/albert_sans_light"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+                    <View android:layout_width="4dp" android:layout_height="0dp"/>
+
+                    <!-- Porte -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:background="@color/verdebb"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Porte"
+                            android:textSize="12sp"
+                            android:textColor="@color/cinza"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                        <TextView
+                            android:id="@+id/tvPerfilTamanho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/albert_sans_light"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+                    <View android:layout_width="4dp" android:layout_height="0dp"/>
+
+                    <!-- Sexo -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:background="@color/verdebb"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sexo"
+                            android:textSize="12sp"
+                            android:textColor="@color/cinza"
+                            android:fontFamily="@font/albert_sans_light"/>
+
+                        <TextView
+                            android:id="@+id/tvPerfilSexo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/albert_sans_light"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- DIVIDER -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Sobre -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sobre"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvPerfilDescricao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/cinza"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:lineSpacingMultiplier="1.4"
+                    android:text="Descrição do animal"/>
+
+                <!-- DIVIDER -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Responsável -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Responsável"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvPerfilAbrigo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/cinza"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="ONG: —"/>
+
+                <!-- BOTÃO SOLICITAR -->
+                <Button
+                    android:id="@+id/btnSolicitar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/verdebtn"
+                    android:text="Quero Adotar!"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
