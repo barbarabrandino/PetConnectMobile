@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginHorizontal="2dp"
     app:cardCornerRadius="18dp"
     app:cardElevation="6dp">
 
@@ -11,60 +12,139 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="18dp"
         android:background="@color/verdebb">
 
-        <!-- Nome do animal -->
-        <TextView
-            android:id="@+id/tvNomeAnimal"
-            android:layout_width="wrap_content"
+        <!-- Faixa superior colorida com nome do animal -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:fontFamily="@font/albert_sans_light"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp">
 
-        <!-- Nome da ONG -->
-        <TextView
-            android:id="@+id/tvNomeOng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/cinza"
-            android:fontFamily="@font/albert_sans_light"
-            android:layout_marginTop="10dp"/>
+            <!-- Emoji pata em círculo branco -->
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="🐾"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="@drawable/circle_white_bg"
+                android:layout_marginEnd="12dp"/>
 
-        <!-- Data -->
-        <TextView
-            android:id="@+id/tvData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/cinza"
-            android:fontFamily="@font/albert_sans_light"
-            android:layout_marginTop="4dp"/>
+            <!-- Nome do animal -->
+            <TextView
+                android:id="@+id/tvNomeAnimal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#1B3A2F"
+                android:fontFamily="@font/albert_sans_light"/>
 
-        <!-- Status -->
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C8E6C9"
+            android:layout_marginHorizontal="18dp"/>
+
+        <!-- Corpo do card -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/albert_sans_light"
-            android:layout_marginTop="12dp"/>
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="4dp">
+
+            <!-- Solicitante / ONG -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvNomeOng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#2D4A3E"
+                    android:fontFamily="@font/albert_sans_light"/>
+
+            </LinearLayout>
+
+            <!-- Data -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📅"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="#4A6741"
+                    android:fontFamily="@font/albert_sans_light"/>
+
+            </LinearLayout>
+
+            <!-- Badge de status centralizado -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/albert_sans_light"
+                android:background="@drawable/badge_status_bg"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="5dp"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
 
         <!-- Botão Ver Detalhes -->
         <Button
             android:id="@+id/btnVerDetalhes"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginBottom="18dp"
             android:backgroundTint="@color/verdebtn"
             android:text="@string/ver_detalhes"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="@font/albert_sans_light"/>
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/albert_sans_light"
+            android:stateListAnimator="@null"
+            style="@style/Widget.MaterialComponents.Button"/>
 
     </LinearLayout>
 

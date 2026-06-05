@@ -21,6 +21,7 @@ public class Configuracoes extends AppCompatActivity {
     private Button btnSairConta;
 
     private SharedPreferences prefs;
+    private boolean isOng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,9 @@ public class Configuracoes extends AppCompatActivity {
         setContentView(R.layout.activity_configuracoes);
 
         prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
+
+        // Descobre se quem está logado é ONG ou usuário comum
+        isOng = "ong".equals(prefs.getString("tipo_usuario", "usuario"));
 
         initViews();
         setupSwitches();
@@ -74,6 +78,10 @@ public class Configuracoes extends AppCompatActivity {
                         .setPositiveButton("Sair", (dialog, which) -> {
                             prefs.edit()
                                     .remove("email_logado")
+                                    .remove("tipo_usuario")
+                                    .remove("id_usuario_logado")
+                                    .remove("id_ong_logada")
+                                    .remove("nome_ong_logada")
                                     .apply();
                             Intent intent = new Intent(this, Login.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -85,31 +93,60 @@ public class Configuracoes extends AppCompatActivity {
     }
 
     private void setupBottomNav() {
+        if (isOng) {
+            setupBottomNavOng();
+        } else {
+            setupBottomNavUsuario();
+        }
+        setNavAtivo(R.id.navConfiguracoes);
+        findViewById(R.id.navConfiguracoes).setOnClickListener(v -> {});
+    }
+
+    // ─── Menu para ONG ────────────────────────────────────────────────────────
+    private void setupBottomNavOng() {
+        findViewById(R.id.navInicio).setOnClickListener(v ->
+                startActivity(new Intent(this, DashboardOng.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
+        );
+
+        // ONG não tem Favoritos — esconde o botão se existir no layout
+        View navFavoritos = findViewById(R.id.navFavoritos);
+        if (navFavoritos != null) navFavoritos.setVisibility(View.GONE);
+
+        findViewById(R.id.navSolicitacoes).setOnClickListener(v ->
+                startActivity(new Intent(this, SolicitacoesOng.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
+        );
+    }
+
+    // ─── Menu para usuário comum ──────────────────────────────────────────────
+    private void setupBottomNavUsuario() {
         findViewById(R.id.navInicio).setOnClickListener(v ->
                 startActivity(new Intent(this, TelaHome.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
         );
 
-        findViewById(R.id.navFavoritos).setOnClickListener(v ->
-                startActivity(new Intent(this, Favoritos.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
-        );
+        View navFavoritos = findViewById(R.id.navFavoritos);
+        if (navFavoritos != null) {
+            navFavoritos.setVisibility(View.VISIBLE);
+            navFavoritos.setOnClickListener(v ->
+                    startActivity(new Intent(this, Favoritos.class)
+                            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
+            );
+        }
 
         findViewById(R.id.navSolicitacoes).setOnClickListener(v ->
                 startActivity(new Intent(this, MinhasSolicitacoes.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
         );
-
-        setNavAtivo(R.id.navConfiguracoes);
-        findViewById(R.id.navConfiguracoes).setOnClickListener(v -> {});
     }
 
     private void setNavAtivo(int idAtivo) {
         int[] navIds = {
-            R.id.navInicio,
-            R.id.navFavoritos,
-            R.id.navSolicitacoes,
-            R.id.navConfiguracoes
+                R.id.navInicio,
+                R.id.navFavoritos,
+                R.id.navSolicitacoes,
+                R.id.navConfiguracoes
         };
         for (int id : navIds) {
             View item = findViewById(id);

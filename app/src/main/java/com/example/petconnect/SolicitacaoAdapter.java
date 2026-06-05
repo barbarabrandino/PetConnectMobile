@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petconnect.R;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.ViewHolder> {
 
-    private final Context context;
+    private final Context           context;
     private final List<Solicitacao> lista;
 
     public SolicitacaoAdapter(Context context, List<Solicitacao> lista) {
@@ -44,7 +44,6 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
         holder.tvData.setText(s.getData() != null ? "Data: " + s.getData() : "");
         holder.tvStatus.setText(s.getStatus());
 
-        // Cor do status
         switch (s.getStatus()) {
             case "Aprovado":
                 holder.tvStatus.setTextColor(Color.parseColor("#388E3C")); // verde
@@ -52,23 +51,34 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
             case "Recusado":
                 holder.tvStatus.setTextColor(Color.parseColor("#D32F2F")); // vermelho
                 break;
-            default: // "Em análise"
+            default: // Em análise
                 holder.tvStatus.setTextColor(Color.parseColor("#FBC02D")); // amarelo
                 break;
         }
 
-        holder.btnVerDetalhes.setOnClickListener(v ->
-                Toast.makeText(context,
-                        "Solicitação #" + s.getId() + " — " + s.getNomeAnimal(),
-                        Toast.LENGTH_SHORT).show()
-                // Troque o Toast por um Intent para uma tela de detalhes se quiser
-        );
+        // Abre dialog com os dados da solicitação do usuário
+        holder.btnVerDetalhes.setOnClickListener(v -> {
+            String mensagem =
+                    "Animal: " + nvl(s.getNomeAnimal()) + "\n" +
+                            "ONG: "    + nvl(s.getNomeOng())    + "\n" +
+                            "Status: " + nvl(s.getStatus())     + "\n" +
+                            "Data: "   + nvl(s.getData());
+
+            new AlertDialog.Builder(context)
+                    .setTitle("Solicitação #" + s.getId())
+                    .setMessage(mensagem)
+                    .setPositiveButton("Fechar", null)
+                    .show();
+        });
+    }
+
+    /** Retorna o valor ou "Não informado" se nulo/vazio. */
+    private String nvl(String val) {
+        return (val != null && !val.isEmpty()) ? val : "Não informado";
     }
 
     @Override
-    public int getItemCount() {
-        return lista.size();
-    }
+    public int getItemCount() { return lista.size(); }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNomeAnimal, tvNomeOng, tvData, tvStatus;
