@@ -127,7 +127,7 @@ public class DashboardOng extends AppCompatActivity {
 
         findViewById(R.id.navConfiguracoes).setOnClickListener(v -> {
             setNavAtivo(R.id.navConfiguracoes);
-            startActivity(new Intent(this, ConfiguracaoOng.class)
+            startActivity(new Intent(this, Configuracoes.class)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
         });
     }

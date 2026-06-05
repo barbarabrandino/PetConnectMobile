@@ -22,7 +22,7 @@ import java.util.List;
 public class SolicitacoesOng extends AppCompatActivity {
 
     private RecyclerView rvSolicitacoes;
-    private TextView tvVazio;
+    private TextView     tvVazio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +58,23 @@ public class SolicitacoesOng extends AppCompatActivity {
         DatabaseConection con = new DatabaseConection(this);
         SQLiteDatabase db = con.getReadableDatabase();
 
+        // Busca todos os dados do solicitante: nome, email, cpf, endereço, cep, estado e cidade
         String sql =
                 "SELECT s.id, s.status, s.data, " +
-                        "       COALESCE(a.nome, p.nome, 'Animal') AS nome_animal, " +
-                        "       COALESCE(u.nome, u.email, 'Usuário') AS nome_usuario " +
-                        "FROM " + DatabaseConection.TABELA_SOLICITACOES + " s " +
-                        "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL + " a " +
+                        "       COALESCE(a.nome, p.nome, 'Animal')        AS nome_animal, " +
+                        "       COALESCE(u.nome, u.email, 'Usuário')      AS nome_usuario, " +
+                        "       COALESCE(u.email,    '')                  AS email_usuario, " +
+                        "       COALESCE(u.cpf,      '')                  AS cpf_usuario, " +
+                        "       COALESCE(u.endereco, '')                  AS endereco_usuario, " +
+                        "       COALESCE(u.cep,      '')                  AS cep_usuario, " +
+                        "       COALESCE(u.estado,   '')                  AS estado_usuario, " +
+                        "       COALESCE(u.cidade,   '')                  AS cidade_usuario " +
+                        "FROM "      + DatabaseConection.TABELA_SOLICITACOES + " s " +
+                        "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL       + " a " +
                         "       ON s.id_animal = CAST(a.id AS TEXT) AND a.id_ong = " + idOng +
-                        " LEFT JOIN " + DatabaseConection.TABELA_PET + " p " +
+                        " LEFT JOIN " + DatabaseConection.TABELA_PET         + " p " +
                         "       ON s.id_animal = CAST(p.id AS TEXT) AND p.id_ong = " + idOng +
-                        " LEFT JOIN " + DatabaseConection.TABELA_USUARIO + " u ON s.id_usuario = u.id " +
+                        " LEFT JOIN " + DatabaseConection.TABELA_USUARIO     + " u ON s.id_usuario = u.id " +
                         "WHERE a.id_ong = " + idOng + " OR p.id_ong = " + idOng +
                         " ORDER BY s.id DESC";
 
@@ -76,11 +83,17 @@ public class SolicitacoesOng extends AppCompatActivity {
 
         while (cursor.moveToNext()) {
             Solicitacao s = new Solicitacao();
-            s.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-            s.setStatus(cursor.getString(cursor.getColumnIndexOrThrow("status")));
-            s.setData(cursor.getString(cursor.getColumnIndexOrThrow("data")));
-            s.setNomeAnimal(cursor.getString(cursor.getColumnIndexOrThrow("nome_animal")));
-            s.setNomeOng(cursor.getString(cursor.getColumnIndexOrThrow("nome_usuario")));
+            s.setId          (cursor.getInt   (cursor.getColumnIndexOrThrow("id")));
+            s.setStatus      (cursor.getString(cursor.getColumnIndexOrThrow("status")));
+            s.setData        (cursor.getString(cursor.getColumnIndexOrThrow("data")));
+            s.setNomeAnimal  (cursor.getString(cursor.getColumnIndexOrThrow("nome_animal")));
+            s.setNomeOng     (cursor.getString(cursor.getColumnIndexOrThrow("nome_usuario")));
+            s.setEmailUsuario   (cursor.getString(cursor.getColumnIndexOrThrow("email_usuario")));
+            s.setCpfUsuario     (cursor.getString(cursor.getColumnIndexOrThrow("cpf_usuario")));
+            s.setEnderecoUsuario(cursor.getString(cursor.getColumnIndexOrThrow("endereco_usuario")));
+            s.setCepUsuario     (cursor.getString(cursor.getColumnIndexOrThrow("cep_usuario")));
+            s.setEstadoUsuario  (cursor.getString(cursor.getColumnIndexOrThrow("estado_usuario")));
+            s.setCidadeUsuario  (cursor.getString(cursor.getColumnIndexOrThrow("cidade_usuario")));
             lista.add(s);
         }
         cursor.close();
@@ -103,10 +116,10 @@ public class SolicitacoesOng extends AppCompatActivity {
                 startActivity(new Intent(this, DashboardOng.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP)));
 
-        findViewById(R.id.navSolicitacoes).setOnClickListener(v -> {});
+        findViewById(R.id.navSolicitacoes).setOnClickListener(v -> {/* já está aqui */});
 
         findViewById(R.id.navConfiguracoes).setOnClickListener(v ->
-                startActivity(new Intent(this, ConfiguracaoOng.class)
+                startActivity(new Intent(this, Configuracoes.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP)));
     }
 

@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petconnect.R;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SolicitacaoOngAdapter extends RecyclerView.Adapter<SolicitacaoOngAdapter.ViewHolder> {
 
-    private final Context context;
+    private final Context          context;
     private final List<Solicitacao> lista;
 
     public SolicitacaoOngAdapter(Context context, List<Solicitacao> lista) {
@@ -40,29 +40,55 @@ public class SolicitacaoOngAdapter extends RecyclerView.Adapter<SolicitacaoOngAd
         Solicitacao s = lista.get(position);
 
         holder.tvNomeAnimal.setText(s.getNomeAnimal() != null ? s.getNomeAnimal() : "Animal");
-        // nomeOng aqui guarda o nome do usuário solicitante
         holder.tvNomeOng.setText("Solicitante: " + (s.getNomeOng() != null ? s.getNomeOng() : "Usuário"));
         holder.tvData.setText(s.getData() != null ? "Data: " + s.getData() : "");
         holder.tvStatus.setText(s.getStatus());
 
         switch (s.getStatus()) {
             case "Aprovado":
-                holder.tvStatus.setTextColor(Color.parseColor("#388E3C"));
+                holder.tvStatus.setTextColor(Color.parseColor("#388E3C")); // verde
                 break;
             case "Recusado":
-                holder.tvStatus.setTextColor(Color.parseColor("#D32F2F"));
+                holder.tvStatus.setTextColor(Color.parseColor("#D32F2F")); // vermelho
                 break;
-            default:
-                holder.tvStatus.setTextColor(Color.parseColor("#FBC02D"));
+            default: // Em análise
+                holder.tvStatus.setTextColor(Color.parseColor("#FBC02D")); // amarelo
                 break;
         }
 
-        holder.btnVerDetalhes.setOnClickListener(v ->
-                Toast.makeText(context,
-                        "Solicitação #" + s.getId() + " — " + s.getNomeAnimal(),
-                        Toast.LENGTH_SHORT).show()
-        );
+        // Abre o dialog com todos os dados do solicitante
+        holder.btnVerDetalhes.setOnClickListener(v -> mostrarDetalhes(s));
     }
+
+    // ── Dialog de detalhes ─────────────────────────────────────────────────
+
+    private void mostrarDetalhes(Solicitacao s) {
+        String mensagem =
+                "Animal: "    + nvl(s.getNomeAnimal())      + "\n" +
+                        "Status: "    + nvl(s.getStatus())          + "\n" +
+                        "Data: "      + nvl(s.getData())            + "\n\n" +
+                        "── Dados do solicitante ──\n" +
+                        "Nome: "      + nvl(s.getNomeOng())         + "\n" +
+                        "E-mail: "    + nvl(s.getEmailUsuario())    + "\n" +
+                        "CPF: "       + nvl(s.getCpfUsuario())      + "\n" +
+                        "CEP: "       + nvl(s.getCepUsuario())      + "\n" +
+                        "Estado: "    + nvl(s.getEstadoUsuario())   + "\n" +
+                        "Cidade: "    + nvl(s.getCidadeUsuario())   + "\n" +
+                        "Endereço: "  + nvl(s.getEnderecoUsuario());
+
+        new AlertDialog.Builder(context)
+                .setTitle("Detalhes da Solicitação #" + s.getId())
+                .setMessage(mensagem)
+                .setPositiveButton("Fechar", null)
+                .show();
+    }
+
+    /** Retorna o valor ou "Não informado" se nulo/vazio. */
+    private String nvl(String val) {
+        return (val != null && !val.isEmpty()) ? val : "Não informado";
+    }
+
+    // ── Boilerplate ────────────────────────────────────────────────────────
 
     @Override
     public int getItemCount() { return lista.size(); }

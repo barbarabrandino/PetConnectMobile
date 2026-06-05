@@ -77,8 +77,9 @@ public class Login extends AppCompatActivity {
 
                 prefs.edit()
                         .putString("email_logado", emailLogado)
-                        .putInt("id_usuario_logado", idUsuario)  // ← correção
+                        .putInt("id_usuario_logado", idUsuario)
                         .putInt("id_ong_logada", -1)
+                        .putString("tipo_usuario", "usuario") // ← identifica como usuário comum
                         .apply();
 
                 Toast.makeText(Login.this, "Login de usuário realizado!", Toast.LENGTH_SHORT).show();
@@ -93,7 +94,8 @@ public class Login extends AppCompatActivity {
                 prefs.edit()
                         .putInt("id_ong_logada", idOng)
                         .putString("nome_ong_logada", nomeOng)
-                        .putInt("id_usuario_logado", -1)  // limpa sessão de usuário anterior
+                        .putInt("id_usuario_logado", -1)
+                        .putString("tipo_usuario", "ong") // ← identifica como ONG
                         .apply();
 
                 Toast.makeText(Login.this, "Login da ONG realizado!", Toast.LENGTH_SHORT).show();

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.petconnect.adapter.SolicitacaoAdapter;
 import com.example.petconnect.database.SolicitacaoDAO;
 import com.example.petconnect.model.Solicitacao;
 
@@ -53,7 +52,7 @@ public class MinhasSolicitacoes extends AppCompatActivity {
         } else {
             tvVazio.setVisibility(View.GONE);
             rvSolicitacoes.setVisibility(View.VISIBLE);
-            rvSolicitacoes.setAdapter(new SolicitacaoAdapter(this, lista));
+            rvSolicitacoes.setAdapter(new com.example.petconnect.adapter.SolicitacaoAdapter(this, lista));
         }
     }
 

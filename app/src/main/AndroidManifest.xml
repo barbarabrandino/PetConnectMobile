@@ -39,6 +39,7 @@
         <activity android:name=".CadastroAnimalActivity" android:exported="false" />
         <activity android:name=".TelaPerfil" />
         <activity android:name=".Item_animalActivity"/>
+        <activity android:name=".SolicitacoesOng" />
 
         <!-- ONG -->
         <activity android:name=".DashboardOng" android:exported="false" />
