@@ -12,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/verdebb">
+        android:background="#F1FAF1">
 
-        <!-- Faixa superior colorida com nome do animal -->
+        <!-- Cabeçalho -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,9 +22,9 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="18dp"
             android:paddingTop="16dp"
-            android:paddingBottom="12dp">
+            android:paddingBottom="12dp"
+            android:background="#E8F5E9">
 
-            <!-- Emoji pata em círculo branco -->
             <TextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -34,7 +34,6 @@
                 android:background="@drawable/circle_white_bg"
                 android:layout_marginEnd="12dp"/>
 
-            <!-- Nome do animal -->
             <TextView
                 android:id="@+id/tvNomeAnimal"
                 android:layout_width="0dp"
@@ -42,7 +41,7 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#1B3A2F"
+                android:textColor="#1B5E20"
                 android:fontFamily="@font/albert_sans_light"/>
 
         </LinearLayout>
@@ -51,10 +50,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#C8E6C9"
-            android:layout_marginHorizontal="18dp"/>
+            android:background="#C8E6C9"/>
 
-        <!-- Corpo do card -->
+        <!-- Corpo -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +61,7 @@
             android:paddingTop="12dp"
             android:paddingBottom="4dp">
 
-            <!-- Solicitante / ONG -->
+            <!-- Solicitante -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:textColor="#2D4A3E"
+                    android:textColor="#2E7D32"
                     android:fontFamily="@font/albert_sans_light"/>
 
             </LinearLayout>
@@ -108,17 +106,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
-                    android:textColor="#4A6741"
+                    android:textColor="#388E3C"
                     android:fontFamily="@font/albert_sans_light"/>
 
             </LinearLayout>
 
-            <!-- Badge de status centralizado -->
+            <!-- Badge status -->
             <TextView
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -136,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginHorizontal="18dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/verdebtn"
             android:text="@string/ver_detalhes"
             android:textSize="16sp"
@@ -145,6 +142,48 @@
             android:fontFamily="@font/albert_sans_light"
             android:stateListAnimator="@null"
             style="@style/Widget.MaterialComponents.Button"/>
+
+        <!-- Botões Aprovar / Recusar — visíveis só quando "Em análise" -->
+        <LinearLayout
+            android:id="@+id/layoutAcoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginBottom="18dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnAprovar"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="#2E7D32"
+                android:text="✔ Aprovar"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/albert_sans_light"
+                android:stateListAnimator="@null"
+                style="@style/Widget.MaterialComponents.Button"/>
+
+            <Button
+                android:id="@+id/btnRecusar"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="#C62828"
+                android:text="✘ Recusar"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/albert_sans_light"
+                android:stateListAnimator="@null"
+                style="@style/Widget.MaterialComponents.Button"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

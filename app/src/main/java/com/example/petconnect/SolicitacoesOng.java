@@ -47,47 +47,76 @@ public class SolicitacoesOng extends AppCompatActivity {
 
     private void carregarSolicitacoes() {
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
-        int idOng = prefs.getInt("id_ong_logada", -1);
 
-        if (idOng == -1) {
-            tvVazio.setVisibility(View.VISIBLE);
-            rvSolicitacoes.setVisibility(View.GONE);
-            return;
-        }
+        // Descobre se quem está logado é ONG ou usuário comum
+        boolean isOng = "ong".equals(prefs.getString("tipo_usuario", ""));
+
+        int idOng      = prefs.getInt("id_ong_logada", -1);
+        int idUsuario  = prefs.getInt("id_usuario_logado", -1);
 
         DatabaseConection con = new DatabaseConection(this);
         SQLiteDatabase db = con.getReadableDatabase();
 
-        // Busca todos os dados do solicitante: nome, email, cpf, endereço, cep, estado e cidade
-        String sql =
-                "SELECT s.id, s.status, s.data, " +
-                        "       COALESCE(a.nome, p.nome, 'Animal')        AS nome_animal, " +
-                        "       COALESCE(u.nome, u.email, 'Usuário')      AS nome_usuario, " +
-                        "       COALESCE(u.email,    '')                  AS email_usuario, " +
-                        "       COALESCE(u.cpf,      '')                  AS cpf_usuario, " +
-                        "       COALESCE(u.endereco, '')                  AS endereco_usuario, " +
-                        "       COALESCE(u.cep,      '')                  AS cep_usuario, " +
-                        "       COALESCE(u.estado,   '')                  AS estado_usuario, " +
-                        "       COALESCE(u.cidade,   '')                  AS cidade_usuario " +
-                        "FROM "      + DatabaseConection.TABELA_SOLICITACOES + " s " +
-                        "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL       + " a " +
-                        "       ON s.id_animal = CAST(a.id AS TEXT) AND a.id_ong = " + idOng +
-                        " LEFT JOIN " + DatabaseConection.TABELA_PET         + " p " +
-                        "       ON s.id_animal = CAST(p.id AS TEXT) AND p.id_ong = " + idOng +
-                        " LEFT JOIN " + DatabaseConection.TABELA_USUARIO     + " u ON s.id_usuario = u.id " +
-                        "WHERE a.id_ong = " + idOng + " OR p.id_ong = " + idOng +
-                        " ORDER BY s.id DESC";
+        String sql;
+
+        if (isOng) {
+            // ONG vê todas as solicitações dos seus animais
+            if (idOng == -1) {
+                tvVazio.setVisibility(View.VISIBLE);
+                rvSolicitacoes.setVisibility(View.GONE);
+                return;
+            }
+            sql = "SELECT s.id, s.status, s.data, " +
+                    "       COALESCE(a.nome, p.nome, 'Animal')        AS nome_animal, " +
+                    "       COALESCE(u.nome, u.email, 'Usuário')      AS nome_usuario, " +
+                    "       COALESCE(u.email,    '')                  AS email_usuario, " +
+                    "       COALESCE(u.cpf,      '')                  AS cpf_usuario, " +
+                    "       COALESCE(u.endereco, '')                  AS endereco_usuario, " +
+                    "       COALESCE(u.cep,      '')                  AS cep_usuario, " +
+                    "       COALESCE(u.estado,   '')                  AS estado_usuario, " +
+                    "       COALESCE(u.cidade,   '')                  AS cidade_usuario " +
+                    "FROM "      + DatabaseConection.TABELA_SOLICITACOES + " s " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL       + " a " +
+                    "       ON s.id_animal = CAST(a.id AS TEXT) AND a.id_ong = " + idOng +
+                    " LEFT JOIN " + DatabaseConection.TABELA_PET         + " p " +
+                    "       ON s.id_animal = CAST(p.id AS TEXT) AND p.id_ong = " + idOng +
+                    " LEFT JOIN " + DatabaseConection.TABELA_USUARIO     + " u ON s.id_usuario = u.id " +
+                    "WHERE a.id_ong = " + idOng + " OR p.id_ong = " + idOng +
+                    " ORDER BY s.id DESC";
+        } else {
+            // Usuário vê apenas as suas próprias solicitações
+            if (idUsuario == -1) {
+                tvVazio.setVisibility(View.VISIBLE);
+                rvSolicitacoes.setVisibility(View.GONE);
+                return;
+            }
+            sql = "SELECT s.id, s.status, s.data, " +
+                    "       COALESCE(a.nome, p.nome, 'Animal')        AS nome_animal, " +
+                    "       COALESCE(u.nome, u.email, 'Usuário')      AS nome_usuario, " +
+                    "       COALESCE(u.email,    '')                  AS email_usuario, " +
+                    "       COALESCE(u.cpf,      '')                  AS cpf_usuario, " +
+                    "       COALESCE(u.endereco, '')                  AS endereco_usuario, " +
+                    "       COALESCE(u.cep,      '')                  AS cep_usuario, " +
+                    "       COALESCE(u.estado,   '')                  AS estado_usuario, " +
+                    "       COALESCE(u.cidade,   '')                  AS cidade_usuario " +
+                    "FROM "      + DatabaseConection.TABELA_SOLICITACOES + " s " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL       + " a ON s.id_animal = CAST(a.id AS TEXT) " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_PET          + " p ON s.id_animal = CAST(p.id AS TEXT) " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_USUARIO      + " u ON s.id_usuario = u.id " +
+                    "WHERE s.id_usuario = " + idUsuario +
+                    " ORDER BY s.id DESC";
+        }
 
         List<Solicitacao> lista = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, null);
 
         while (cursor.moveToNext()) {
             Solicitacao s = new Solicitacao();
-            s.setId          (cursor.getInt   (cursor.getColumnIndexOrThrow("id")));
-            s.setStatus      (cursor.getString(cursor.getColumnIndexOrThrow("status")));
-            s.setData        (cursor.getString(cursor.getColumnIndexOrThrow("data")));
-            s.setNomeAnimal  (cursor.getString(cursor.getColumnIndexOrThrow("nome_animal")));
-            s.setNomeOng     (cursor.getString(cursor.getColumnIndexOrThrow("nome_usuario")));
+            s.setId             (cursor.getInt   (cursor.getColumnIndexOrThrow("id")));
+            s.setStatus         (cursor.getString(cursor.getColumnIndexOrThrow("status")));
+            s.setData           (cursor.getString(cursor.getColumnIndexOrThrow("data")));
+            s.setNomeAnimal     (cursor.getString(cursor.getColumnIndexOrThrow("nome_animal")));
+            s.setNomeOng        (cursor.getString(cursor.getColumnIndexOrThrow("nome_usuario")));
             s.setEmailUsuario   (cursor.getString(cursor.getColumnIndexOrThrow("email_usuario")));
             s.setCpfUsuario     (cursor.getString(cursor.getColumnIndexOrThrow("cpf_usuario")));
             s.setEnderecoUsuario(cursor.getString(cursor.getColumnIndexOrThrow("endereco_usuario")));
@@ -105,7 +134,8 @@ public class SolicitacoesOng extends AppCompatActivity {
         } else {
             tvVazio.setVisibility(View.GONE);
             rvSolicitacoes.setVisibility(View.VISIBLE);
-            rvSolicitacoes.setAdapter(new SolicitacaoOngAdapter(this, lista));
+            // Passa isOng: ONG vê botões Aprovar/Recusar, usuário só vê o status
+            rvSolicitacoes.setAdapter(new SolicitacaoOngAdapter(this, lista, isOng));
         }
     }
 

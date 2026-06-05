@@ -1,13 +1,11 @@
 package com.example.petconnect.adapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,11 +44,17 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
         holder.tvData.setText(s.getData() != null ? "Data: " + s.getData() : "");
         holder.tvStatus.setText(s.getStatus());
 
-        // Badge de status (igual ao SolicitacaoOngAdapter)
-        atualizarBadge(holder.tvStatus, s.getStatus());
-
-        // Usuário nunca vê os botões Aprovar/Recusar
-        holder.layoutAcoes.setVisibility(View.GONE);
+        switch (s.getStatus()) {
+            case "Aprovado":
+                holder.tvStatus.setTextColor(Color.parseColor("#388E3C")); // verde
+                break;
+            case "Recusado":
+                holder.tvStatus.setTextColor(Color.parseColor("#D32F2F")); // vermelho
+                break;
+            default: // Em análise
+                holder.tvStatus.setTextColor(Color.parseColor("#FBC02D")); // amarelo
+                break;
+        }
 
         // Abre dialog com os dados da solicitação do usuário
         holder.btnVerDetalhes.setOnClickListener(v -> {
@@ -68,23 +72,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
         });
     }
 
-    private void atualizarBadge(TextView tvStatus, String status) {
-        int badgeColor;
-        switch (status) {
-            case "Aprovado":
-                badgeColor = Color.parseColor("#2E7D32");
-                break;
-            case "Recusado":
-                badgeColor = Color.parseColor("#C62828");
-                break;
-            default: // Em análise
-                badgeColor = Color.parseColor("#F57F17");
-                break;
-        }
-        tvStatus.setTextColor(Color.WHITE);
-        tvStatus.setBackgroundTintList(ColorStateList.valueOf(badgeColor));
-    }
-
+    /** Retorna o valor ou "Não informado" se nulo/vazio. */
     private String nvl(String val) {
         return (val != null && !val.isEmpty()) ? val : "Não informado";
     }
@@ -93,9 +81,8 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
     public int getItemCount() { return lista.size(); }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView     tvNomeAnimal, tvNomeOng, tvData, tvStatus;
-        Button       btnVerDetalhes;
-        LinearLayout layoutAcoes; // referenciado só para esconder
+        TextView tvNomeAnimal, tvNomeOng, tvData, tvStatus;
+        Button   btnVerDetalhes;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,7 +91,6 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
             tvData         = itemView.findViewById(R.id.tvData);
             tvStatus       = itemView.findViewById(R.id.tvStatus);
             btnVerDetalhes = itemView.findViewById(R.id.btnVerDetalhes);
-            layoutAcoes    = itemView.findViewById(R.id.layoutAcoes); // esconde os botões
         }
     }
 }
