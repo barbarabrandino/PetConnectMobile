@@ -13,21 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.petconnect.database.DatabaseConection;
 import com.example.petconnect.database.SolicitacaoDAO;
-import com.example.petconnect.model.Pet;
 
 import java.io.File;
 
 public class TelaPerfil extends AppCompatActivity {
 
-    // Chave usada no Intent para passar o objeto Pet
     public static final String EXTRA_PET_ID       = "extra_pet_id";
     public static final String EXTRA_PET_NOME     = "extra_pet_nome";
     public static final String EXTRA_PET_RACA     = "extra_pet_raca";
     public static final String EXTRA_PET_IDADE    = "extra_pet_idade";
     public static final String EXTRA_PET_TAMANHO  = "extra_pet_tamanho";
-    public static final String EXTRA_PET_SEXO     = "extra_pet_sexo";
+    public static final String EXTRA_PET_SEXO     = "extra_pet_sexo";     // "Macho" | "Fêmea"
+    public static final String EXTRA_PET_TIPO     = "extra_pet_tipo";     // ✅ NOVO: "Gato" | "Cachorro" | "Outro"
     public static final String EXTRA_PET_DESCRICAO= "extra_pet_descricao";
     public static final String EXTRA_PET_FOTO     = "extra_pet_foto";
     public static final String EXTRA_PET_ABRIGO   = "extra_pet_abrigo";
@@ -61,7 +59,8 @@ public class TelaPerfil extends AppCompatActivity {
         String raca     = extras.getString(EXTRA_PET_RACA,     "");
         String idade    = extras.getString(EXTRA_PET_IDADE,    "");
         String tamanho  = extras.getString(EXTRA_PET_TAMANHO,  "");
-        String sexo     = extras.getString(EXTRA_PET_SEXO,     "");
+        String sexo     = extras.getString(EXTRA_PET_SEXO,     ""); // ✅ agora recebe "Macho"/"Fêmea"
+        String tipo     = extras.getString(EXTRA_PET_TIPO,     ""); // ✅ NOVO: "Gato"/"Cachorro"/"Outro"
         String descricao= extras.getString(EXTRA_PET_DESCRICAO,"");
         String foto     = extras.getString(EXTRA_PET_FOTO,     "");
         String abrigo   = extras.getString(EXTRA_PET_ABRIGO,   "");
@@ -84,11 +83,13 @@ public class TelaPerfil extends AppCompatActivity {
 
         tvNome.setText(nome);
         tvRaca.setText(raca);
-        tvIdade.setText(idade);
-        tvTamanho.setText("Porte: " + tamanho);
-        tvSexo.setText("Sexo: " + sexo);
+        // O layout já tem labels fixos "Idade", "Porte", "Sexo" acima de cada valor,
+        // então só definimos o valor puro — sem prefixo.
+        tvIdade.setText(idade.isEmpty()   ? "—" : idade);
+        tvTamanho.setText(tamanho.isEmpty() ? "—" : tamanho);
+        tvSexo.setText(sexo.isEmpty()     ? "—" : sexo);
         tvDescricao.setText(descricao);
-        tvAbrigo.setText("ONG: " + abrigo);
+        tvAbrigo.setText(abrigo.isEmpty() ? "—" : abrigo);
 
         tagVacinado.setVisibility(vacinado ? View.VISIBLE : View.GONE);
         tagCastrado.setVisibility(castrado ? View.VISIBLE : View.GONE);
@@ -110,9 +111,7 @@ public class TelaPerfil extends AppCompatActivity {
 
         btnVoltar.setOnClickListener(v -> finish());
 
-        // Verifica se já existe solicitação pendente para este animal
         atualizarBotaoSolicitar(btnSolicitar, nome);
-
         btnSolicitar.setOnClickListener(v -> confirmarSolicitacao(nome, btnSolicitar));
     }
 
@@ -137,7 +136,8 @@ public class TelaPerfil extends AppCompatActivity {
 
         new AlertDialog.Builder(this)
                 .setTitle("Confirmar solicitação")
-                .setMessage("Deseja enviar uma solicitação de adoção para " + nomePet + "?\n\nA ONG responsável entrará em contato com você.")
+                .setMessage("Deseja enviar uma solicitação de adoção para " + nomePet
+                        + "?\n\nA ONG responsável entrará em contato com você.")
                 .setPositiveButton("Sim, quero adotar!", (dialog, which) -> {
                     boolean sucesso = solicitacaoDAO.inserir(idUsuarioLogado, idAnimal);
                     if (sucesso) {
@@ -147,7 +147,9 @@ public class TelaPerfil extends AppCompatActivity {
                                 "Solicitação enviada! A ONG entrará em contato em breve.",
                                 Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(this, "Erro ao enviar solicitação. Tente novamente.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,
+                                "Erro ao enviar solicitação. Tente novamente.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancelar", null)
