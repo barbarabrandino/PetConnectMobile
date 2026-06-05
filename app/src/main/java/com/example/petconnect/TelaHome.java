@@ -202,21 +202,21 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
 
     @Override
     public void onVerPerfil(Pet pet) {
-            Intent intent = new Intent(this, TelaPerfil.class);
-            intent.putExtra(TelaPerfil.EXTRA_PET_ID,        pet.getId());
-            intent.putExtra(TelaPerfil.EXTRA_PET_NOME,      pet.getNome());
-            intent.putExtra(TelaPerfil.EXTRA_PET_RACA,      pet.getRaca());
-            intent.putExtra(TelaPerfil.EXTRA_PET_IDADE,     pet.getIdade());
-            intent.putExtra(TelaPerfil.EXTRA_PET_TAMANHO,   pet.getTamanho());
-            intent.putExtra(TelaPerfil.EXTRA_PET_SEXO,      pet.getTipo());
-            intent.putExtra(TelaPerfil.EXTRA_PET_DESCRICAO, pet.getDescricao());
-            intent.putExtra(TelaPerfil.EXTRA_PET_FOTO,      pet.getFotoUrl());
-            intent.putExtra(TelaPerfil.EXTRA_PET_ABRIGO,    pet.getAbrigo());
-            intent.putExtra(TelaPerfil.EXTRA_PET_VACINADO,  pet.isVacinado());
-            intent.putExtra(TelaPerfil.EXTRA_PET_CASTRADO,  pet.isCastrado());
-            startActivity(intent);
-        }
-
+        Intent intent = new Intent(this, TelaPerfil.class);
+        intent.putExtra(TelaPerfil.EXTRA_PET_ID,        pet.getId());
+        intent.putExtra(TelaPerfil.EXTRA_PET_NOME,      pet.getNome());
+        intent.putExtra(TelaPerfil.EXTRA_PET_RACA,      pet.getRaca());
+        intent.putExtra(TelaPerfil.EXTRA_PET_IDADE,     pet.getIdade());
+        intent.putExtra(TelaPerfil.EXTRA_PET_TAMANHO,   pet.getTamanho());
+        intent.putExtra(TelaPerfil.EXTRA_PET_SEXO,      pet.getSexo());      // ✅ CORRIGIDO: era getTipo()
+        intent.putExtra(TelaPerfil.EXTRA_PET_TIPO,      pet.getTipo());      // ✅ NOVO: tipo separado
+        intent.putExtra(TelaPerfil.EXTRA_PET_DESCRICAO, pet.getDescricao());
+        intent.putExtra(TelaPerfil.EXTRA_PET_FOTO,      pet.getFotoUrl());
+        intent.putExtra(TelaPerfil.EXTRA_PET_ABRIGO,    pet.getAbrigo());
+        intent.putExtra(TelaPerfil.EXTRA_PET_VACINADO,  pet.isVacinado());
+        intent.putExtra(TelaPerfil.EXTRA_PET_CASTRADO,  pet.isCastrado());
+        startActivity(intent);
+    }
 
     @Override
     public void onFavoritarToggle(Pet pet, boolean favoritado) {
@@ -238,7 +238,6 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
             favoritosDAO.remover(idUsuarioLogado, idAnimal);
         }
 
-        // Atualiza o Set e o ícone de forma explícita (não usa toggleFavorito)
         adapter.setFavorito(idAnimal, favoritado);
 
         String msg = favoritado

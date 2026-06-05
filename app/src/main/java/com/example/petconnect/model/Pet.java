@@ -1,9 +1,6 @@
 package com.example.petconnect.model;
 
 import com.google.firebase.firestore.DocumentId;
-import com.google.firebase.firestore.PropertyName;
-
-import java.util.List;
 
 /**
  * Modelo que representa um animal disponível para adoção.
@@ -19,7 +16,8 @@ import java.util.List;
  *   "vacinado":    true,
  *   "castrado":    true,
  *   "tamanho":     "Médio",   // "Pequeno" | "Médio" | "Grande"
- *   "tipo":        "Gato"     // "Gato" | "Cachorro" | "Outro"
+ *   "tipo":        "Gato",    // "Gato" | "Cachorro" | "Outro"
+ *   "sexo":        "Fêmea"    // "Macho" | "Fêmea"  ← NOVO CAMPO
  * }
  */
 public class Pet {
@@ -37,13 +35,15 @@ public class Pet {
     private boolean castrado;
     private String tamanho;
     private String tipo;
+    private String sexo; // ← NOVO: "Macho" | "Fêmea"
 
     /** Construtor vazio obrigatório para o Firestore desserializar */
     public Pet() {}
 
     public Pet(String id, String nome, String idade, String raca,
                String abrigo, String descricao, String fotoUrl,
-               boolean vacinado, boolean castrado, String tamanho, String tipo) {
+               boolean vacinado, boolean castrado,
+               String tamanho, String tipo, String sexo) { // ← sexo adicionado
         this.id = id;
         this.nome = nome;
         this.idade = idade;
@@ -55,6 +55,7 @@ public class Pet {
         this.castrado = castrado;
         this.tamanho = tamanho;
         this.tipo = tipo;
+        this.sexo = sexo; // ← NOVO
     }
 
     // ── Getters ──────────────────────────────────────────────────────────────
@@ -70,6 +71,7 @@ public class Pet {
     public boolean isCastrado()  { return castrado; }
     public String getTamanho()   { return tamanho; }
     public String getTipo()      { return tipo; }
+    public String getSexo()      { return sexo; } // ← NOVO
 
     // ── Setters ──────────────────────────────────────────────────────────────
 
@@ -84,4 +86,5 @@ public class Pet {
     public void setCastrado(boolean c)       { this.castrado = c; }
     public void setTamanho(String tamanho)   { this.tamanho = tamanho; }
     public void setTipo(String tipo)         { this.tipo = tipo; }
+    public void setSexo(String sexo)         { this.sexo = sexo; } // ← NOVO
 }
