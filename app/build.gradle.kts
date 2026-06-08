@@ -39,11 +39,14 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
 
-    // Firebase
+    // Firebase (BOM gerencia todas as versões automaticamente)
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-storage")
+
+    // Google Sign-In (necessário para autenticação com conta Google)
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 
     // RecyclerView e CardView
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -51,6 +54,9 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
