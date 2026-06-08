@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Aplica modo escuro antes de inflar o layout
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
         if (prefs.getBoolean("modo_escuro", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);

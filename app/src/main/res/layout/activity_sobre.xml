@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="23dp">
 
-        <!-- Título -->
 
         <TextView
             android:id="@+id/txtTituloSobre"
@@ -25,7 +24,6 @@
             android:fontFamily="@font/albert_sans_light"
             android:layout_marginBottom="20dp"/>
 
-        <!-- Descrição -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,7 +49,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Objetivos -->
+
 
 
         <TextView
@@ -85,7 +83,7 @@
                 android:lineSpacingExtra="5dp"/>
 
         </com.google.android.material.card.MaterialCardView>
-        <!-- Tecnologias -->
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,7 +114,7 @@
                 android:fontFamily="@font/albert_sans_light"
                 android:lineSpacingExtra="5dp"/>
         </com.google.android.material.card.MaterialCardView>
-        <!-- Equipe -->
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -160,8 +158,6 @@
             android:text="@string/voltar"
             android:textSize="19sp"
             android:textStyle="bold" />
-
-        <!-- Botão -->
 
     </LinearLayout>
 

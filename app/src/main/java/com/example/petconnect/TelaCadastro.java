@@ -68,7 +68,6 @@ public class TelaCadastro extends AppCompatActivity {
         btnCadastrar.setOnClickListener(view -> {
 
             String nome     = etNome.getText().toString().trim();
-            // remove formatação para salvar igual ao que o login busca
             String cpf      = etCpf.getText().toString().trim().replaceAll("[^0-9]", "");
             String email    = etEmail.getText().toString().trim();
             String senha    = etSenha.getText().toString().trim();
@@ -77,7 +76,7 @@ public class TelaCadastro extends AppCompatActivity {
             String cidade   = etCidade.getText().toString().trim();
             String endereco = etEndereco.getText().toString().trim();
 
-            // VALIDAÇÕES
+
             if (TextUtils.isEmpty(nome)) {
                 etNome.setError("Digite o nome");
                 return;
@@ -101,7 +100,7 @@ public class TelaCadastro extends AppCompatActivity {
 
             SQLiteDatabase db = banco.getWritableDatabase();
 
-            // VERIFICA CPF
+
             Cursor cursorCpf = db.rawQuery(
                     "SELECT * FROM usuarios WHERE cpf=?",
                     new String[]{cpf}
@@ -114,7 +113,7 @@ public class TelaCadastro extends AppCompatActivity {
             }
             cursorCpf.close();
 
-            // VERIFICA EMAIL
+
             Cursor cursorEmail = db.rawQuery(
                     "SELECT * FROM usuarios WHERE email=?",
                     new String[]{email}
@@ -127,7 +126,7 @@ public class TelaCadastro extends AppCompatActivity {
             }
             cursorEmail.close();
 
-            // SALVAR
+
             ContentValues values = new ContentValues();
             values.put("nome",     nome);
             values.put("cpf",      cpf);      // salvo sem formatação

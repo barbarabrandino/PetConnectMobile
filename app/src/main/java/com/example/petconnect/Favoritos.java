@@ -65,7 +65,6 @@ public class Favoritos extends AppCompatActivity implements PetAdapter.OnPetClic
         progressBar.setVisibility(View.VISIBLE);
         tvEmpty.setVisibility(View.GONE);
 
-        // Busca os IDs salvos localmente no SQLite
         List<String> idsFavoritos = favoritosDAO.listarIdsFavoritos(idUsuarioLogado);
 
         if (idsFavoritos.isEmpty()) {

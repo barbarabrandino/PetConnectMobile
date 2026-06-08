@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petconnect.adapter.SolicitacaoAdapter;
 import com.example.petconnect.database.SolicitacaoDAO;
-import com.example.petconnect.model.Solicitacao;
 
 import java.util.List;
 

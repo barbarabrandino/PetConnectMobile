@@ -1,4 +1,4 @@
-package com.example.petconnect.adapter;
+package com.example.petconnect;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,13 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.petconnect.R;
 import com.example.petconnect.database.DatabaseConection;
 import com.example.petconnect.model.Solicitacao;
 
@@ -27,7 +25,7 @@ public class SolicitacaoOngAdapter extends RecyclerView.Adapter<SolicitacaoOngAd
 
     private final Context           context;
     private final List<Solicitacao> lista;
-    private final boolean           isOng; // true = ONG (pode aprovar/recusar) | false = usuário (só visualiza)
+    private final boolean           isOng;
 
     public SolicitacaoOngAdapter(Context context, List<Solicitacao> lista, boolean isOng) {
         this.context = context;
@@ -47,16 +45,23 @@ public class SolicitacaoOngAdapter extends RecyclerView.Adapter<SolicitacaoOngAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Solicitacao s = lista.get(position);
 
-        holder.tvNomeAnimal.setText(s.getNomeAnimal() != null ? s.getNomeAnimal() : "Animal");
-        holder.tvNomeOng.setText("Solicitante: " + (s.getNomeOng() != null ? s.getNomeOng() : "Usuário"));
+        String statusAtual = s.getStatus() != null ? s.getStatus().trim().toLowerCase() : "";
+
+        holder.tvNomeAnimal.setText(nvl(s.getNomeAnimal(), "Animal"));
+        holder.tvNomeOng.setText(nvl(s.getNomeOng(), "Usuario nao informado"));
         holder.tvData.setText(s.getData() != null ? "Data: " + s.getData() : "");
-        holder.tvStatus.setText(s.getStatus());
+        holder.tvStatus.setText(nvl(s.getStatus(), "Em analise"));
 
-        // Badge de status
-        atualizarBadge(holder.tvStatus, s.getStatus());
+        atualizarBadge(holder.tvStatus, statusAtual);
 
-        // Botões Aprovar/Recusar: só visíveis para ONG quando status é "Em análise"
-        if (isOng && "Em análise".equals(s.getStatus())) {
+        boolean isPendente = statusAtual.equals("pendente")
+                          || statusAtual.equals("em analise")
+                          || statusAtual.equals("em analise")
+                          || statusAtual.contains("analise")
+                          || statusAtual.contains("análise")
+                          || statusAtual.isEmpty();
+
+        if (isOng && isPendente) {
             holder.layoutAcoes.setVisibility(View.VISIBLE);
         } else {
             holder.layoutAcoes.setVisibility(View.GONE);
@@ -65,107 +70,73 @@ public class SolicitacaoOngAdapter extends RecyclerView.Adapter<SolicitacaoOngAd
         holder.btnVerDetalhes.setOnClickListener(v -> mostrarDetalhes(s));
 
         holder.btnAprovar.setOnClickListener(v ->
-                confirmarAcao(s, position, holder, "Aprovar",
-                        "Confirma a aprovação desta solicitação?", "Aprovado"));
+                confirmarAcao(s, position, "Aprovado", "Aprovar solicitacao?",
+                        "Deseja aprovar a adocao de " + nvl(s.getNomeAnimal(), "este animal") + "?"));
 
         holder.btnRecusar.setOnClickListener(v ->
-                confirmarAcao(s, position, holder, "Recusar",
-                        "Confirma a recusa desta solicitação?", "Recusado"));
+                confirmarAcao(s, position, "Recusado", "Recusar solicitacao?",
+                        "Deseja recusar a adocao de " + nvl(s.getNomeAnimal(), "este animal") + "?"));
     }
 
-    // ── Confirmação e atualização no banco ────────────────────────────────
+    private void mostrarDetalhes(Solicitacao s) {
+        String msg =
+                "Animal: "         + nvl(s.getNomeAnimal(),      "Nao informado") + "\n" +
+                "Solicitante: "    + nvl(s.getNomeSolicitante(), nvl(s.getNomeOng(), "Nao informado")) + "\n" +
+                "E-mail: "         + nvl(s.getEmailUsuario(),    "Nao informado") + "\n" +
+                "CPF: "            + nvl(s.getCpfUsuario(),      "Nao informado") + "\n" +
+                "Telefone: "       + nvl(s.getTelefone(),        "Nao informado") + "\n" +
+                "Endereco: "       + nvl(s.getEnderecoUsuario(), "Nao informado") + "\n" +
+                "CEP: "            + nvl(s.getCepUsuario(),      "Nao informado") + "\n" +
+                "Cidade/Estado: "  + nvl(s.getCidadeUsuario(),   "") + " / " + nvl(s.getEstadoUsuario(), "Nao informado") + "\n" +
+                "Moradia: "        + nvl(s.getMoradia(),         "Nao informado") + "\n" +
+                "Outros animais: " + nvl(s.getOutrosAnimais(),   "Nao informado") + "\n" +
+                "Experiencia: "    + nvl(s.getExperiencia(),     "Nao informado") + "\n" +
+                "Observacoes: "    + nvl(s.getObservacoes(),     "Nenhuma")       + "\n" +
+                "Status: "         + nvl(s.getStatus(),          "Em analise")    + "\n" +
+                "Data: "           + nvl(s.getData(),            "Nao informada");
 
-    private void confirmarAcao(Solicitacao s, int position, ViewHolder holder,
-                               String titulo, String mensagem, String novoStatus) {
+        new AlertDialog.Builder(context)
+                .setTitle("Solicitacao #" + s.getId())
+                .setMessage(msg)
+                .setPositiveButton("Fechar", null)
+                .show();
+    }
+
+    private void confirmarAcao(Solicitacao s, int position, String novoStatus, String titulo, String msg) {
         new AlertDialog.Builder(context)
                 .setTitle(titulo)
-                .setMessage(mensagem)
-                .setPositiveButton("Confirmar", (dialog, which) -> {
-                    if (atualizarStatusNoBanco(s.getId(), novoStatus)) {
-                        s.setStatus(novoStatus);
-                        // Atualiza o badge e esconde os botões sem recarregar tudo
-                        atualizarBadge(holder.tvStatus, novoStatus);
-                        holder.tvStatus.setText(novoStatus);
-                        holder.layoutAcoes.setVisibility(View.GONE);
-                        notifyItemChanged(position);
-                        Toast.makeText(context,
-                                "Solicitação " + novoStatus.toLowerCase() + " com sucesso!",
-                                Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, "Erro ao atualizar. Tente novamente.",
-                                Toast.LENGTH_SHORT).show();
-                    }
+                .setMessage(msg)
+                .setPositiveButton("Confirmar", (d, w) -> {
+                    atualizarStatus(s.getId(), novoStatus);
+                    s.setStatus(novoStatus);
+                    lista.set(position, s);
+                    notifyItemChanged(position);
                 })
                 .setNegativeButton("Cancelar", null)
                 .show();
     }
 
-    private boolean atualizarStatusNoBanco(int idSolicitacao, String novoStatus) {
-        try {
-            DatabaseConection con = new DatabaseConection(context);
-            SQLiteDatabase db = con.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put("status", novoStatus);
-            int rows = db.update(
-                    DatabaseConection.TABELA_SOLICITACOES,
-                    values,
-                    "id = ?",
-                    new String[]{String.valueOf(idSolicitacao)}
-            );
-            db.close();
-            return rows > 0;
-        } catch (Exception e) {
-            return false;
-        }
+    private void atualizarStatus(int id, String novoStatus) {
+        DatabaseConection con = new DatabaseConection(context);
+        SQLiteDatabase db = con.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("status", novoStatus);
+        db.update(DatabaseConection.TABELA_SOLICITACOES, cv, "id = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 
-    // ── Badge de status ───────────────────────────────────────────────────
-
-    private void atualizarBadge(TextView tvStatus, String status) {
-        int badgeColor;
-        switch (status) {
-            case "Aprovado":
-                badgeColor = Color.parseColor("#2E7D32");
-                break;
-            case "Recusado":
-                badgeColor = Color.parseColor("#C62828");
-                break;
-            default: // Em análise
-                badgeColor = Color.parseColor("#F57F17");
-                break;
-        }
-        tvStatus.setTextColor(Color.WHITE);
-        tvStatus.setBackgroundTintList(ColorStateList.valueOf(badgeColor));
+    private void atualizarBadge(TextView tv, String statusLower) {
+        int cor;
+        if (statusLower.contains("aprovado"))      cor = Color.parseColor("#2E7D32");
+        else if (statusLower.contains("recusado")) cor = Color.parseColor("#C62828");
+        else                                       cor = Color.parseColor("#F57F17");
+        tv.setTextColor(Color.WHITE);
+        tv.setBackgroundTintList(ColorStateList.valueOf(cor));
     }
 
-    // ── Dialog de detalhes ────────────────────────────────────────────────
-
-    private void mostrarDetalhes(Solicitacao s) {
-        String mensagem =
-                "Animal: "   + nvl(s.getNomeAnimal())       + "\n" +
-                        "Status: "   + nvl(s.getStatus())           + "\n" +
-                        "Data: "     + nvl(s.getData())             + "\n\n" +
-                        "── Dados do solicitante ──\n" +
-                        "Nome: "     + nvl(s.getNomeOng())          + "\n" +
-                        "E-mail: "   + nvl(s.getEmailUsuario())     + "\n" +
-                        "CPF: "      + nvl(s.getCpfUsuario())       + "\n" +
-                        "CEP: "      + nvl(s.getCepUsuario())       + "\n" +
-                        "Estado: "   + nvl(s.getEstadoUsuario())    + "\n" +
-                        "Cidade: "   + nvl(s.getCidadeUsuario())    + "\n" +
-                        "Endereço: " + nvl(s.getEnderecoUsuario());
-
-        new AlertDialog.Builder(context)
-                .setTitle("Detalhes da Solicitação #" + s.getId())
-                .setMessage(mensagem)
-                .setPositiveButton("Fechar", null)
-                .show();
+    private String nvl(String val, String fallback) {
+        return (val != null && !val.isEmpty()) ? val : fallback;
     }
-
-    private String nvl(String val) {
-        return (val != null && !val.isEmpty()) ? val : "Não informado";
-    }
-
-    // ── Boilerplate ───────────────────────────────────────────────────────
 
     @Override
     public int getItemCount() { return lista.size(); }

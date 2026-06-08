@@ -30,7 +30,6 @@ public class Configuracoes extends AppCompatActivity {
 
         prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
 
-        // Descobre se quem está logado é ONG ou usuário comum
         isOng = "ong".equals(prefs.getString("tipo_usuario", "usuario"));
 
         initViews();
@@ -102,14 +101,14 @@ public class Configuracoes extends AppCompatActivity {
         findViewById(R.id.navConfiguracoes).setOnClickListener(v -> {});
     }
 
-    // ─── Menu para ONG ────────────────────────────────────────────────────────
+
     private void setupBottomNavOng() {
         findViewById(R.id.navInicio).setOnClickListener(v ->
                 startActivity(new Intent(this, DashboardOng.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP))
         );
 
-        // ONG não tem Favoritos — esconde o botão se existir no layout
+
         View navFavoritos = findViewById(R.id.navFavoritos);
         if (navFavoritos != null) navFavoritos.setVisibility(View.GONE);
 
@@ -119,7 +118,7 @@ public class Configuracoes extends AppCompatActivity {
         );
     }
 
-    // ─── Menu para usuário comum ──────────────────────────────────────────────
+
     private void setupBottomNavUsuario() {
         findViewById(R.id.navInicio).setOnClickListener(v ->
                 startActivity(new Intent(this, TelaHome.class)

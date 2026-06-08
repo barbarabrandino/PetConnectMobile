@@ -13,7 +13,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petconnect.R;
-import com.example.petconnect.model.Solicitacao;
 
 import java.util.List;
 

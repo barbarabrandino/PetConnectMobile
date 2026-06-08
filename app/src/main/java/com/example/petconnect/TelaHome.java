@@ -21,16 +21,23 @@ import com.example.petconnect.adapter.PetAdapter;
 import com.example.petconnect.database.FavoritosDAO;
 import com.example.petconnect.model.Pet;
 import com.example.petconnect.repository.PetRepository;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
 public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClickListener {
 
-    private TextView    tvSubtitle;
-    private EditText    etSearch;
+    private static final String WEB_CLIENT_ID =
+            "1079108649290-v3hhdbcc43lesm65epdolpe95an32njg.apps.googleusercontent.com";
+
+    private TextView     tvSubtitle;
+    private EditText     etSearch;
     private RecyclerView rvPets;
-    private ProgressBar progressBar;
-    private TextView    tvEmpty;
+    private ProgressBar  progressBar;
+    private TextView     tvEmpty;
 
     private String filtroTipo    = null;
     private String filtroTamanho = null;
@@ -46,8 +53,8 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_home);
 
-        repository   = new PetRepository(this);
-        favoritosDAO = new FavoritosDAO(this);
+        repository      = new PetRepository(this);
+        favoritosDAO    = new FavoritosDAO(this);
 
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
         idUsuarioLogado = prefs.getInt("id_usuario_logado", -1);
@@ -74,13 +81,36 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
                 new AlertDialog.Builder(this)
                         .setTitle("Sair")
                         .setMessage("Deseja sair da conta?")
-                        .setPositiveButton("Sair", (dialog, which) -> {
-                            Intent intent = new Intent(TelaHome.this, Login.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        })
+                        .setPositiveButton("Sair", (dialog, which) -> fazerLogout())
                         .setNegativeButton("Cancelar", null)
                         .show());
+    }
+
+    private void fazerLogout() {
+        SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
+        boolean loginViaGoogle  = prefs.getBoolean("login_via_google", false);
+
+        prefs.edit().clear().apply();
+
+        FirebaseAuth.getInstance().signOut();
+
+        if (loginViaGoogle) {
+            GoogleSignInOptions gso = new GoogleSignInOptions
+                    .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(WEB_CLIENT_ID)
+                    .requestEmail()
+                    .build();
+            GoogleSignInClient googleClient = GoogleSignIn.getClient(this, gso);
+            googleClient.signOut().addOnCompleteListener(this, task -> irParaLogin());
+        } else {
+            irParaLogin();
+        }
+    }
+
+    private void irParaLogin() {
+        Intent intent = new Intent(TelaHome.this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void setupRecyclerView() {
@@ -208,8 +238,8 @@ public class TelaHome extends AppCompatActivity implements PetAdapter.OnPetClick
         intent.putExtra(TelaPerfil.EXTRA_PET_RACA,      pet.getRaca());
         intent.putExtra(TelaPerfil.EXTRA_PET_IDADE,     pet.getIdade());
         intent.putExtra(TelaPerfil.EXTRA_PET_TAMANHO,   pet.getTamanho());
-        intent.putExtra(TelaPerfil.EXTRA_PET_SEXO,      pet.getSexo());      // ✅ CORRIGIDO: era getTipo()
-        intent.putExtra(TelaPerfil.EXTRA_PET_TIPO,      pet.getTipo());      // ✅ NOVO: tipo separado
+        intent.putExtra(TelaPerfil.EXTRA_PET_SEXO,      pet.getSexo());
+        intent.putExtra(TelaPerfil.EXTRA_PET_TIPO,      pet.getTipo());
         intent.putExtra(TelaPerfil.EXTRA_PET_DESCRICAO, pet.getDescricao());
         intent.putExtra(TelaPerfil.EXTRA_PET_FOTO,      pet.getFotoUrl());
         intent.putExtra(TelaPerfil.EXTRA_PET_ABRIGO,    pet.getAbrigo());

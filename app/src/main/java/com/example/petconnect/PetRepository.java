@@ -94,12 +94,12 @@ public class PetRepository {
                 int colOng = cursor.getColumnIndex("nome_ong");
                 pet.setAbrigo(colOng >= 0 ? cursor.getString(colOng) : "");
 
-                // ✅ Foto: funciona tanto com caminho local quanto URL
+
                 int colFoto = cursor.getColumnIndex("foto_url");
                 String foto = colFoto >= 0 ? cursor.getString(colFoto) : "";
                 if (foto == null) foto = "";
 
-                // Se é caminho local, usa o arquivo; senão usa a string como URL
+
                 if (foto.startsWith("/")) {
                     File arquivo = new File(foto);
                     pet.setFotoUrl(arquivo.exists() ? foto : "");

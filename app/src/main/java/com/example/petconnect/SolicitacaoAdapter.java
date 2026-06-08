@@ -24,6 +24,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
     private final Context           context;
     private final List<Solicitacao> lista;
 
+    // ✅ Corrigido: List<Solicitacao> em vez de List<SolicitacaoOngAdapter>
     public SolicitacaoAdapter(Context context, List<Solicitacao> lista) {
         this.context = context;
         this.lista   = lista;
@@ -42,17 +43,14 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
         Solicitacao s = lista.get(position);
 
         holder.tvNomeAnimal.setText(s.getNomeAnimal() != null ? s.getNomeAnimal() : "Animal");
-        holder.tvNomeOng.setText(s.getNomeOng() != null ? s.getNomeOng() : "ONG não informada");
-        holder.tvData.setText(s.getData() != null ? "Data: " + s.getData() : "");
+        holder.tvNomeOng.setText(s.getNomeOng()       != null ? s.getNomeOng()    : "ONG não informada");
+        holder.tvData.setText(s.getData()             != null ? "Data: " + s.getData() : "");
         holder.tvStatus.setText(s.getStatus());
 
-        // Badge de status (igual ao SolicitacaoOngAdapter)
         atualizarBadge(holder.tvStatus, s.getStatus());
 
-        // Usuário nunca vê os botões Aprovar/Recusar
         holder.layoutAcoes.setVisibility(View.GONE);
 
-        // Abre dialog com os dados da solicitação do usuário
         holder.btnVerDetalhes.setOnClickListener(v -> {
             String mensagem =
                     "Animal: " + nvl(s.getNomeAnimal()) + "\n" +
@@ -71,15 +69,9 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
     private void atualizarBadge(TextView tvStatus, String status) {
         int badgeColor;
         switch (status) {
-            case "Aprovado":
-                badgeColor = Color.parseColor("#2E7D32");
-                break;
-            case "Recusado":
-                badgeColor = Color.parseColor("#C62828");
-                break;
-            default: // Em análise
-                badgeColor = Color.parseColor("#F57F17");
-                break;
+            case "Aprovado": badgeColor = Color.parseColor("#2E7D32"); break;
+            case "Recusado": badgeColor = Color.parseColor("#C62828"); break;
+            default:         badgeColor = Color.parseColor("#F57F17"); break;
         }
         tvStatus.setTextColor(Color.WHITE);
         tvStatus.setBackgroundTintList(ColorStateList.valueOf(badgeColor));
@@ -95,7 +87,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView     tvNomeAnimal, tvNomeOng, tvData, tvStatus;
         Button       btnVerDetalhes;
-        LinearLayout layoutAcoes; // referenciado só para esconder
+        LinearLayout layoutAcoes;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,7 +96,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
             tvData         = itemView.findViewById(R.id.tvData);
             tvStatus       = itemView.findViewById(R.id.tvStatus);
             btnVerDetalhes = itemView.findViewById(R.id.btnVerDetalhes);
-            layoutAcoes    = itemView.findViewById(R.id.layoutAcoes); // esconde os botões
+            layoutAcoes    = itemView.findViewById(R.id.layoutAcoes);
         }
     }
 }

@@ -46,7 +46,7 @@
             android:textColor="#0D3045"
             android:textStyle="bold"/>
 
-        <!-- TAGS -->
+
 
         <LinearLayout
             android:layout_width="wrap_content"

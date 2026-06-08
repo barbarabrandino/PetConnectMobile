@@ -68,12 +68,12 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
         holder.bind(pet, favoritos.contains(pet.getId()), listener);
     }
 
-    /** Chamado pela TelaHome para marcar favoritos carregados do banco */
+
     public void marcarFavorito(String petId) {
         favoritos.add(petId);
     }
 
-    /** Define o estado de favorito explicitamente (substitui toggleFavorito) */
+
     public void setFavorito(String petId, boolean favoritado) {
         if (favoritado) {
             favoritos.add(petId);
@@ -126,7 +126,7 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
             if (pet.isVacinado()) tagVacinado.setText("Vacinado");
             if (pet.isCastrado()) tagCastrado.setText("Castrado");
 
-            // Carrega foto local (caminho) ou remota (URL)
+
             String foto = pet.getFotoUrl();
             if (foto != null && foto.startsWith("/")) {
                 Glide.with(ctx).load(new File(foto)).centerCrop()
@@ -144,7 +144,7 @@ public class PetAdapter extends ListAdapter<Pet, PetAdapter.PetViewHolder> {
 
             atualizarIconeFavorito(favoritado);
 
-            // O clique apenas notifica o listener — quem atualiza o Set e o ícone é o setFavorito
+
             ivFavorite.setOnClickListener(v -> {
                 boolean novoEstado = !favoritado;
                 listener.onFavoritarToggle(pet, novoEstado);

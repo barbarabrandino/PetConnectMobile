@@ -33,22 +33,20 @@ public class Login extends AppCompatActivity {
 
     private static final String TAG = "Login";
 
-    // Web client ID (client_type: 3) do google-services.json
+
     private static final String WEB_CLIENT_ID =
             "1079108649290-v3hhdbcc43lesm65epdolpe95an32njg.apps.googleusercontent.com";
 
-    // ── Views ──────────────────────────────────────────────────────────────
+
     private EditText etCpfCnpjLogin, etSenhaLogin;
     private MaterialButton btnEntrar, btnCadastroUsuario, btnCadastroOng, btnGoogleSignIn;
 
-    // ── Database ───────────────────────────────────────────────────────────
+
     private DatabaseConection banco;
 
-    // ── Firebase / Google ──────────────────────────────────────────────────
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
-    // Flag para evitar redirect em loop no onStart
     private boolean loginEmAndamento = false;
 
     private final ActivityResultLauncher<Intent> googleSignInLauncher =
@@ -62,7 +60,7 @@ public class Login extends AppCompatActivity {
                     }
             );
 
-    // ──────────────────────────────────────────────────────────────────────
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +77,6 @@ public class Login extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        // ── Bind views ────────────────────────────────────────────────────
         etCpfCnpjLogin     = findViewById(R.id.etCpfCnpjLogin);
         etSenhaLogin       = findViewById(R.id.etSenhaLogin);
         btnEntrar          = findViewById(R.id.btnEntrar);
@@ -87,7 +84,6 @@ public class Login extends AppCompatActivity {
         btnCadastroOng     = findViewById(R.id.btnCadastroOng);
         btnGoogleSignIn    = findViewById(R.id.btnGoogleSignIn);
 
-        // ── Listeners ─────────────────────────────────────────────────────
         btnEntrar.setOnClickListener(v -> fazerLoginLocal());
         btnGoogleSignIn.setOnClickListener(v -> iniciarFluxoGoogle());
         btnCadastroUsuario.setOnClickListener(v ->
@@ -96,9 +92,6 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(this, TelaCadastroOng.class)));
     }
 
-    // ══════════════════════════════════════════════════════════════════════
-    //  LOGIN LOCAL (CPF/CNPJ + senha → SQLite)
-    // ══════════════════════════════════════════════════════════════════════
 
     private void fazerLoginLocal() {
         String cpfCnpj = etCpfCnpjLogin.getText().toString().trim().replaceAll("[^0-9]", "");
@@ -176,10 +169,6 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    // ══════════════════════════════════════════════════════════════════════
-    //  GOOGLE SIGN-IN
-    // ══════════════════════════════════════════════════════════════════════
-
     private void iniciarFluxoGoogle() {
         loginEmAndamento = true;
         mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> {
@@ -194,10 +183,7 @@ public class Login extends AppCompatActivity {
             Log.d(TAG, "Google Sign-In OK. IdToken nulo? " + (account.getIdToken() == null));
             autenticarFirebaseComGoogle(account.getIdToken());
         } catch (ApiException e) {
-            // Códigos comuns:
-            // 10 = SHA-1 não registrado no Firebase
-            // 12500 = Google Play Services desatualizado
-            // 7 = sem conexão com a internet
+
             Log.e(TAG, "Google sign-in falhou. Código: " + e.getStatusCode(), e);
             String motivo;
             switch (e.getStatusCode()) {
@@ -272,10 +258,6 @@ public class Login extends AppCompatActivity {
                 .putBoolean("login_via_google",    true)
                 .apply();
     }
-
-    // ══════════════════════════════════════════════════════════════════════
-    //  VERIFICAÇÃO DE SESSÃO ATIVA
-    // ══════════════════════════════════════════════════════════════════════
 
     @Override
     protected void onStart() {

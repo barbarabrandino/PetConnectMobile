@@ -54,7 +54,6 @@ public class AlterarSenha extends AppCompatActivity {
             return;
         }
 
-        // Recupera e-mail do usuário logado via SharedPreferences
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
         String emailLogado = prefs.getString("email_logado", null);
 
@@ -65,7 +64,7 @@ public class AlterarSenha extends AppCompatActivity {
 
         SQLiteDatabase sqlDb = db.getWritableDatabase();
 
-        // Verifica se a senha atual está correta
+
         Cursor cursor = sqlDb.query(
                 DatabaseConection.TABELA_USUARIO,
                 new String[]{"id"},
@@ -81,7 +80,7 @@ public class AlterarSenha extends AppCompatActivity {
         }
         cursor.close();
 
-        // Atualiza a senha
+
         ContentValues values = new ContentValues();
         values.put("senha", novaSenha);
         int rows = sqlDb.update(

@@ -42,7 +42,7 @@
 
     </LinearLayout>
 
-    <!-- BOTTOM NAV DA ONG — 3 itens -->
+
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,8 @@ public class TelaCadastroOng extends AppCompatActivity {
 
     EditText etNome, etCnpj, etEmail, etSenha;
     EditText etCep, etEstado, etCidade, etEndereco;
-    Button btnCadastrarOng;
+    Button   btnCadastrarOng;
+    ImageView btnVoltar;
     DatabaseConection banco;
 
     @Override
@@ -29,15 +31,17 @@ public class TelaCadastroOng extends AppCompatActivity {
 
         banco = new DatabaseConection(this);
 
-        etNome      = findViewById(R.id.etNomeOng);
-        etCnpj      = findViewById(R.id.etCnpj);
-        etEmail     = findViewById(R.id.etEmail);
-        etSenha     = findViewById(R.id.etSenha);
-        etCep       = findViewById(R.id.etCep);
-        etEstado    = findViewById(R.id.etEstado);
-        etCidade    = findViewById(R.id.etCidade);
-        etEndereco  = findViewById(R.id.etEndereco);
+        etNome          = findViewById(R.id.etNomeOng);
+        etCnpj          = findViewById(R.id.etCnpj);
+        etEmail         = findViewById(R.id.etEmail);
+        etSenha         = findViewById(R.id.etSenha);
+        etCep           = findViewById(R.id.etCep);
+        etEstado        = findViewById(R.id.etEstado);
+        etCidade        = findViewById(R.id.etCidade);
+        etEndereco      = findViewById(R.id.etEndereco);
         btnCadastrarOng = findViewById(R.id.btnCadastrarOng);
+        btnVoltar       = findViewById(R.id.btnVoltar);
+        btnVoltar.setOnClickListener(v -> finish());
 
         btnCadastrarOng.setOnClickListener(view -> {
 
@@ -84,8 +88,6 @@ public class TelaCadastroOng extends AppCompatActivity {
             long resultado = db.insert("ongs", null, values);
 
             if (resultado != -1) {
-                // ✅ Salva o ID da ONG recém-cadastrada no SharedPreferences
-                // assim o CadastroAnimalActivity já funciona sem precisar fazer login
                 SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
                 prefs.edit()
                         .putInt("id_ong_logada", (int) resultado)
@@ -100,6 +102,13 @@ public class TelaCadastroOng extends AppCompatActivity {
                 db.close();
                 Toast.makeText(this, "Erro ao cadastrar ONG!", Toast.LENGTH_SHORT).show();
             }
+        });
+
+
+        findViewById(R.id.tvLogin).setOnClickListener(v -> {
+            startActivity(new Intent(this, Login.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
+            finish();
         });
     }
 }

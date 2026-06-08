@@ -18,7 +18,7 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- TÍTULO -->
+
             <TextView
                 
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
                 android:fontFamily="@font/albert_sans_light"
                 android:layout_marginBottom="30dp"/>
 
-            <!-- NOTIFICAÇÕES -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <!-- ALTERAR SENHA -->
+
             <Button
                 android:id="@+id/btnAlterarSenha"
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/albert_sans_light"/>
 
-            <!-- TERMOS -->
+
             <Button
                 android:id="@+id/btnTermos"
                 android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/albert_sans_light"/>
 
-            <!-- PRIVACIDADE -->
+
             <Button
                 android:id="@+id/btnPrivacidade"
                 android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/albert_sans_light"/>
 
-            <!-- SAIR -->
+
             <Button
                 android:id="@+id/btnSairConta"
                 android:layout_width="match_parent"
@@ -104,7 +104,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- BOTTOM NAV — mesmo padrão da TelaHome -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -114,7 +113,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Início -->
+
         <LinearLayout
             android:id="@+id/navInicio"
             android:layout_width="0dp"
@@ -142,7 +141,7 @@
 
         </LinearLayout>
 
-        <!-- Favoritos -->
+
         <LinearLayout
             android:id="@+id/navFavoritos"
             android:layout_width="0dp"
@@ -170,7 +169,6 @@
 
         </LinearLayout>
 
-        <!-- Solicitações -->
         <LinearLayout
             android:id="@+id/navSolicitacoes"
             android:layout_width="0dp"
@@ -198,7 +196,7 @@
 
         </LinearLayout>
 
-        <!-- Configurações (ativo) -->
+
         <LinearLayout
             android:id="@+id/navConfiguracoes"
             android:layout_width="0dp"

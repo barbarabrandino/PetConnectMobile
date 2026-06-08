@@ -49,7 +49,7 @@
 
     </LinearLayout>
 
-    <!-- BOTTOM NAV -->
+
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"

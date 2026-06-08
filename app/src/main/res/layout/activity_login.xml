@@ -14,7 +14,7 @@
         android:paddingTop="64dp"
         android:paddingBottom="40dp">
 
-        <!-- LOGO -->
+
         <TextView
             android:layout_width="72dp"
             android:layout_height="72dp"
@@ -25,7 +25,7 @@
             android:text="🐾"
             android:textSize="36sp" />
 
-        <!-- TÍTULO -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium" />
 
-        <!-- SUBTÍTULO -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,6 @@
             android:textColor="@color/text_muted"
             android:textSize="14sp" />
 
-        <!-- LABEL CPF -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +56,7 @@
             android:textSize="13sp"
             android:textStyle="bold" />
 
-        <!-- CAMPO CPF -->
+
         <EditText
             android:id="@+id/etCpfCnpjLogin"
             android:layout_width="match_parent"
@@ -72,7 +71,7 @@
             android:textColorHint="@color/text_muted"
             android:textSize="15sp" />
 
-        <!-- LABEL SENHA -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,7 +81,6 @@
             android:textSize="13sp"
             android:textStyle="bold" />
 
-        <!-- CAMPO SENHA -->
         <EditText
             android:id="@+id/etSenhaLogin"
             android:layout_width="match_parent"
@@ -97,7 +95,7 @@
             android:textColorHint="@color/text_muted"
             android:textSize="15sp" />
 
-        <!-- BOTÃO ENTRAR -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEntrar"
             android:layout_width="match_parent"
@@ -110,7 +108,7 @@
             android:textStyle="bold"
             app:cornerRadius="12dp" />
 
-        <!-- DIVISOR "ou" -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,7 +140,6 @@
                 android:alpha="0.3" />
         </LinearLayout>
 
-        <!-- BOTÃO ENTRAR COM GOOGLE -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGoogleSignIn"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -159,7 +156,7 @@
             app:strokeColor="@color/text_muted"
             app:strokeWidth="1dp" />
 
-        <!-- DIVISOR -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,7 +166,7 @@
             android:textColor="@color/text_muted"
             android:textSize="13sp" />
 
-        <!-- BOTÃO CADASTRO USUÁRIO -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCadastroUsuario"
             android:layout_width="match_parent"
@@ -182,7 +179,7 @@
             android:textStyle="bold"
             app:cornerRadius="12dp" />
 
-        <!-- BOTÃO CADASTRO ONG -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCadastroOng"
             android:layout_width="match_parent"

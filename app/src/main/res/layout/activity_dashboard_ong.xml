@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:background="@color/background_page">
 
-    <!-- CONTEÚDO COM SCROLL -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ══ HEADER VERDE ══ -->
+            <!-- Header verde -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +28,6 @@
                 android:paddingEnd="24dp"
                 android:paddingBottom="28dp">
 
-                <!-- Linha: ícone + sair -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,7 +93,7 @@
 
             </LinearLayout>
 
-            <!-- ══ CORPO ══ -->
+            <!-- Conteúdo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,7 +103,7 @@
                 android:paddingEnd="20dp"
                 android:paddingBottom="32dp">
 
-                <!-- Título RESUMO -->
+                <!-- Seção RESUMO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -132,7 +130,7 @@
                         android:background="@color/divider_color" />
                 </LinearLayout>
 
-                <!-- Cards lado a lado -->
+                <!-- Cards de resumo -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -228,7 +226,7 @@
 
                 </LinearLayout>
 
-                <!-- Título AÇÕES -->
+                <!-- Seção AÇÕES -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -268,6 +266,18 @@
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/btnVerAnimais"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/verdebtn"
+                    android:fontFamily="@font/albert_sans_light"
+                    android:text="🐾  Ver Animais Cadastrados"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
                     android:id="@+id/btnVerSolicitacoes"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
@@ -284,7 +294,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- ══ BOTTOM NAV — 3 itens: Início, Solicitações, Configurações ══ -->
+    <!-- Bottom Nav -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -294,7 +304,6 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Início -->
         <LinearLayout
             android:id="@+id/navInicio"
             android:layout_width="0dp"
@@ -322,7 +331,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Solicitações -->
         <LinearLayout
             android:id="@+id/navSolicitacoes"
             android:layout_width="0dp"
@@ -349,7 +357,6 @@
                 android:textSize="11sp" />
         </LinearLayout>
 
-        <!-- Configurações -->
         <LinearLayout
             android:id="@+id/navConfiguracoes"
             android:layout_width="0dp"

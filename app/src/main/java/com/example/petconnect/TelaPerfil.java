@@ -1,5 +1,6 @@
 package com.example.petconnect;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -24,8 +24,8 @@ public class TelaPerfil extends AppCompatActivity {
     public static final String EXTRA_PET_RACA     = "extra_pet_raca";
     public static final String EXTRA_PET_IDADE    = "extra_pet_idade";
     public static final String EXTRA_PET_TAMANHO  = "extra_pet_tamanho";
-    public static final String EXTRA_PET_SEXO     = "extra_pet_sexo";     // "Macho" | "Fêmea"
-    public static final String EXTRA_PET_TIPO     = "extra_pet_tipo";     // ✅ NOVO: "Gato" | "Cachorro" | "Outro"
+    public static final String EXTRA_PET_SEXO     = "extra_pet_sexo";
+    public static final String EXTRA_PET_TIPO     = "extra_pet_tipo";
     public static final String EXTRA_PET_DESCRICAO= "extra_pet_descricao";
     public static final String EXTRA_PET_FOTO     = "extra_pet_foto";
     public static final String EXTRA_PET_ABRIGO   = "extra_pet_abrigo";
@@ -33,8 +33,9 @@ public class TelaPerfil extends AppCompatActivity {
     public static final String EXTRA_PET_CASTRADO = "extra_pet_castrado";
 
     private SolicitacaoDAO solicitacaoDAO;
-    private int idUsuarioLogado = -1;
+    private int    idUsuarioLogado = -1;
     private String idAnimal;
+    private String nomeAnimal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,25 +50,33 @@ public class TelaPerfil extends AppCompatActivity {
         preencherDados();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Atualiza botão caso usuário tenha enviado a solicitação e voltado
+        Button btnSolicitar = findViewById(R.id.btnSolicitar);
+        if (btnSolicitar != null && idAnimal != null) {
+            atualizarBotaoSolicitar(btnSolicitar, nomeAnimal);
+        }
+    }
+
     private void preencherDados() {
         Bundle extras = getIntent().getExtras();
         if (extras == null) { finish(); return; }
 
-        idAnimal = extras.getString(EXTRA_PET_ID, "");
+        idAnimal   = extras.getString(EXTRA_PET_ID,   "");
+        nomeAnimal = extras.getString(EXTRA_PET_NOME,  "");
 
-        String nome     = extras.getString(EXTRA_PET_NOME,     "");
         String raca     = extras.getString(EXTRA_PET_RACA,     "");
         String idade    = extras.getString(EXTRA_PET_IDADE,    "");
         String tamanho  = extras.getString(EXTRA_PET_TAMANHO,  "");
-        String sexo     = extras.getString(EXTRA_PET_SEXO,     ""); // ✅ agora recebe "Macho"/"Fêmea"
-        String tipo     = extras.getString(EXTRA_PET_TIPO,     ""); // ✅ NOVO: "Gato"/"Cachorro"/"Outro"
+        String sexo     = extras.getString(EXTRA_PET_SEXO,     "");
         String descricao= extras.getString(EXTRA_PET_DESCRICAO,"");
         String foto     = extras.getString(EXTRA_PET_FOTO,     "");
         String abrigo   = extras.getString(EXTRA_PET_ABRIGO,   "");
         boolean vacinado= extras.getBoolean(EXTRA_PET_VACINADO, false);
         boolean castrado= extras.getBoolean(EXTRA_PET_CASTRADO, false);
 
-        // --- Preenche UI ---
         ImageView ivFoto      = findViewById(R.id.ivPerfilFoto);
         TextView  tvNome      = findViewById(R.id.tvPerfilNome);
         TextView  tvRaca      = findViewById(R.id.tvPerfilRaca);
@@ -81,20 +90,17 @@ public class TelaPerfil extends AppCompatActivity {
         Button    btnSolicitar= findViewById(R.id.btnSolicitar);
         ImageView btnVoltar   = findViewById(R.id.ivVoltar);
 
-        tvNome.setText(nome);
+        tvNome.setText(nomeAnimal);
         tvRaca.setText(raca);
-        // O layout já tem labels fixos "Idade", "Porte", "Sexo" acima de cada valor,
-        // então só definimos o valor puro — sem prefixo.
-        tvIdade.setText(idade.isEmpty()   ? "—" : idade);
+        tvIdade.setText(idade.isEmpty()    ? "—" : idade);
         tvTamanho.setText(tamanho.isEmpty() ? "—" : tamanho);
-        tvSexo.setText(sexo.isEmpty()     ? "—" : sexo);
+        tvSexo.setText(sexo.isEmpty()      ? "—" : sexo);
         tvDescricao.setText(descricao);
-        tvAbrigo.setText(abrigo.isEmpty() ? "—" : abrigo);
+        tvAbrigo.setText(abrigo.isEmpty()  ? "—" : abrigo);
 
         tagVacinado.setVisibility(vacinado ? View.VISIBLE : View.GONE);
         tagCastrado.setVisibility(castrado ? View.VISIBLE : View.GONE);
 
-        // Carrega foto (local ou URL)
         if (foto != null && foto.startsWith("/")) {
             Glide.with(this).load(new File(foto)).centerCrop()
                     .placeholder(R.drawable.ic_cat_placeholder)
@@ -111,12 +117,24 @@ public class TelaPerfil extends AppCompatActivity {
 
         btnVoltar.setOnClickListener(v -> finish());
 
-        atualizarBotaoSolicitar(btnSolicitar, nome);
-        btnSolicitar.setOnClickListener(v -> confirmarSolicitacao(nome, btnSolicitar));
+        atualizarBotaoSolicitar(btnSolicitar, nomeAnimal);
+
+        btnSolicitar.setOnClickListener(v -> {
+            if (idUsuarioLogado == -1) {
+                Toast.makeText(this, "Faça login para enviar uma solicitação",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // Abre o formulário passando id e nome do animal
+            Intent intent = new Intent(this, InteresseAdocaoActivity.class);
+            intent.putExtra("id_animal",   idAnimal);
+            intent.putExtra("nome_animal", nomeAnimal);
+            startActivity(intent);
+        });
     }
 
     private void atualizarBotaoSolicitar(Button btn, String nomePet) {
-        if (idUsuarioLogado != -1 && !idAnimal.isEmpty()) {
+        if (idUsuarioLogado != -1 && idAnimal != null && !idAnimal.isEmpty()) {
             boolean jaSolicitou = solicitacaoDAO.jaSolicitou(idUsuarioLogado, idAnimal);
             if (jaSolicitou) {
                 btn.setText("Solicitação Enviada ✓");
@@ -126,33 +144,5 @@ public class TelaPerfil extends AppCompatActivity {
                 btn.setEnabled(true);
             }
         }
-    }
-
-    private void confirmarSolicitacao(String nomePet, Button btn) {
-        if (idUsuarioLogado == -1) {
-            Toast.makeText(this, "Faça login para enviar uma solicitação", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        new AlertDialog.Builder(this)
-                .setTitle("Confirmar solicitação")
-                .setMessage("Deseja enviar uma solicitação de adoção para " + nomePet
-                        + "?\n\nA ONG responsável entrará em contato com você.")
-                .setPositiveButton("Sim, quero adotar!", (dialog, which) -> {
-                    boolean sucesso = solicitacaoDAO.inserir(idUsuarioLogado, idAnimal);
-                    if (sucesso) {
-                        btn.setText("Solicitação Enviada ✓");
-                        btn.setEnabled(false);
-                        Toast.makeText(this,
-                                "Solicitação enviada! A ONG entrará em contato em breve.",
-                                Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(this,
-                                "Erro ao enviar solicitação. Tente novamente.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
     }
 }

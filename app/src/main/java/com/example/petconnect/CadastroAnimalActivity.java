@@ -45,7 +45,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                     new ActivityResultContracts.GetContent(),
                     uri -> {
                         if (uri != null) {
-                            // ✅ Copia a imagem para armazenamento interno permanente
+
                             String caminhoLocal = copiarImagemParaInterno(uri);
                             if (caminhoLocal != null) {
                                 fotoUrlFinal = caminhoLocal;
@@ -53,7 +53,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
                                 Glide.with(this).load(new File(caminhoLocal)).centerCrop().into(ivPreviewFoto);
                                 ivPreviewFoto.setVisibility(View.VISIBLE);
                             } else {
-                                // Fallback: usa URI diretamente se cópia falhar
+
                                 fotoUrlFinal = uri.toString();
                                 Glide.with(this).load(uri).centerCrop().into(ivPreviewFoto);
                                 ivPreviewFoto.setVisibility(View.VISIBLE);
@@ -165,7 +165,6 @@ public class CadastroAnimalActivity extends AppCompatActivity {
         });
     }
 
-    // ✅ Copia imagem da galeria para pasta interna do app (permanente)
     private String copiarImagemParaInterno(Uri uri) {
         try {
             File dir = new File(getFilesDir(), "fotos_animais");
@@ -184,7 +183,7 @@ public class CadastroAnimalActivity extends AppCompatActivity {
             in.close();
             out.close();
 
-            return destino.getAbsolutePath(); // caminho permanente
+            return destino.getAbsolutePath();
         } catch (Exception e) {
             return null;
         }

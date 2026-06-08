@@ -10,10 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- FOTO -->
-
-        <!-- CONTEÚDO -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +17,7 @@
             android:padding="24dp"
             android:background="@color/verdebb">
 
-            <!-- Nome -->
+
 
             <TextView
                 android:id="@+id/txtNomePet"
@@ -33,7 +29,7 @@
                 android:fontFamily="@font/albert_sans_light"
                 android:textColor="@color/black"/>
 
-            <!-- Informações -->
+
 
             <TextView
                 android:id="@+id/txtInfoPet"
@@ -44,8 +40,6 @@
                 android:textColor="@color/cinza"
                 android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="8dp"/>
-
-            <!-- Status -->
 
             <TextView
                 android:id="@+id/txtStatus"
@@ -58,7 +52,7 @@
                 android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="14dp"/>
 
-            <!-- Sobre -->
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +75,7 @@
                 android:lineSpacingExtra="5dp"
                 android:layout_marginTop="12dp"/>
 
-            <!-- ONG -->
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,7 +97,6 @@
                 android:fontFamily="@font/albert_sans_light"
                 android:layout_marginTop="12dp"/>
 
-            <!-- Botão -->
 
             <Button
                 android:id="@+id/btnAdotar"

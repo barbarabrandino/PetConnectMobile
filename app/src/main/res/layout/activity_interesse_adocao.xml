@@ -1,110 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/white">
 
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:padding="45dp">
+        android:background="@color/verdebtn"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="20dp">
 
-        <!-- Título -->
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/white"
+            android:contentDescription="Voltar" />
 
         <TextView
-            android:id="@+id/txtTitulo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/interesse_em_adocao"
-            android:textSize="28sp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Solicitação de Adoção"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:fontFamily="@font/albert_sans_light"
-            android:layout_marginBottom="24dp"/>
-
-        <!-- Nome -->
-
-        <EditText
-            android:id="@+id/etNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nome_completo"
-            android:background="@color/verdebb"
-            android:fontFamily="@font/albert_sans_light"/>
-
-        <!-- Telefone -->
-
-        <EditText
-            android:id="@+id/etTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:hint="@string/telefone"
-            android:inputType="phone"
-            android:background="@color/verdebb"
-            android:fontFamily="@font/albert_sans_light"/>
-
-        <!-- Moradia -->
-
-        <EditText
-            android:id="@+id/etMoradia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:hint="@string/tipo_de_moradia"
-            android:background="@color/verdebb"
-            android:fontFamily="@font/albert_sans_light"/>
-
-        <!-- Outros animais -->
-
-        <EditText
-            android:id="@+id/etAnimais"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:hint="@string/possui_outros_animais"
-            android:background="@color/verdebb"
-            android:fontFamily="@font/albert_sans_light"/>
-
-        <!-- Experiência -->
-
-        <EditText
-            android:id="@+id/etExperiencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:hint="@string/experiencia_com_pets"
-            android:background="@color/verdebb"
-            android:fontFamily="@font/albert_sans_light"/>
-
-        <!-- Observações -->
-
-        <EditText
-            android:id="@+id/etObservacoes"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="24dp"
-            android:gravity="top"
-            android:hint="@string/observacoes_adicionais"
-            android:background="@color/verdebb"
-            android:fontFamily="@font/albert_sans_light"/>
-
-        <!-- Botão -->
-
-        <Button
-            android:id="@+id/btnEnviar"
-            android:layout_width="260dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/verdebtn"
-            android:text="@string/enviar_solicitacao"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/albert_sans_light"/>
-
+            android:fontFamily="@font/albert_sans_light" />
     </LinearLayout>
 
-</ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Interesse em adoção"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preencha os dados abaixo para enviar sua solicitação à ONG responsável."
+                android:textSize="14sp"
+                android:textColor="@color/cinza"
+                android:fontFamily="@font/albert_sans_light"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Nome -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome completo *"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etNome"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/verdebb"
+                android:padding="12dp"
+                android:hint="Seu nome completo"
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Telefone -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone / WhatsApp *"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/verdebb"
+                android:padding="12dp"
+                android:hint="(00) 00000-0000"
+                android:inputType="phone"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Moradia -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo de moradia *"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etMoradia"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/verdebb"
+                android:padding="12dp"
+                android:hint="Ex: Casa com quintal, Apartamento..."
+                android:inputType="text"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Outros animais -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Possui outros animais?"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etAnimais"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/verdebb"
+                android:padding="12dp"
+                android:hint="Ex: Sim, tenho 1 gato. / Não."
+                android:inputType="text"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Experiência -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Experiência com pets"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etExperiencia"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/verdebb"
+                android:padding="12dp"
+                android:hint="Ex: Já tive cachorros por 5 anos."
+                android:inputType="text"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Observações -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Observações adicionais"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etObservacoes"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@color/verdebb"
+                android:padding="12dp"
+                android:hint="Alguma informação adicional que queira compartilhar..."
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:textSize="14sp"
+                android:layout_marginBottom="32dp"/>
+
+            <Button
+                android:id="@+id/btnEnviar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:backgroundTint="@color/verdebtn"
+                android:text="Enviar Solicitação"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

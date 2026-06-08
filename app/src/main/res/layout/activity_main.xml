@@ -9,7 +9,7 @@
     android:background="#1A2E1A"
     tools:context=".MainActivity">
 
-    <!-- Círculo decorativo grande — fundo superior -->
+
     <View
         android:layout_width="320dp"
         android:layout_height="320dp"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintHorizontal_bias="1"/>
 
-    <!-- Círculo decorativo pequeno — canto inferior esquerdo -->
+
     <View
         android:layout_width="180dp"
         android:layout_height="180dp"
@@ -34,7 +34,7 @@
         android:layout_marginBottom="-40dp"
         android:layout_marginStart="-40dp"/>
 
-    <!-- Ícone de pata centralizado no topo -->
+
     <ImageView
         android:id="@+id/ivPaw"
         android:layout_width="72dp"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.18"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <!-- Nome do app -->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- Tagline -->
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-    <!-- Divisor sutil -->
+
     <View
         android:id="@+id/divider"
         android:layout_width="40dp"
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"/>
 
-    <!-- Botão principal -->
+
     <Button
         android:id="@+id/btnComecar"
         android:layout_width="0dp"

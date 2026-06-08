@@ -7,7 +7,7 @@
     android:background="@color/background_gray"
     android:fitsSystemWindows="true">
 
-    <!-- CONTEÚDO -->
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +23,6 @@
             android:paddingTop="32dp"
             android:paddingBottom="16dp">
 
-            <!-- HEADER -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +73,6 @@
 
             </RelativeLayout>
 
-            <!-- SUBTÍTULO -->
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
@@ -84,7 +82,7 @@
                 android:textColor="@color/text_muted"
                 android:textSize="15sp" />
 
-            <!-- SEARCH -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -119,7 +117,6 @@
 
             </LinearLayout>
 
-            <!-- FILTROS -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -224,7 +221,7 @@
 
             </HorizontalScrollView>
 
-            <!-- LOADING -->
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
@@ -233,7 +230,7 @@
                 android:indeterminateTint="@color/teal_primary"
                 android:visibility="gone" />
 
-            <!-- EMPTY STATE -->
+
             <TextView
                 android:id="@+id/tvEmpty"
                 android:layout_width="match_parent"
@@ -245,7 +242,6 @@
                 android:textSize="16sp"
                 android:visibility="gone" />
 
-            <!-- LISTA -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPets"
                 android:layout_width="match_parent"
@@ -257,7 +253,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <!-- BOTTOM NAV -->
+
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -268,7 +264,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- Início -->
+
         <LinearLayout
             android:id="@+id/navInicio"
             android:layout_width="0dp"
@@ -297,7 +293,7 @@
 
         </LinearLayout>
 
-        <!-- Favoritos -->
+
         <LinearLayout
             android:id="@+id/navFavoritos"
             android:layout_width="0dp"
@@ -325,7 +321,7 @@
 
         </LinearLayout>
 
-        <!-- Solicitações -->
+
         <LinearLayout
             android:id="@+id/navSolicitacoes"
             android:layout_width="0dp"
@@ -353,7 +349,6 @@
 
         </LinearLayout>
 
-        <!-- Configurações -->
         <LinearLayout
             android:id="@+id/navConfiguracoes"
             android:layout_width="0dp"

@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:background="#F1FAF1">
 
-        <!-- Cabeçalho -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,13 +46,12 @@
 
         </LinearLayout>
 
-        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#C8E6C9"/>
 
-        <!-- Corpo -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +60,7 @@
             android:paddingTop="12dp"
             android:paddingBottom="4dp">
 
-            <!-- Solicitante -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +85,7 @@
 
             </LinearLayout>
 
-            <!-- Data -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +110,6 @@
 
             </LinearLayout>
 
-            <!-- Badge status -->
             <TextView
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
@@ -127,7 +125,7 @@
 
         </LinearLayout>
 
-        <!-- Botão Ver Detalhes -->
+
         <Button
             android:id="@+id/btnVerDetalhes"
             android:layout_width="match_parent"
@@ -143,7 +141,7 @@
             android:stateListAnimator="@null"
             style="@style/Widget.MaterialComponents.Button"/>
 
-        <!-- Botões Aprovar / Recusar — visíveis só quando "Em análise" -->
+
         <LinearLayout
             android:id="@+id/layoutAcoes"
             android:layout_width="match_parent"

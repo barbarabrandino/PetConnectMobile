@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_page">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/verdebtn"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="20dp">
+
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/white"
+            android:contentDescription="Voltar" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Editar Animal"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/albert_sans_light" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Preview da foto -->
+            <ImageView
+                android:id="@+id/ivPreviewFoto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/bg_pet_photo"
+                android:visibility="gone"
+                android:layout_marginBottom="12dp"
+                android:contentDescription="Preview da foto" />
+
+            <!-- Botão escolher foto -->
+            <Button
+                android:id="@+id/btnEscolherFoto"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="@color/verdebtn"
+                android:text="Trocar Foto"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="8dp" />
+
+            <!-- URL da foto (oculto por padrão) -->
+            <EditText
+                android:id="@+id/etFotoUrl"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:hint="Cole a URL da foto"
+                android:inputType="textUri"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Nome -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etNome"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Espécie -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Espécie"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etEspecie"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:inputType="text"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Porte -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Porte"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etRaca"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:inputType="text"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Idade -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Idade (anos)"
+                android:textColor="@color/verdebtn"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:fontFamily="@font/albert_sans_light"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/etIdade"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:inputType="number"
+                android:textSize="15sp"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Botão Salvar -->
+            <Button
+                android:id="@+id/btnSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:backgroundTint="@color/verdebtn"
+                android:fontFamily="@font/albert_sans_light"
+                android:text="Salvar Alterações"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

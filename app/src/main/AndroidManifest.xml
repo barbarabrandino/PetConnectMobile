@@ -17,34 +17,72 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <!-- Login e Cadastro -->
-        <activity android:name=".Login" android:exported="false" />
-        <activity android:name=".TelaCadastro" android:exported="false" />
-        <activity android:name=".TelaCadastroOng" android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".TelaCadastro"
+            android:exported="false" />
+        <activity
+            android:name=".TelaCadastroOng"
+            android:exported="false" />
 
         <!-- Adotante -->
-        <activity android:name=".TelaHome" android:exported="false" />
-        <activity android:name=".Favoritos" android:exported="false" />
-        <activity android:name=".MinhasSolicitacoes" android:exported="false" />
-        <activity android:name=".Configuracoes" android:exported="false" />
-        <activity android:name=".InteresseAdocaoActivity" android:exported="false" />
-        <activity android:name=".Sobre" android:exported="false" />
-        <activity android:name=".TermosDeUso" android:exported="false" />
-        <activity android:name=".PoliticaPrivacidade" android:exported="false" />
-        <activity android:name=".AlterarSenha" android:exported="false" />
-        <activity android:name=".CadastroAnimalActivity" android:exported="false" />
+        <activity
+            android:name=".TelaHome"
+            android:exported="false" />
+        <activity
+            android:name=".Favoritos"
+            android:exported="false" />
+        <activity
+            android:name=".MinhasSolicitacoes"
+            android:exported="false" />
+        <activity
+            android:name=".Configuracoes"
+            android:exported="false" />
+        <activity
+            android:name=".InteresseAdocaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Sobre"
+            android:exported="false" />
+        <activity
+            android:name=".TermosDeUso"
+            android:exported="false" />
+        <activity
+            android:name=".PoliticaPrivacidade"
+            android:exported="false" />
+        <activity
+            android:name=".AlterarSenha"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroAnimalActivity"
+            android:exported="false" />
         <activity android:name=".TelaPerfil" />
-        <activity android:name=".Item_animalActivity"/>
+        <activity android:name=".Item_animalActivity" />
         <activity android:name=".SolicitacoesOng" />
 
         <!-- ONG -->
-        <activity android:name=".DashboardOng" android:exported="false" />
-        <activity android:name=".Solicitacoes" android:exported="false" />
-
+        <activity
+            android:name=".DashboardOng"
+            android:exported="false" />
+        <activity
+            android:name=".Solicitacoes"
+            android:exported="false" />
+        <activity
+            android:name=".AnimaisCadastradosActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EditarAnimal"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

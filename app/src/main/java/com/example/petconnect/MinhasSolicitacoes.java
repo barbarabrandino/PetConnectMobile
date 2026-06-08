@@ -57,7 +57,7 @@ public class MinhasSolicitacoes extends AppCompatActivity {
     }
 
     private int getIdUsuarioLogado() {
-        // ⚠️ Ajuste o nome do prefs e da chave conforme o seu Login salva
+
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
         return prefs.getInt("id_usuario_logado", -1);
     }

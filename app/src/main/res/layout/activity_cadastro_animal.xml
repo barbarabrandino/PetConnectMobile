@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header verde -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <!-- Corpo -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             android:paddingEnd="20dp"
             android:paddingBottom="32dp">
 
-            <!-- ══ DADOS DO ANIMAL ══ -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                     android:background="@color/divider_color" />
             </LinearLayout>
 
-            <!-- Nome -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,7 +128,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Espécie -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,7 +164,7 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Idade + Porte -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -260,7 +259,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ══ CARACTERÍSTICAS ══ -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -286,7 +285,7 @@
                     android:background="@color/divider_color" />
             </LinearLayout>
 
-            <!-- Sexo -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -360,7 +359,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Descrição -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -401,7 +400,7 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- ══ FOTO ══ -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -426,7 +425,6 @@
                     android:background="@color/divider_color" />
             </LinearLayout>
 
-            <!-- Preview da foto -->
             <ImageView
                 android:id="@+id/ivPreviewFoto"
                 android:layout_width="match_parent"
@@ -438,7 +436,7 @@
                 android:src="@drawable/ic_cat_placeholder"
                 android:visibility="gone" />
 
-            <!-- Botão escolher foto -->
+
             <Button
                 android:id="@+id/btnEscolherFoto"
                 android:layout_width="match_parent"
@@ -450,7 +448,6 @@
                 android:textColor="@color/text_dark"
                 android:textSize="14sp" />
 
-            <!-- Campo URL (oculto por padrão, aparece ao escolher "Inserir URL") -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
@@ -472,7 +469,7 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <!-- Botões de ação -->
+
             <Button
                 android:id="@+id/btnCadastrarAnimal"
                 android:layout_width="match_parent"

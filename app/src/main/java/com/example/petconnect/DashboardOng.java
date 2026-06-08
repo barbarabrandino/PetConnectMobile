@@ -17,7 +17,7 @@ import com.example.petconnect.database.DatabaseConection;
 public class DashboardOng extends AppCompatActivity {
 
     private TextView txtNumPets, txtNumSolicitacoes, tvNomeOng;
-    private Button btnCadastrarPet, btnVerSolicitacoes;
+    private Button btnCadastrarPet, btnVerSolicitacoes, btnVerAnimais;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,8 @@ public class DashboardOng extends AppCompatActivity {
         tvNomeOng          = findViewById(R.id.tvNomeOng);
         btnCadastrarPet    = findViewById(R.id.btnCadastrarPet);
         btnVerSolicitacoes = findViewById(R.id.btnVerSolicitacoes);
+        btnVerAnimais      = findViewById(R.id.btnVerAnimais);
 
-        // Botão Sair no header
         findViewById(R.id.btnSair).setOnClickListener(v ->
                 new AlertDialog.Builder(this)
                         .setTitle("Sair da conta")
@@ -80,7 +80,6 @@ public class DashboardOng extends AppCompatActivity {
         DatabaseConection con = new DatabaseConection(this);
         SQLiteDatabase db = con.getReadableDatabase();
 
-        // Conta animais desta ONG
         Cursor cursorAnimais = db.rawQuery(
                 "SELECT COUNT(*) FROM " + DatabaseConection.TABELA_ANIMAL + " WHERE id_ong = ?",
                 new String[]{ String.valueOf(idOng) }
@@ -88,7 +87,6 @@ public class DashboardOng extends AppCompatActivity {
         if (cursorAnimais.moveToFirst()) txtNumPets.setText(String.valueOf(cursorAnimais.getInt(0)));
         cursorAnimais.close();
 
-        // Conta solicitações recebidas pelos animais desta ONG
         Cursor cursorSolic = db.rawQuery(
                 "SELECT COUNT(DISTINCT s.id) FROM " + DatabaseConection.TABELA_SOLICITACOES + " s " +
                         "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL + " a " +
@@ -107,6 +105,10 @@ public class DashboardOng extends AppCompatActivity {
     private void setupBotoes() {
         btnCadastrarPet.setOnClickListener(v ->
                 startActivity(new Intent(this, CadastroAnimalActivity.class))
+        );
+
+        btnVerAnimais.setOnClickListener(v ->
+                startActivity(new Intent(this, AnimaisCadastradosActivity.class))
         );
 
         btnVerSolicitacoes.setOnClickListener(v -> {

@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.petconnect.adapter.SolicitacaoOngAdapter;
 import com.example.petconnect.database.DatabaseConection;
 import com.example.petconnect.model.Solicitacao;
 
@@ -31,7 +30,6 @@ public class SolicitacoesOng extends AppCompatActivity {
 
         rvSolicitacoes = findViewById(R.id.rvSolicitacoes);
         tvVazio        = findViewById(R.id.tvVazio);
-
         rvSolicitacoes.setLayoutManager(new LinearLayoutManager(this));
 
         carregarSolicitacoes();
@@ -47,12 +45,9 @@ public class SolicitacoesOng extends AppCompatActivity {
 
     private void carregarSolicitacoes() {
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
-
-        // Descobre se quem está logado é ONG ou usuário comum
-        boolean isOng = "ong".equals(prefs.getString("tipo_usuario", ""));
-
-        int idOng      = prefs.getInt("id_ong_logada", -1);
-        int idUsuario  = prefs.getInt("id_usuario_logado", -1);
+        boolean isOng    = "ong".equals(prefs.getString("tipo_usuario", ""));
+        int     idOng    = prefs.getInt("id_ong_logada",    -1);
+        int     idUsuario= prefs.getInt("id_usuario_logado", -1);
 
         DatabaseConection con = new DatabaseConection(this);
         SQLiteDatabase db = con.getReadableDatabase();
@@ -60,49 +55,54 @@ public class SolicitacoesOng extends AppCompatActivity {
         String sql;
 
         if (isOng) {
-            // ONG vê todas as solicitações dos seus animais
-            if (idOng == -1) {
-                tvVazio.setVisibility(View.VISIBLE);
-                rvSolicitacoes.setVisibility(View.GONE);
-                return;
-            }
+            if (idOng == -1) { mostrarVazio(); return; }
+
             sql = "SELECT s.id, s.status, s.data, " +
-                    "       COALESCE(a.nome, p.nome, 'Animal')        AS nome_animal, " +
-                    "       COALESCE(u.nome, u.email, 'Usuário')      AS nome_usuario, " +
-                    "       COALESCE(u.email,    '')                  AS email_usuario, " +
-                    "       COALESCE(u.cpf,      '')                  AS cpf_usuario, " +
-                    "       COALESCE(u.endereco, '')                  AS endereco_usuario, " +
-                    "       COALESCE(u.cep,      '')                  AS cep_usuario, " +
-                    "       COALESCE(u.estado,   '')                  AS estado_usuario, " +
-                    "       COALESCE(u.cidade,   '')                  AS cidade_usuario " +
+                    "       COALESCE(a.nome, p.nome, 'Animal')    AS nome_animal, " +
+                    "       COALESCE(u.nome, u.email, 'Usuário')  AS nome_usuario, " +
+                    "       COALESCE(u.email,    '')              AS email_usuario, " +
+                    "       COALESCE(u.cpf,      '')              AS cpf_usuario, " +
+                    "       COALESCE(u.endereco, '')              AS endereco_usuario, " +
+                    "       COALESCE(u.cep,      '')              AS cep_usuario, " +
+                    "       COALESCE(u.estado,   '')              AS estado_usuario, " +
+                    "       COALESCE(u.cidade,   '')              AS cidade_usuario, " +
+                    // ← campos do formulário de adoção
+                    "       COALESCE(s.nome_solicitante, '')      AS nome_solicitante, " +
+                    "       COALESCE(s.telefone,         '')      AS telefone, " +
+                    "       COALESCE(s.moradia,          '')      AS moradia, " +
+                    "       COALESCE(s.outros_animais,   '')      AS outros_animais, " +
+                    "       COALESCE(s.experiencia,      '')      AS experiencia, " +
+                    "       COALESCE(s.observacoes,      '')      AS observacoes " +
                     "FROM "      + DatabaseConection.TABELA_SOLICITACOES + " s " +
-                    "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL       + " a " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL + " a " +
                     "       ON s.id_animal = CAST(a.id AS TEXT) AND a.id_ong = " + idOng +
-                    " LEFT JOIN " + DatabaseConection.TABELA_PET         + " p " +
+                    " LEFT JOIN " + DatabaseConection.TABELA_PET + " p " +
                     "       ON s.id_animal = CAST(p.id AS TEXT) AND p.id_ong = " + idOng +
-                    " LEFT JOIN " + DatabaseConection.TABELA_USUARIO     + " u ON s.id_usuario = u.id " +
+                    " LEFT JOIN " + DatabaseConection.TABELA_USUARIO + " u ON s.id_usuario = u.id " +
                     "WHERE a.id_ong = " + idOng + " OR p.id_ong = " + idOng +
                     " ORDER BY s.id DESC";
         } else {
-            // Usuário vê apenas as suas próprias solicitações
-            if (idUsuario == -1) {
-                tvVazio.setVisibility(View.VISIBLE);
-                rvSolicitacoes.setVisibility(View.GONE);
-                return;
-            }
+            if (idUsuario == -1) { mostrarVazio(); return; }
+
             sql = "SELECT s.id, s.status, s.data, " +
-                    "       COALESCE(a.nome, p.nome, 'Animal')        AS nome_animal, " +
-                    "       COALESCE(u.nome, u.email, 'Usuário')      AS nome_usuario, " +
-                    "       COALESCE(u.email,    '')                  AS email_usuario, " +
-                    "       COALESCE(u.cpf,      '')                  AS cpf_usuario, " +
-                    "       COALESCE(u.endereco, '')                  AS endereco_usuario, " +
-                    "       COALESCE(u.cep,      '')                  AS cep_usuario, " +
-                    "       COALESCE(u.estado,   '')                  AS estado_usuario, " +
-                    "       COALESCE(u.cidade,   '')                  AS cidade_usuario " +
+                    "       COALESCE(a.nome, p.nome, 'Animal')    AS nome_animal, " +
+                    "       COALESCE(u.nome, u.email, 'Usuário')  AS nome_usuario, " +
+                    "       COALESCE(u.email,    '')              AS email_usuario, " +
+                    "       COALESCE(u.cpf,      '')              AS cpf_usuario, " +
+                    "       COALESCE(u.endereco, '')              AS endereco_usuario, " +
+                    "       COALESCE(u.cep,      '')              AS cep_usuario, " +
+                    "       COALESCE(u.estado,   '')              AS estado_usuario, " +
+                    "       COALESCE(u.cidade,   '')              AS cidade_usuario, " +
+                    "       COALESCE(s.nome_solicitante, '')      AS nome_solicitante, " +
+                    "       COALESCE(s.telefone,         '')      AS telefone, " +
+                    "       COALESCE(s.moradia,          '')      AS moradia, " +
+                    "       COALESCE(s.outros_animais,   '')      AS outros_animais, " +
+                    "       COALESCE(s.experiencia,      '')      AS experiencia, " +
+                    "       COALESCE(s.observacoes,      '')      AS observacoes " +
                     "FROM "      + DatabaseConection.TABELA_SOLICITACOES + " s " +
-                    "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL       + " a ON s.id_animal = CAST(a.id AS TEXT) " +
-                    "LEFT JOIN " + DatabaseConection.TABELA_PET          + " p ON s.id_animal = CAST(p.id AS TEXT) " +
-                    "LEFT JOIN " + DatabaseConection.TABELA_USUARIO      + " u ON s.id_usuario = u.id " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_ANIMAL + " a ON s.id_animal = CAST(a.id AS TEXT) " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_PET    + " p ON s.id_animal = CAST(p.id AS TEXT) " +
+                    "LEFT JOIN " + DatabaseConection.TABELA_USUARIO + " u ON s.id_usuario = u.id " +
                     "WHERE s.id_usuario = " + idUsuario +
                     " ORDER BY s.id DESC";
         }
@@ -123,31 +123,38 @@ public class SolicitacoesOng extends AppCompatActivity {
             s.setCepUsuario     (cursor.getString(cursor.getColumnIndexOrThrow("cep_usuario")));
             s.setEstadoUsuario  (cursor.getString(cursor.getColumnIndexOrThrow("estado_usuario")));
             s.setCidadeUsuario  (cursor.getString(cursor.getColumnIndexOrThrow("cidade_usuario")));
+            // ← campos do formulário
+            s.setNomeSolicitante(cursor.getString(cursor.getColumnIndexOrThrow("nome_solicitante")));
+            s.setTelefone       (cursor.getString(cursor.getColumnIndexOrThrow("telefone")));
+            s.setMoradia        (cursor.getString(cursor.getColumnIndexOrThrow("moradia")));
+            s.setOutrosAnimais  (cursor.getString(cursor.getColumnIndexOrThrow("outros_animais")));
+            s.setExperiencia    (cursor.getString(cursor.getColumnIndexOrThrow("experiencia")));
+            s.setObservacoes    (cursor.getString(cursor.getColumnIndexOrThrow("observacoes")));
             lista.add(s);
         }
         cursor.close();
         db.close();
 
         if (lista.isEmpty()) {
-            tvVazio.setVisibility(View.VISIBLE);
-            rvSolicitacoes.setVisibility(View.GONE);
+            mostrarVazio();
         } else {
             tvVazio.setVisibility(View.GONE);
             rvSolicitacoes.setVisibility(View.VISIBLE);
-            // Passa isOng: ONG vê botões Aprovar/Recusar, usuário só vê o status
             rvSolicitacoes.setAdapter(new SolicitacaoOngAdapter(this, lista, isOng));
         }
     }
 
+    private void mostrarVazio() {
+        tvVazio.setVisibility(View.VISIBLE);
+        rvSolicitacoes.setVisibility(View.GONE);
+    }
+
     private void setupBottomNav() {
         setNavAtivo(R.id.navSolicitacoes);
-
         findViewById(R.id.navInicio).setOnClickListener(v ->
                 startActivity(new Intent(this, DashboardOng.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP)));
-
-        findViewById(R.id.navSolicitacoes).setOnClickListener(v -> {/* já está aqui */});
-
+        findViewById(R.id.navSolicitacoes).setOnClickListener(v -> {});
         findViewById(R.id.navConfiguracoes).setOnClickListener(v ->
                 startActivity(new Intent(this, Configuracoes.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP)));
