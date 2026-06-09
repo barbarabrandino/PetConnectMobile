@@ -40,7 +40,7 @@ public class AlterarSenha extends AppCompatActivity {
         String novaSenha      = etNovaSenha.getText().toString().trim();
         String confirmarSenha = etConfirmarSenha.getText().toString().trim();
 
-        // Validações
+
         if (senhaAtual.isEmpty() || novaSenha.isEmpty() || confirmarSenha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
             return;

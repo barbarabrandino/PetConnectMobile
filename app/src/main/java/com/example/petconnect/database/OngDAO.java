@@ -16,7 +16,7 @@ public class OngDAO {
         con = new DatabaseConection(context);
     }
 
-    // Insert da informações da ong
+
     public boolean inserir(Ongs ong) {
 
         db = con.getWritableDatabase();
@@ -38,7 +38,6 @@ public class OngDAO {
         return resultado != -1;
     }
 
-    // Login da ong
     public boolean login(String email, String senha) {
 
         db = con.getReadableDatabase();
@@ -57,7 +56,7 @@ public class OngDAO {
         return existe;
     }
 
-    // Buscar por Ong
+
     public Ongs buscarOng(String email, String senha) {
 
         db = con.getReadableDatabase();

@@ -29,7 +29,7 @@ public class InteresseAdocaoActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("petconnect_prefs", MODE_PRIVATE);
         idUsuarioLogado = prefs.getInt("id_usuario_logado", -1);
 
-        // Atualiza título com nome do animal
+
         TextView txtTitulo = findViewById(R.id.txtTitulo);
         txtTitulo.setText("Interesse em adotar " + nomeAnimal);
 

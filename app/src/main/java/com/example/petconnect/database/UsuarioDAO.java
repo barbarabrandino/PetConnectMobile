@@ -36,7 +36,7 @@ public class UsuarioDAO {
         return resultado != -1;
     }
 
-    // 🔐 LOGIN (igual ao seu padrão)
+
     public boolean login(String email, String senha) {
 
         db = con.getReadableDatabase();

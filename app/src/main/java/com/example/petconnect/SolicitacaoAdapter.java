@@ -24,7 +24,7 @@ public class SolicitacaoAdapter extends RecyclerView.Adapter<SolicitacaoAdapter.
     private final Context           context;
     private final List<Solicitacao> lista;
 
-    // ✅ Corrigido: List<Solicitacao> em vez de List<SolicitacaoOngAdapter>
+
     public SolicitacaoAdapter(Context context, List<Solicitacao> lista) {
         this.context = context;
         this.lista   = lista;

@@ -53,7 +53,7 @@ public class TelaPerfil extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Atualiza botão caso usuário tenha enviado a solicitação e voltado
+
         Button btnSolicitar = findViewById(R.id.btnSolicitar);
         if (btnSolicitar != null && idAnimal != null) {
             atualizarBotaoSolicitar(btnSolicitar, nomeAnimal);
@@ -125,7 +125,7 @@ public class TelaPerfil extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 return;
             }
-            // Abre o formulário passando id e nome do animal
+
             Intent intent = new Intent(this, InteresseAdocaoActivity.class);
             intent.putExtra("id_animal",   idAnimal);
             intent.putExtra("nome_animal", nomeAnimal);

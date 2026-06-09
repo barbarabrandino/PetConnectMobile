@@ -16,7 +16,7 @@ public class FavoritosDAO {
         banco = new DatabaseConection(context).getWritableDatabase();
     }
 
-    /** Adiciona um animal aos favoritos do usuário. Ignora se já existir. */
+
     public void adicionar(int idUsuario, String idAnimal) {
         ContentValues values = new ContentValues();
         values.put("id_usuario", idUsuario);
@@ -29,7 +29,7 @@ public class FavoritosDAO {
         );
     }
 
-    /** Remove um animal dos favoritos do usuário. */
+
     public void remover(int idUsuario, String idAnimal) {
         banco.delete(
                 DatabaseConection.TABELA_FAVORITOS,
@@ -38,7 +38,7 @@ public class FavoritosDAO {
         );
     }
 
-    /** Verifica se um animal já é favorito do usuário. */
+
     public boolean isFavorito(int idUsuario, String idAnimal) {
         Cursor cursor = banco.rawQuery(
                 "SELECT 1 FROM " + DatabaseConection.TABELA_FAVORITOS +
@@ -50,7 +50,7 @@ public class FavoritosDAO {
         return existe;
     }
 
-    /** Retorna os IDs (String) de animais favoritos de um usuário. */
+
     public List<String> listarIdsFavoritos(int idUsuario) {
         List<String> ids = new ArrayList<>();
         Cursor cursor = banco.rawQuery(

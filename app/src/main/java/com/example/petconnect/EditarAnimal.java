@@ -63,14 +63,14 @@ public class EditarAnimal extends AppCompatActivity {
         etFotoUrl     = findViewById(R.id.etFotoUrl);
         ivPreviewFoto = findViewById(R.id.ivPreviewFoto);
 
-        // Recebe dados da AnimaisCadastradosActivity
+
         idAnimal = getIntent().getIntExtra("id_animal", -1);
         etNome.setText(getIntent().getStringExtra("nome"));
         etEspecie.setText(getIntent().getStringExtra("especie"));
         etPorte.setText(getIntent().getStringExtra("porte"));
         etIdade.setText(String.valueOf(getIntent().getIntExtra("idade", 0)));
 
-        // Carrega foto atual no preview
+
         fotoUrlFinal = getIntent().getStringExtra("foto_url");
         if (fotoUrlFinal == null) fotoUrlFinal = "";
         if (!fotoUrlFinal.isEmpty()) {
@@ -88,7 +88,7 @@ public class EditarAnimal extends AppCompatActivity {
             }
         }
 
-        // Botão trocar foto
+
         findViewById(R.id.btnEscolherFoto).setOnClickListener(v ->
                 new AlertDialog.Builder(this)
                         .setTitle("Trocar foto")
@@ -103,7 +103,7 @@ public class EditarAnimal extends AppCompatActivity {
                         .show()
         );
 
-        // Quando sair do campo URL, carrega preview
+
         etFotoUrl.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 String url = etFotoUrl.getText().toString().trim();
